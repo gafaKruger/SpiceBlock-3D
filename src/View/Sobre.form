@@ -4,6 +4,7 @@
   <Properties>
     <Property name="title" type="java.lang.String" value="Menu Sobre"/>
     <Property name="alwaysOnTop" type="boolean" value="true"/>
+    <Property name="name" type="java.lang.String" value="Menu Sobre" noResource="true"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>

@@ -1,7 +1,7 @@
 
 package View;
 
-import Controller.Controlador;
+import Controller.Controller;
 import java.awt.Color;
 
 /**
@@ -38,6 +38,7 @@ public class SeletorCores extends javax.swing.JFrame {
 
         setTitle("Selecionar Cor");
         setAlwaysOnTop(true);
+        setName("Selecionar Cor"); // NOI18N
 
         BotaoCancelar.setText("Cancelar");
         BotaoCancelar.addActionListener(new java.awt.event.ActionListener() {

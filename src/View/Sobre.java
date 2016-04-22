@@ -39,6 +39,7 @@ public class Sobre extends javax.swing.JFrame {
 
         setTitle("Menu Sobre");
         setAlwaysOnTop(true);
+        setName("Menu Sobre"); // NOI18N
         setResizable(false);
 
         BotaoOK.setText("OK");

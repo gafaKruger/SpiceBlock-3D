@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author Rafael Fiori Kruger
  */
-public class Controlador implements Serializable {
+public class Controller implements Serializable {
     private final Listas listas;
     private final ListaCubos listaCubos;
     private ConfigCubo Ccubo;
@@ -21,7 +21,7 @@ public class Controlador implements Serializable {
     //private Color corBorda, corPreenchimento;
     //private Painel painel;
 
-    public Controlador() {
+    public Controller() {
         Ccubo = new ConfigCubo();
         listas = new Listas();
         listaCubos = new ListaCubos();

@@ -1,6 +1,6 @@
 package View;
 
-import Controller.Controlador;
+import Controller.Controller;
 import Model.Angulos;
 import Model.ListaCubos;
 import Model.Ponto;
@@ -33,7 +33,7 @@ import static javax.swing.JOptionPane.YES_NO_OPTION;
  */
 public class Painel extends javax.swing.JFrame {
 
-    private Controlador control;
+    private Controller control;
     private boolean alternaFrente, alternaTopo, alternaLado, alternaProjecao, plotDesenho, selecionaCubo;
     private boolean selecLado, selecFrente, selecTopo;
     private int cuboSelecIndice, cuboParaAgrupar, last;
@@ -55,7 +55,7 @@ public class Painel extends javax.swing.JFrame {
         initialize();
     }
 
-    public Painel(Controlador c) {
+    public Painel(Controller c) {
         this.control = c;
         initialize();
     }
@@ -100,9 +100,10 @@ public class Painel extends javax.swing.JFrame {
         AlternarVisaoTopo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
         AlternarVisaoLado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
         AlternarVisaoProjecao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
-        DesenharCubos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cubo.png")));
-        ExcluirCubo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lixeira.png")));
-        BotaoDesagrupar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cubosDesagrupados.png")));
+        //DesenharCubos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cubo.png")));
+        //ExcluirCubo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lixeira.png")));
+        //BotaoDesagrupar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cubosDesagrupados.png")));
+        //SelecionarCubos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/selecao.png")));
         alternaFrente = alternaTopo = alternaLado = alternaProjecao = selecionaCubo = true;
         plotDesenho = cuboIsSelected = false;
         selecFrente = selecLado = selecTopo = false;
@@ -268,8 +269,8 @@ public class Painel extends javax.swing.JFrame {
         BotaoSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("BlockBuilder");
-        setName("BlockBuilder"); // NOI18N
+        setTitle("SpiceBlock-3D");
+        setName("SpiceBlock-3D"); // NOI18N
         addWindowStateListener(new java.awt.event.WindowStateListener() {
             public void windowStateChanged(java.awt.event.WindowEvent evt) {
                 Painel.this.windowStateChanged(evt);
@@ -332,6 +333,7 @@ public class Painel extends javax.swing.JFrame {
             }
         });
 
+        ExcluirCubo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lixeira.png"))); // NOI18N
         ExcluirCubo.setToolTipText("Excluir um Cubo");
         ExcluirCubo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -339,6 +341,7 @@ public class Painel extends javax.swing.JFrame {
             }
         });
 
+        BotaoDesagrupar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cubosDesagrupados.png"))); // NOI18N
         BotaoDesagrupar.setToolTipText("Desagrupar Cubos");
         BotaoDesagrupar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -392,37 +395,37 @@ public class Painel extends javax.swing.JFrame {
         PainelDesenhoLayout.setHorizontalGroup(
             PainelDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelDesenhoLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addGap(3, 3, 3)
                 .addComponent(SelecionarCubos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addGap(3, 3, 3)
                 .addComponent(DesenharCubos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addGap(3, 3, 3)
                 .addComponent(ExcluirCubo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addComponent(BotaoDesagrupar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addGroup(PainelDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(SelecProjecaoPerspectiva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(OcultaFaces, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(SelecProjecaoIsometrica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addGroup(PainelDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(PainelDesenhoLayout.createSequentialGroup()
                         .addGroup(PainelDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, 0)
                         .addGroup(PainelDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(SpinnerEscala, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SpinnerRotacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(SpinnerEscala, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SpinnerRotacao, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         PainelDesenhoLayout.setVerticalGroup(
             PainelDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,12 +449,12 @@ public class Painel extends javax.swing.JFrame {
                 .addGroup(PainelDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SpinnerEscala, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
             .addGroup(PainelDesenhoLayout.createSequentialGroup()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(OcultaFaces, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SelecProjecaoPerspectiva, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -529,41 +532,41 @@ public class Painel extends javax.swing.JFrame {
                 .addGroup(PainelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BotaoCorPreenchimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotaoCorBordas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addGroup(PainelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(PainelCorLayout.createSequentialGroup()
                         .addGroup(PainelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, 0)
                         .addGroup(PainelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(SpinnerLuzAmbiente, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                             .addComponent(SpinnerLuzPontual)))
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(3, 3, 3)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addGroup(PainelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(PainelCorLayout.createSequentialGroup()
                         .addGroup(PainelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, 0)
                         .addGroup(PainelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SpinnerKA, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(SpinnerKD, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, 0)
                         .addGroup(PainelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, 0)
                         .addGroup(PainelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(SpinnerKS, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                             .addComponent(SpinnerN)))
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         PainelCorLayout.setVerticalGroup(
             PainelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -601,7 +604,7 @@ public class Painel extends javax.swing.JFrame {
                             .addComponent(SpinnerKD, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(SpinnerN, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
 
         PainelBaseFrente.setBackground(new java.awt.Color(255, 255, 255));
@@ -612,28 +615,28 @@ public class Painel extends javax.swing.JFrame {
         PainelFrente.setPreferredSize(new java.awt.Dimension(200, 200));
         PainelFrente.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                moverCuboFrente(evt);
+                PainelFrentemoverCuboFrente(evt);
             }
         });
         PainelFrente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                operacoesCuboFrente(evt);
+                PainelFrenteoperacoesCuboFrente(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                mouseReleasedFrente(evt);
+                PainelFrentemouseReleasedFrente(evt);
             }
         });
         PainelFrente.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
-                resizedFrente(evt);
+                PainelFrenteresizedFrente(evt);
             }
         });
         PainelFrente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                keyPressedFrente(evt);
+                PainelFrentekeyPressedFrente(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                keyTypedFrente(evt);
+                PainelFrentekeyTypedFrente(evt);
             }
         });
 
@@ -656,18 +659,18 @@ public class Painel extends javax.swing.JFrame {
             PainelFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelFrenteLayout.createSequentialGroup()
                 .addComponent(AlternarVisaoFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 231, Short.MAX_VALUE))
+                .addGap(0, 222, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PainelBaseFrenteLayout = new javax.swing.GroupLayout(PainelBaseFrente);
         PainelBaseFrente.setLayout(PainelBaseFrenteLayout);
         PainelBaseFrenteLayout.setHorizontalGroup(
             PainelBaseFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelFrente, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
+            .addComponent(PainelFrente, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
         );
         PainelBaseFrenteLayout.setVerticalGroup(
             PainelBaseFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelFrente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+            .addComponent(PainelFrente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
         );
 
         PainelBaseLado.setBackground(new java.awt.Color(255, 255, 255));
@@ -678,20 +681,20 @@ public class Painel extends javax.swing.JFrame {
         PainelLado.setPreferredSize(new java.awt.Dimension(200, 200));
         PainelLado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                moverCuboLado(evt);
+                PainelLadomoverCuboLado(evt);
             }
         });
         PainelLado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                operacoesCuboLado(evt);
+                PainelLadooperacoesCuboLado(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                mouseReleasedLado(evt);
+                PainelLadomouseReleasedLado(evt);
             }
         });
         PainelLado.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
-                resizedLado(evt);
+                PainelLadoresizedLado(evt);
             }
         });
 
@@ -714,18 +717,18 @@ public class Painel extends javax.swing.JFrame {
             PainelLadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelLadoLayout.createSequentialGroup()
                 .addComponent(AlternarVisaoLado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 204, Short.MAX_VALUE))
+                .addGap(0, 196, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PainelBaseLadoLayout = new javax.swing.GroupLayout(PainelBaseLado);
         PainelBaseLado.setLayout(PainelBaseLadoLayout);
         PainelBaseLadoLayout.setHorizontalGroup(
             PainelBaseLadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelLado, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
+            .addComponent(PainelLado, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
         );
         PainelBaseLadoLayout.setVerticalGroup(
             PainelBaseLadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelLado, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+            .addComponent(PainelLado, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
         );
 
         PainelBaseTopo.setBackground(new java.awt.Color(255, 255, 255));
@@ -736,20 +739,20 @@ public class Painel extends javax.swing.JFrame {
         PainelTopo.setPreferredSize(new java.awt.Dimension(200, 200));
         PainelTopo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                moverCuboTopo(evt);
+                PainelTopomoverCuboTopo(evt);
             }
         });
         PainelTopo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                operacoesCuboTopo(evt);
+                PainelTopooperacoesCuboTopo(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                mouseReleasedTopo(evt);
+                PainelTopomouseReleasedTopo(evt);
             }
         });
         PainelTopo.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
-                resizedTopo(evt);
+                PainelToporesizedTopo(evt);
             }
         });
 
@@ -772,18 +775,18 @@ public class Painel extends javax.swing.JFrame {
             PainelTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelTopoLayout.createSequentialGroup()
                 .addComponent(AlternarVisaoTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 231, Short.MAX_VALUE))
+                .addGap(0, 222, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PainelBaseTopoLayout = new javax.swing.GroupLayout(PainelBaseTopo);
         PainelBaseTopo.setLayout(PainelBaseTopoLayout);
         PainelBaseTopoLayout.setHorizontalGroup(
             PainelBaseTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelTopo, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE)
+            .addComponent(PainelTopo, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
         );
         PainelBaseTopoLayout.setVerticalGroup(
             PainelBaseTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelTopo, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+            .addComponent(PainelTopo, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
         );
 
         PainelBaseProjecao.setBackground(new java.awt.Color(255, 255, 255));
@@ -795,7 +798,7 @@ public class Painel extends javax.swing.JFrame {
         PainelProjecao.setPreferredSize(new java.awt.Dimension(200, 200));
         PainelProjecao.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
-                resizedProjecao(evt);
+                PainelProjecaoresizedProjecao(evt);
             }
         });
 
@@ -825,11 +828,11 @@ public class Painel extends javax.swing.JFrame {
         PainelBaseProjecao.setLayout(PainelBaseProjecaoLayout);
         PainelBaseProjecaoLayout.setHorizontalGroup(
             PainelBaseProjecaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE)
+            .addComponent(PainelProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
         );
         PainelBaseProjecaoLayout.setVerticalGroup(
             PainelBaseProjecaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+            .addComponent(PainelProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
         );
 
         PainelObservacao.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Observação"));
@@ -951,21 +954,24 @@ public class Painel extends javax.swing.JFrame {
         PainelObservacaoLayout.setHorizontalGroup(
             PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelObservacaoLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addGroup(PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelObservacaoLayout.createSequentialGroup()
                         .addGroup(PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(PainelObservacaoLayout.createSequentialGroup()
+                                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, 0))
+                            .addGroup(PainelObservacaoLayout.createSequentialGroup()
+                                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, 0)))
                         .addGroup(PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(SpinnerPX, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SpinnerViewUpX, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(SpinnerPX, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SpinnerViewUpX, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(PainelObservacaoLayout.createSequentialGroup()
                         .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SpinnerVRPX, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, 0)
+                        .addComponent(SpinnerVRPX, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, 0)
                 .addGroup(PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -973,38 +979,33 @@ public class Painel extends javax.swing.JFrame {
                     .addComponent(jLabel21))
                 .addGroup(PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelObservacaoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SpinnerViewUpY, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SpinnerViewUpZ, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(SpinnerVRPY, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PainelObservacaoLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PainelObservacaoLayout.createSequentialGroup()
-                                .addComponent(SpinnerVRPY, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(SpinnerVRPZ, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PainelObservacaoLayout.createSequentialGroup()
-                                .addComponent(SpinnerPY, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(SpinnerPZ, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SpinnerViewUpY, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PainelObservacaoLayout.createSequentialGroup()
+                        .addComponent(SpinnerPY, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, 0)
+                .addGroup(PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SpinnerVRPZ, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SpinnerViewUpZ, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SpinnerPZ, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(PainelObservacaoLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(SpinnerDP, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(SpinnerVRPIsometrica, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addGroup(PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SpinnerVRPIsometrica, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SpinnerDP, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         PainelObservacaoLayout.setVerticalGroup(
             PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1019,7 +1020,7 @@ public class Painel extends javax.swing.JFrame {
                             .addComponent(SpinnerVRPY, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(SpinnerVRPZ, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(7, 7, 7)
                         .addGroup(PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(SpinnerPX, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1027,25 +1028,24 @@ public class Painel extends javax.swing.JFrame {
                             .addComponent(SpinnerPY, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(SpinnerPZ, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(7, 7, 7)
                         .addGroup(PainelObservacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(SpinnerViewUpX, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(SpinnerViewUpY, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SpinnerViewUpZ, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(SpinnerViewUpZ, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(PainelObservacaoLayout.createSequentialGroup()
                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
+                        .addGap(0, 0, 0)
                         .addComponent(SpinnerDP, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, 0)
                         .addComponent(SpinnerVRPIsometrica, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
 
         Arquivo.setText("Arquivo");
@@ -1246,14 +1246,14 @@ public class Painel extends javax.swing.JFrame {
                     .addComponent(PainelBaseFrente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PainelBaseProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PainelBaseTopo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(PainelBaseTopo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PainelBaseProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(PainelDesenho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addComponent(PainelObservacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PainelCor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(3, 3, 3)
+                .addComponent(PainelCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1293,7 +1293,7 @@ public class Painel extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_SairActionPerformed
 
-    public void setControlador(Controlador c) {
+    public void setControlador(Controller c) {
         control = c;
     }
 
@@ -1386,132 +1386,8 @@ public class Painel extends javax.swing.JFrame {
         }
     }
 
-    private void AlternarVisaoFrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternarVisaoFrenteActionPerformed
-        if (alternaFrente) {
-            AlternarVisaoFrente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaBaixo.jpg")));
-            alternaFrente = false;
-            PainelBaseProjecao.setVisible(false);
-            PainelBaseTopo.setVisible(false);
-            PainelBaseLado.setVisible(false);
-            PainelTopo.setVisible(false);
-            PainelLado.setVisible(false);
-            PainelProjecao.setVisible(false);
-            if (!control.getListaCubos().isEmpty()) {
-                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
-            }
-        } else {
-            AlternarVisaoFrente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
-            alternaFrente = true;
-            PainelBaseProjecao.setVisible(true);
-            PainelBaseTopo.setVisible(true);
-            PainelBaseLado.setVisible(true);
-            PainelTopo.setVisible(true);
-            PainelLado.setVisible(true);
-            PainelProjecao.setVisible(true);
-            desenharVisoesPaineis();
-        }
-    }//GEN-LAST:event_AlternarVisaoFrenteActionPerformed
-
-    private void AlternarVisaoTopoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternarVisaoTopoActionPerformed
-        if (alternaTopo) {
-            AlternarVisaoTopo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaBaixo.jpg")));
-            alternaTopo = false;
-            PainelBaseFrente.setVisible(false);
-            PainelBaseProjecao.setVisible(false);
-            PainelBaseLado.setVisible(false);
-            PainelFrente.setVisible(false);
-            PainelLado.setVisible(false);
-            PainelProjecao.setVisible(false);
-            if (!control.getListaCubos().isEmpty()) {
-                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
-            }
-        } else {
-            AlternarVisaoTopo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
-            alternaTopo = true;
-            PainelBaseFrente.setVisible(true);
-            PainelBaseProjecao.setVisible(true);
-            PainelBaseLado.setVisible(true);
-            PainelFrente.setVisible(true);
-            PainelLado.setVisible(true);
-            PainelProjecao.setVisible(true);
-            desenharVisoesPaineis();
-        }
-    }//GEN-LAST:event_AlternarVisaoTopoActionPerformed
-
-    private void AlternarVisaoLadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternarVisaoLadoActionPerformed
-        if (alternaLado) {
-            AlternarVisaoLado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaBaixo.jpg")));
-            alternaLado = false;
-            PainelBaseFrente.setVisible(false);
-            PainelBaseTopo.setVisible(false);
-            PainelBaseProjecao.setVisible(false);
-            PainelTopo.setVisible(false);
-            PainelFrente.setVisible(false);
-            PainelProjecao.setVisible(false);
-            if (!control.getListaCubos().isEmpty()) {
-                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
-            }
-        } else {
-            AlternarVisaoLado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
-            alternaLado = true;
-            PainelBaseFrente.setVisible(true);
-            PainelBaseTopo.setVisible(true);
-            PainelBaseProjecao.setVisible(true);
-            PainelTopo.setVisible(true);
-            PainelFrente.setVisible(true);
-            PainelProjecao.setVisible(true);
-            desenharVisoesPaineis();
-        }
-    }//GEN-LAST:event_AlternarVisaoLadoActionPerformed
-
-    private void AlternarVisaoProjecaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternarVisaoProjecaoActionPerformed
-        if (alternaProjecao) {
-            AlternarVisaoProjecao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaBaixo.jpg")));
-            alternaProjecao = false;
-            PainelBaseFrente.setVisible(false);
-            PainelBaseTopo.setVisible(false);
-            PainelBaseLado.setVisible(false);
-            PainelTopo.setVisible(false);
-            PainelLado.setVisible(false);
-            PainelFrente.setVisible(false);
-            if (!control.getListaCubos().isEmpty()) {
-                if (SelecProjecaoPerspectiva.isSelected()) {
-                    int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
-                    int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
-                    int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
-                    Ponto vrp = new Ponto(vrpx, vrpy, vrpz);
-                    int px = Integer.parseInt(SpinnerPX.getValue().toString());
-                    int py = Integer.parseInt(SpinnerPY.getValue().toString());
-                    int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
-                    Ponto p = new Ponto(px, py, pz);
-                    int dp = Integer.parseInt(SpinnerDP.getValue().toString());
-                    PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected(), vrp, p, dp);
-                } else {
-                    if (SelecProjecaoIsometrica.isSelected()) {
-                        int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
-                        Ponto vrpIso = new Ponto(vrp, vrp, vrp);
-                        int px = Integer.parseInt(SpinnerPX.getValue().toString());
-                        int py = Integer.parseInt(SpinnerPY.getValue().toString());
-                        int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
-                        Ponto p = new Ponto(px, py, pz);
-                        PainelProjecao.desenharVisaoIsometrica(control.getListaCubos(), OcultaFaces.isSelected(), vrpIso, p);
-                    }
-                }
-            }
-        } else {
-            AlternarVisaoProjecao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
-            alternaProjecao = true;
-            PainelBaseFrente.setVisible(true);
-            PainelBaseTopo.setVisible(true);
-            PainelBaseLado.setVisible(true);
-            PainelTopo.setVisible(true);
-            PainelLado.setVisible(true);
-            PainelFrente.setVisible(true);
-            desenharVisoesPaineis();
-        }
-    }//GEN-LAST:event_AlternarVisaoProjecaoActionPerformed
-
     private void operacoesCuboFrente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_operacoesCuboFrente
+        //pode excluir
         if (plotDesenho) {
             //plotDesenho = false;
             if (control.criarCubo(evt.getX(), evt.getY(), 1, selecionaCorBorda.getCorSelecionada(),
@@ -1624,6 +1500,7 @@ public class Painel extends javax.swing.JFrame {
     }//GEN-LAST:event_operacoesCuboFrente
 
     private void moverCuboFrente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moverCuboFrente
+        //pode excluir        
         //System.out.println(cuboSelecIndice);
         if (cuboIsSelected && PainelFrente.clickDentroCuboFrente(control.getCubo(cuboSelecIndice), evt.getX(), evt.getY())) {
             //nanoSegundosPressao = System.nanoTime();
@@ -1696,6 +1573,7 @@ public class Painel extends javax.swing.JFrame {
     }//GEN-LAST:event_moverCuboFrente
 
     private void moverCuboTopo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moverCuboTopo
+        //pode excluir
         if (cuboIsSelected && PainelTopo.clickDentroCuboTopo(control.getCubo(cuboSelecIndice), evt.getX(), evt.getY())) {
             ListaCubos c = control.getCubo(cuboSelecIndice);
             PainelTopo.pintarSelecaoTopo(c, Color.WHITE);
@@ -1742,6 +1620,7 @@ public class Painel extends javax.swing.JFrame {
     }//GEN-LAST:event_moverCuboTopo
 
     private void moverCuboLado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moverCuboLado
+        //pode excluir
         if (cuboIsSelected && PainelLado.clickDentroCuboLado(control.getCubo(cuboSelecIndice), evt.getX(), evt.getY())) {
             ListaCubos c = control.getCubo(cuboSelecIndice);
             PainelLado.pintarSelecaoLado(c, Color.WHITE);
@@ -1788,6 +1667,7 @@ public class Painel extends javax.swing.JFrame {
     }//GEN-LAST:event_moverCuboLado
 
     private void operacoesCuboTopo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_operacoesCuboTopo
+        //pode excluir
         if (plotDesenho) {
             //plotDesenho = false;
             if (control.criarCubo(evt.getX(), evt.getY(), 2, selecionaCorBorda.getCorSelecionada(),
@@ -1899,6 +1779,7 @@ public class Painel extends javax.swing.JFrame {
     }//GEN-LAST:event_operacoesCuboTopo
 
     private void operacoesCuboLado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_operacoesCuboLado
+        //pode excluir
         if (plotDesenho) {
             //plotDesenho = false;
             if (control.criarCubo(evt.getX(), evt.getY(), 3, selecionaCorBorda.getCorSelecionada(),
@@ -2165,10 +2046,10 @@ public class Painel extends javax.swing.JFrame {
             try {
                 carregaStatus.setVisible(true);
                 carregaStatus.aumentarProgresso(5);
-                Controlador c;
+                Controller c;
                 try (FileInputStream f = new FileInputStream(arquivo);
                         ObjectInputStream objLeitura = new ObjectInputStream(f)) {
-                    c = (Controlador) objLeitura.readObject();
+                    c = (Controller) objLeitura.readObject();
                     carregaStatus.aumentarProgresso(15);
                     objLeitura.close();
                     carregaStatus.aumentarProgresso(5);
@@ -2364,7 +2245,7 @@ public class Painel extends javax.swing.JFrame {
                     }
                 }
                 double sen, cos;
-                if ((valorAtual - valorAntigoRotacao) == 1) {
+                if ((valorAtual - valorAntigoRotacao) == 1) { //rotação positiva
                     //sen = angulos.getSenos()[ang];
                     //cos = angulos.getCossenos()[ang];
                     //sen = angulos.getSenos()[360 - ang];
@@ -2384,7 +2265,7 @@ public class Painel extends javax.swing.JFrame {
                         PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), corSelecao);
                     }
                 } else {
-                    if ((valorAtual - valorAntigoRotacao) == -1) {
+                    if ((valorAtual - valorAntigoRotacao) == -1) { //rotação negativa
                         //int aux = Math.abs(ang);
                         //sen = angulos.getSenos()[360 - aux];
                         //cos = angulos.getCossenos()[360 - aux];
@@ -2598,6 +2479,7 @@ public class Painel extends javax.swing.JFrame {
         //long tempoPressionamento = System.nanoTime() - nanoSegundosPressao;
         //System.out.println(tempoPressionamento);
         //if (tempoPressionamento >= 2000000000) {
+        //pode excluir
         if (permiteAgrupar) {
             PainelFrente.pintarSelecaoFrente(control.getCubo(last), Color.WHITE);
             PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
@@ -2630,6 +2512,7 @@ public class Painel extends javax.swing.JFrame {
     }//GEN-LAST:event_mouseReleasedFrente
 
     private void mouseReleasedTopo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mouseReleasedTopo
+        //pode excluir
         if (permiteAgrupar) {
             PainelTopo.pintarSelecaoTopo(control.getCubo(last), Color.WHITE);
             PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
@@ -2662,6 +2545,7 @@ public class Painel extends javax.swing.JFrame {
     }//GEN-LAST:event_mouseReleasedTopo
 
     private void mouseReleasedLado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mouseReleasedLado
+        //pode excluir
         if (permiteAgrupar) {
             PainelLado.pintarSelecaoLado(control.getCubo(last), Color.WHITE);
             PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
@@ -2746,6 +2630,7 @@ public class Painel extends javax.swing.JFrame {
 
     private void keyTypedFrente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyTypedFrente
         //Delete
+        //pode excluir
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             if (cuboIsSelected) {
                 excluirCubo();
@@ -2755,6 +2640,7 @@ public class Painel extends javax.swing.JFrame {
 
     private void keyPressedFrente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyPressedFrente
         //Delete
+        //pode excluir
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             if (cuboIsSelected) {
                 excluirCubo();
@@ -2763,6 +2649,7 @@ public class Painel extends javax.swing.JFrame {
     }//GEN-LAST:event_keyPressedFrente
 
     private void resizedFrente(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_resizedFrente
+        //pode excluir
         if (!control.getListaCubos().isEmpty()) {
             PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
             pintarCorSelecao();
@@ -2770,6 +2657,7 @@ public class Painel extends javax.swing.JFrame {
     }//GEN-LAST:event_resizedFrente
 
     private void resizedTopo(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_resizedTopo
+        //pode excluir
         if (!control.getListaCubos().isEmpty()) {
             PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
             pintarCorSelecao();
@@ -2777,6 +2665,7 @@ public class Painel extends javax.swing.JFrame {
     }//GEN-LAST:event_resizedTopo
 
     private void resizedProjecao(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_resizedProjecao
+        //pode excluir
         if (!control.getListaCubos().isEmpty()) {
             if (SelecProjecaoPerspectiva.isSelected()) {
                 int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
@@ -2805,6 +2694,7 @@ public class Painel extends javax.swing.JFrame {
     }//GEN-LAST:event_resizedProjecao
 
     private void resizedLado(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_resizedLado
+        //pode excluir
         if (!control.getListaCubos().isEmpty()) {
             PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
             pintarCorSelecao();
@@ -3032,6 +2922,795 @@ public class Painel extends javax.swing.JFrame {
             PainelProjecao.desenharVisaoIsometrica(control.getListaCubos(), OcultaFaces.isSelected(), vrpIso, p);
         }
     }//GEN-LAST:event_SpinnerSpinnerVRPIsometricaChange
+
+    private void AlternarVisaoFrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternarVisaoFrenteActionPerformed
+        if (alternaFrente) {
+            AlternarVisaoFrente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaBaixo.jpg")));
+            alternaFrente = false;
+            PainelBaseProjecao.setVisible(false);
+            PainelBaseTopo.setVisible(false);
+            PainelBaseLado.setVisible(false);
+            PainelTopo.setVisible(false);
+            PainelLado.setVisible(false);
+            PainelProjecao.setVisible(false);
+            if (!control.getListaCubos().isEmpty()) {
+                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+            }
+        } else {
+            AlternarVisaoFrente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
+            alternaFrente = true;
+            PainelBaseProjecao.setVisible(true);
+            PainelBaseTopo.setVisible(true);
+            PainelBaseLado.setVisible(true);
+            PainelTopo.setVisible(true);
+            PainelLado.setVisible(true);
+            PainelProjecao.setVisible(true);
+            desenharVisoesPaineis();
+        }
+    }//GEN-LAST:event_AlternarVisaoFrenteActionPerformed
+
+    private void PainelFrentemoverCuboFrente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelFrentemoverCuboFrente
+        //System.out.println(cuboSelecIndice);
+        if (cuboIsSelected && PainelFrente.clickDentroCuboFrente(control.getCubo(cuboSelecIndice), evt.getX(), evt.getY())) {
+            //nanoSegundosPressao = System.nanoTime();
+            ListaCubos c = control.getCubo(cuboSelecIndice);
+            PainelFrente.pintarSelecaoFrente(c, Color.WHITE);
+            PainelFrente.apagarCubo(c);
+            PainelTopo.apagarCubo(c);
+            PainelLado.apagarCubo(c);
+            if (SelecProjecaoPerspectiva.isSelected()) {
+                PainelProjecao.apagarCuboProjecao(c, 1);
+            } else {
+                if (SelecProjecaoIsometrica.isSelected()) {
+                    PainelProjecao.apagarCuboProjecao(c, 2);
+                }
+            }
+
+            control.getCubo(cuboSelecIndice).transladarCubosXY(evt.getX() - localClicadoX, evt.getY() - localClicadoY,
+                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1);
+
+            //PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+            PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), corSelecao);
+            desenharVisoesPaineis();
+
+            //System.out.println((evt.getX()-localClicadoX) + " " + (evt.getY()-localClicadoY));
+            localClicadoX = evt.getX();
+            localClicadoY = evt.getY();
+            repintarBotoesAlternar();
+            alteracoesRealizadas = true;
+
+            //operaçoes agrupamento
+            cuboParaAgrupar = PainelFrente.getCuboMaisProximoFrente(control.getListaCubos(), cuboSelecIndice);
+            if (cuboParaAgrupar != cuboSelecIndice && cuboParaAgrupar != -1) {
+                last = cuboParaAgrupar;
+                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboParaAgrupar), Color.LIGHT_GRAY);
+                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), corSelecao);
+                permiteAgrupar = true;
+            } else {
+                if (last != -1 && last < control.getListaCubos().size()) {
+                    PainelFrente.pintarSelecaoFrente(control.getCubo(last), Color.WHITE);
+                    PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), corSelecao);
+                    permiteAgrupar = false;
+                }
+            }
+
+            /*PainelFrente.pintarSelecaoFrente(control.getCubo(cuboParaAgrupar), Color.WHITE);
+            PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
+            PainelFrente.apagarTodosCubosFrente(control.getListaCubos(), OcultaFaces.isSelected());
+            PainelTopo.apagarTodosCubosTopo(control.getListaCubos(), OcultaFaces.isSelected());
+            PainelLado.apagarTodosCubosLado(control.getListaCubos(), OcultaFaces.isSelected());
+            PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos(), OcultaFaces.isSelected());
+            control.agruparDoisCubos(cuboSelecIndice, cuboParaAgrupar);
+            PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+            PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+            PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+            PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected());
+            BotaoDesagrupar.setEnabled(false);
+            ExcluirCubo.setEnabled(false);
+            SpinnerEscala.setEnabled(false);
+            SpinnerRotacao.setEnabled(false);
+            BotaoFazerRotacao.setEnabled(false);
+            BotaoFazerEscala.setEnabled(false);
+            cuboIsSelected = false;
+            selecFrente = false;
+            selecLado = false;
+            selecTopo = false;
+            repintarBotoesAlternar();*/
+        }
+    }//GEN-LAST:event_PainelFrentemoverCuboFrente
+
+    private void PainelFrenteoperacoesCuboFrente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelFrenteoperacoesCuboFrente
+        if (plotDesenho) {
+            //plotDesenho = false;
+            if (control.criarCubo(evt.getX(), evt.getY(), 1, selecionaCorBorda.getCorSelecionada(),
+                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+            //double sen, cos;
+            //int ang = 30;
+            //sen = angulos.getSenos()[360 - ang];
+            //cos = angulos.getCossenos()[360 - ang];
+            //control.getCubo(control.getListaCubos().size()-1).rotacaoZ(ang, sen, cos);
+            //control.getCubo(control.getListaCubos().size()-1).rotacaoY(ang, sen, cos);
+            //control.getCubo(control.getListaCubos().size()-1).rotacaoX(ang, sen, cos);
+            if (cuboIsSelected) {
+                cuboIsSelected = false;
+                if (selecLado) {
+                    PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
+                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                    selecLado = false;
+                }
+                if (selecFrente) {
+                    PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
+                    PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                    selecFrente = false;
+                }
+                if (selecTopo) {
+                    PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
+                    PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                    selecTopo = false;
+                }
+                habilitarBotoes(false);
+            }
+            desenharVisoesPaineis();
+            //selecionaCubo = true;
+            alteracoesRealizadas = true;
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Não foi possível criar o cubo!", "Erro!", ERROR_MESSAGE);
+        }
+        } else {
+            if (selecionaCubo) {
+                //System.out.println("X: " + evt.getX() + " Y: " + evt.getY());
+                if (!control.getListaCubos().isEmpty()) {
+                    if (PainelFrente.existemCubosPossiveisFrente(control.getListaCubos(), evt.getX(), evt.getY())) {
+                        if (cuboIsSelected) {
+                            int aux = PainelFrente.selecionarCuboFrente(control.getListaCubos(), evt.getX(), evt.getY());
+                            if (selecLado) {
+                                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecLado = false;
+                            }
+                            if (selecTopo) {
+                                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecTopo = false;
+                            }
+                            if (cuboSelecIndice != aux) {
+                                if (selecFrente) {
+                                    PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                    PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                                    //selecFrente = false;
+                                }
+                            }
+                            cuboSelecIndice = aux;
+                        } else {
+                            cuboSelecIndice = PainelFrente.selecionarCuboFrente(control.getListaCubos(), evt.getX(), evt.getY());
+                            cuboIsSelected = true;
+                            selecLado = selecTopo = false;
+                        }
+                        PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), corSelecao);
+                        localClicadoX = evt.getX();
+                        localClicadoY = evt.getY();
+                        selecFrente = true;
+                        SpinnerRotacao.setValue(control.getCubo(cuboSelecIndice).getAnguloRotacaoZ());
+                        if (!control.getCubo(cuboSelecIndice).isAgrupado()) {
+                            SpinnerKA.setValue(control.getCubo(cuboSelecIndice).getCubo().getKa());
+                            SpinnerKD.setValue(control.getCubo(cuboSelecIndice).getCubo().getKd());
+                            SpinnerKS.setValue(control.getCubo(cuboSelecIndice).getCubo().getKs());
+                            SpinnerN.setValue(control.getCubo(cuboSelecIndice).getCubo().getN());
+                            SpinnerEscala.setValue(control.getCubo(cuboSelecIndice).getFatorEscalaZ());
+                        }
+                        habilitarBotoes(true);
+                        setarValoresBotoes(control.getCubo(cuboSelecIndice).getAnguloRotacaoZ());
+                    } else {
+                        if (cuboIsSelected) {
+                            cuboIsSelected = false;
+                            if (selecLado) {
+                                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecLado = false;
+                            }
+                            if (selecFrente) {
+                                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecFrente = false;
+                            }
+                            if (selecTopo) {
+                                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecTopo = false;
+                            }
+                            habilitarBotoes(false);
+                            if (last != -1 && last < control.getListaCubos().size()) {
+                                PainelFrente.pintarSelecaoFrente(control.getCubo(last), Color.WHITE);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        repintarBotoesAlternar();
+        //nanoSegundosPressao = System.nanoTime();
+    }//GEN-LAST:event_PainelFrenteoperacoesCuboFrente
+
+    private void PainelFrentemouseReleasedFrente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelFrentemouseReleasedFrente
+        //long tempoPressionamento = System.nanoTime() - nanoSegundosPressao;
+        //System.out.println(tempoPressionamento);
+        //if (tempoPressionamento >= 2000000000) {
+            if (permiteAgrupar) {
+                PainelFrente.pintarSelecaoFrente(control.getCubo(last), Color.WHITE);
+                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
+                PainelFrente.apagarTodosCubosFrente(control.getListaCubos());
+                PainelTopo.apagarTodosCubosTopo(control.getListaCubos());
+                PainelLado.apagarTodosCubosLado(control.getListaCubos());
+                if (SelecProjecaoPerspectiva.isSelected()) {
+                    PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+                } else {
+                    if (SelecProjecaoIsometrica.isSelected()) {
+                        PainelProjecao.apagarTodosCubosIsometrica(control.getListaCubos());
+                    }
+                }
+                //System.out.println(cuboSelecIndice);
+                control.agruparDoisCubos(cuboSelecIndice, last);
+                desenharVisoesPaineis();
+                BotaoDesagrupar.setEnabled(false);
+                ExcluirCubo.setEnabled(false);
+                SpinnerEscala.setEnabled(false);
+                SpinnerRotacao.setEnabled(false);
+                /*BotaoFazerRotacao.setEnabled(false);
+                BotaoFazerEscala.setEnabled(false);*/
+                cuboIsSelected = false;
+                selecFrente = false;
+                selecLado = false;
+                selecTopo = false;
+                permiteAgrupar = false;
+                repintarBotoesAlternar();
+            }
+    }//GEN-LAST:event_PainelFrentemouseReleasedFrente
+
+    private void PainelFrenteresizedFrente(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PainelFrenteresizedFrente
+        if (!control.getListaCubos().isEmpty()) {
+            PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+            pintarCorSelecao();
+        }
+    }//GEN-LAST:event_PainelFrenteresizedFrente
+
+    private void PainelFrentekeyPressedFrente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PainelFrentekeyPressedFrente
+        //Delete
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            if (cuboIsSelected) {
+                excluirCubo();
+            }
+        }
+    }//GEN-LAST:event_PainelFrentekeyPressedFrente
+
+    private void PainelFrentekeyTypedFrente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PainelFrentekeyTypedFrente
+        //Delete
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            if (cuboIsSelected) {
+                excluirCubo();
+            }
+        }
+    }//GEN-LAST:event_PainelFrentekeyTypedFrente
+
+    private void AlternarVisaoTopoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternarVisaoTopoActionPerformed
+        if (alternaTopo) {
+            AlternarVisaoTopo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaBaixo.jpg")));
+            alternaTopo = false;
+            PainelBaseFrente.setVisible(false);
+            PainelBaseProjecao.setVisible(false);
+            PainelBaseLado.setVisible(false);
+            PainelFrente.setVisible(false);
+            PainelLado.setVisible(false);
+            PainelProjecao.setVisible(false);
+            if (!control.getListaCubos().isEmpty()) {
+                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+            }
+        } else {
+            AlternarVisaoTopo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
+            alternaTopo = true;
+            PainelBaseFrente.setVisible(true);
+            PainelBaseProjecao.setVisible(true);
+            PainelBaseLado.setVisible(true);
+            PainelFrente.setVisible(true);
+            PainelLado.setVisible(true);
+            PainelProjecao.setVisible(true);
+            desenharVisoesPaineis();
+        }
+    }//GEN-LAST:event_AlternarVisaoTopoActionPerformed
+
+    private void PainelTopomoverCuboTopo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelTopomoverCuboTopo
+        if (cuboIsSelected && PainelTopo.clickDentroCuboTopo(control.getCubo(cuboSelecIndice), evt.getX(), evt.getY())) {
+            ListaCubos c = control.getCubo(cuboSelecIndice);
+            PainelTopo.pintarSelecaoTopo(c, Color.WHITE);
+            PainelFrente.apagarCubo(c);
+            PainelTopo.apagarCubo(c);
+            PainelLado.apagarCubo(c);
+            if (SelecProjecaoPerspectiva.isSelected()) {
+                PainelProjecao.apagarCuboProjecao(c, 1);
+            } else {
+                if (SelecProjecaoIsometrica.isSelected()) {
+                    PainelProjecao.apagarCuboProjecao(c, 2);
+                }
+            }
+            control.getCubo(cuboSelecIndice).transladarCubosXZ(evt.getX() - localClicadoX, evt.getY() - localClicadoZ,
+                PainelTopo.getSize().height - 1, PainelTopo.getSize().width - 1);
+
+            //PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+            PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), corSelecao);
+            desenharVisoesPaineis();
+
+            //System.out.println((evt.getX()-localClicadoX) + " " + (evt.getY()-localClicadoY));
+            localClicadoX = evt.getX();
+            localClicadoZ = evt.getY();
+            repintarBotoesAlternar();
+            alteracoesRealizadas = true;
+
+            //operaçoes agrupamento
+            cuboParaAgrupar = PainelTopo.getCuboMaisProximoTopo(control.getListaCubos(), cuboSelecIndice);
+            if (cuboParaAgrupar != cuboSelecIndice && cuboParaAgrupar != -1) {
+                last = cuboParaAgrupar;
+                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboParaAgrupar), Color.LIGHT_GRAY);
+                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), corSelecao);
+                permiteAgrupar = true;
+            } else {
+                if (last != -1 && last < control.getListaCubos().size()) {
+                    PainelTopo.pintarSelecaoTopo(control.getCubo(last), Color.WHITE);
+                    PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), corSelecao);
+                    permiteAgrupar = false;
+                }
+            }
+        }
+    }//GEN-LAST:event_PainelTopomoverCuboTopo
+
+    private void PainelTopooperacoesCuboTopo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelTopooperacoesCuboTopo
+        if (plotDesenho) {
+            //plotDesenho = false;
+            if (control.criarCubo(evt.getX(), evt.getY(), 2, selecionaCorBorda.getCorSelecionada(),
+                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+            double sen, cos;
+            int ang = 30;
+            sen = angulos.getSenos()[360 - ang];
+            cos = angulos.getCossenos()[360 - ang];
+            //control.getCubo(control.getListaCubos().size()-1).rotacaoZ(ang, sen, cos);
+            //control.getCubo(control.getListaCubos().size()-1).rotacaoY(ang, sen, cos);
+            //control.getCubo(control.getListaCubos().size()-1).rotacaoX(ang, sen, cos);
+            if (cuboIsSelected) {
+                cuboIsSelected = false;
+                if (selecLado) {
+                    PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
+                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                    selecLado = false;
+                }
+                if (selecFrente) {
+                    PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
+                    PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                    selecFrente = false;
+                }
+                if (selecTopo) {
+                    PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
+                    PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                    selecTopo = false;
+                }
+                habilitarBotoes(false);
+            }
+            desenharVisoesPaineis();
+            //selecionaCubo = true;
+            alteracoesRealizadas = true;
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Não foi possível criar o cubo!", "Erro!", ERROR_MESSAGE);
+        }
+        } else {
+            if (selecionaCubo) {
+                //System.out.println("X: " + evt.getX() + " Y: " + evt.getY());
+                if (!control.getListaCubos().isEmpty()) {
+                    if (PainelTopo.existemCubosPossiveisTopo(control.getListaCubos(), evt.getX(), evt.getY())) {
+                        if (cuboIsSelected) {
+                            int aux = PainelTopo.selecionarCuboTopo(control.getListaCubos(), evt.getX(), evt.getY());
+                            if (selecLado) {
+                                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecLado = false;
+                            }
+                            if (selecFrente) {
+                                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecFrente = false;
+                            }
+                            if (cuboSelecIndice != aux) {
+                                if (selecTopo) {
+                                    PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                    PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                                    //selecTopo = false;
+                                }
+                            }
+                            cuboSelecIndice = aux;
+                        } else {
+                            cuboSelecIndice = PainelTopo.selecionarCuboTopo(control.getListaCubos(), evt.getX(), evt.getY());
+                            cuboIsSelected = true;
+                            selecLado = selecFrente = false;
+                        }
+                        PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), corSelecao);
+                        localClicadoX = evt.getX();
+                        localClicadoZ = evt.getY();
+                        selecTopo = true;
+                        SpinnerRotacao.setValue(control.getCubo(cuboSelecIndice).getAnguloRotacaoZ());
+                        if (!control.getCubo(cuboSelecIndice).isAgrupado()) {
+                            SpinnerKA.setValue(control.getCubo(cuboSelecIndice).getCubo().getKa());
+                            SpinnerKD.setValue(control.getCubo(cuboSelecIndice).getCubo().getKd());
+                            SpinnerKS.setValue(control.getCubo(cuboSelecIndice).getCubo().getKs());
+                            SpinnerN.setValue(control.getCubo(cuboSelecIndice).getCubo().getN());
+                            SpinnerEscala.setValue(control.getCubo(cuboSelecIndice).getFatorEscalaZ());
+                        }
+                        habilitarBotoes(true);
+                        setarValoresBotoes(control.getCubo(cuboSelecIndice).getAnguloRotacaoY());
+                    } else {
+                        if (cuboIsSelected) {
+                            cuboIsSelected = false;
+                            if (selecLado) {
+                                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecLado = false;
+                            }
+                            if (selecFrente) {
+                                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecFrente = false;
+                            }
+                            if (selecTopo) {
+                                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecTopo = false;
+                            }
+                            habilitarBotoes(false);
+                            if (last != -1 && last < control.getListaCubos().size()) {
+                                PainelTopo.pintarSelecaoTopo(control.getCubo(last), Color.WHITE);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        repintarBotoesAlternar();
+    }//GEN-LAST:event_PainelTopooperacoesCuboTopo
+
+    private void PainelTopomouseReleasedTopo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelTopomouseReleasedTopo
+        if (permiteAgrupar) {
+            PainelTopo.pintarSelecaoTopo(control.getCubo(last), Color.WHITE);
+            PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
+            PainelFrente.apagarTodosCubosFrente(control.getListaCubos());
+            PainelTopo.apagarTodosCubosTopo(control.getListaCubos());
+            PainelLado.apagarTodosCubosLado(control.getListaCubos());
+            if (SelecProjecaoPerspectiva.isSelected()) {
+                PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+            } else {
+                if (SelecProjecaoIsometrica.isSelected()) {
+                    PainelProjecao.apagarTodosCubosIsometrica(control.getListaCubos());
+                }
+            }
+            //System.out.println(cuboSelecIndice);
+            control.agruparDoisCubos(cuboSelecIndice, last);
+            desenharVisoesPaineis();
+            BotaoDesagrupar.setEnabled(false);
+            ExcluirCubo.setEnabled(false);
+            SpinnerEscala.setEnabled(false);
+            SpinnerRotacao.setEnabled(false);
+            /*BotaoFazerRotacao.setEnabled(false);
+            BotaoFazerEscala.setEnabled(false);*/
+            cuboIsSelected = false;
+            selecFrente = false;
+            selecLado = false;
+            selecTopo = false;
+            permiteAgrupar = false;
+            repintarBotoesAlternar();
+        }
+    }//GEN-LAST:event_PainelTopomouseReleasedTopo
+
+    private void PainelToporesizedTopo(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PainelToporesizedTopo
+        if (!control.getListaCubos().isEmpty()) {
+            PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+            pintarCorSelecao();
+        }
+    }//GEN-LAST:event_PainelToporesizedTopo
+
+    private void AlternarVisaoLadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternarVisaoLadoActionPerformed
+        if (alternaLado) {
+            AlternarVisaoLado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaBaixo.jpg")));
+            alternaLado = false;
+            PainelBaseFrente.setVisible(false);
+            PainelBaseTopo.setVisible(false);
+            PainelBaseProjecao.setVisible(false);
+            PainelTopo.setVisible(false);
+            PainelFrente.setVisible(false);
+            PainelProjecao.setVisible(false);
+            if (!control.getListaCubos().isEmpty()) {
+                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+            }
+        } else {
+            AlternarVisaoLado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
+            alternaLado = true;
+            PainelBaseFrente.setVisible(true);
+            PainelBaseTopo.setVisible(true);
+            PainelBaseProjecao.setVisible(true);
+            PainelTopo.setVisible(true);
+            PainelFrente.setVisible(true);
+            PainelProjecao.setVisible(true);
+            desenharVisoesPaineis();
+        }
+    }//GEN-LAST:event_AlternarVisaoLadoActionPerformed
+
+    private void PainelLadomoverCuboLado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelLadomoverCuboLado
+        if (cuboIsSelected && PainelLado.clickDentroCuboLado(control.getCubo(cuboSelecIndice), evt.getX(), evt.getY())) {
+            ListaCubos c = control.getCubo(cuboSelecIndice);
+            PainelLado.pintarSelecaoLado(c, Color.WHITE);
+            PainelFrente.apagarCubo(c);
+            PainelTopo.apagarCubo(c);
+            PainelLado.apagarCubo(c);
+            if (SelecProjecaoPerspectiva.isSelected()) {
+                PainelProjecao.apagarCuboProjecao(c, 1);
+            } else {
+                if (SelecProjecaoIsometrica.isSelected()) {
+                    PainelProjecao.apagarCuboProjecao(c, 2);
+                }
+            }
+            control.getCubo(cuboSelecIndice).transladarCubosZY(evt.getX() - localClicadoZ, evt.getY() - localClicadoY,
+                PainelLado.getSize().height - 1, PainelLado.getSize().width - 1);
+
+            //PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+            PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), corSelecao);
+            desenharVisoesPaineis();
+
+            //System.out.println((evt.getX()-localClicadoX) + " " + (evt.getY()-localClicadoY));
+            localClicadoZ = evt.getX();
+            localClicadoY = evt.getY();
+            repintarBotoesAlternar();
+            alteracoesRealizadas = true;
+
+            //operaçoes agrupamento
+            cuboParaAgrupar = PainelLado.getCuboMaisProximoLado(control.getListaCubos(), cuboSelecIndice);
+            if (cuboParaAgrupar != cuboSelecIndice && cuboParaAgrupar != -1) {
+                last = cuboParaAgrupar;
+                PainelLado.pintarSelecaoLado(control.getCubo(cuboParaAgrupar), Color.LIGHT_GRAY);
+                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), corSelecao);
+                permiteAgrupar = true;
+            } else {
+                if (last != -1 && last < control.getListaCubos().size()) {
+                    PainelLado.pintarSelecaoLado(control.getCubo(last), Color.WHITE);
+                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), corSelecao);
+                    permiteAgrupar = false;
+                }
+            }
+        }
+    }//GEN-LAST:event_PainelLadomoverCuboLado
+
+    private void PainelLadooperacoesCuboLado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelLadooperacoesCuboLado
+        if (plotDesenho) {
+            //plotDesenho = false;
+            if (control.criarCubo(evt.getX(), evt.getY(), 3, selecionaCorBorda.getCorSelecionada(),
+                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+            double sen, cos;
+            int ang = 30;
+            sen = angulos.getSenos()[360 - ang];
+            cos = angulos.getCossenos()[360 - ang];
+            //control.getCubo(control.getListaCubos().size()-1).rotacaoZ(ang, sen, cos);
+            //control.getCubo(control.getListaCubos().size()-1).rotacaoY(ang, sen, cos);
+            //control.getCubo(control.getListaCubos().size()-1).rotacaoX(ang, sen, cos);
+            if (cuboIsSelected) {
+                cuboIsSelected = false;
+                if (selecLado) {
+                    PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
+                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                    selecLado = false;
+                }
+                if (selecFrente) {
+                    PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
+                    PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                    selecFrente = false;
+                }
+                if (selecTopo) {
+                    PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
+                    PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                    selecTopo = false;
+                }
+                habilitarBotoes(false);
+            }
+            desenharVisoesPaineis();
+            //selecionaCubo = true;
+            alteracoesRealizadas = true;
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Não foi possível criar o cubo!", "Erro!", ERROR_MESSAGE);
+        }
+        } else {
+            if (selecionaCubo) {
+                //System.out.println("X: " + evt.getX() + " Y: " + evt.getY());
+                if (!control.getListaCubos().isEmpty()) {
+                    if (PainelLado.existemCubosPossiveisLado(control.getListaCubos(), evt.getX(), evt.getY())) {
+                        if (cuboIsSelected) {
+                            int aux = PainelLado.selecionarCuboLado(control.getListaCubos(), evt.getX(), evt.getY());
+                            if (selecFrente) {
+                                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecFrente = false;
+                            }
+                            if (selecTopo) {
+                                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecTopo = false;
+                            }
+                            if (cuboSelecIndice != aux) {
+                                if (selecLado) {
+                                    PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                                    //selecLado = false;
+                                }
+                            }
+                            cuboSelecIndice = aux;
+                        } else {
+                            cuboSelecIndice = PainelLado.selecionarCuboLado(control.getListaCubos(), evt.getX(), evt.getY());
+                            cuboIsSelected = true;
+                            selecFrente = selecTopo = false;
+                        }
+                        PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), corSelecao);
+                        localClicadoZ = evt.getX();
+                        localClicadoY = evt.getY();
+                        selecLado = true;
+                        SpinnerRotacao.setValue(control.getCubo(cuboSelecIndice).getAnguloRotacaoZ());
+                        if (!control.getCubo(cuboSelecIndice).isAgrupado()) {
+                            SpinnerKA.setValue(control.getCubo(cuboSelecIndice).getCubo().getKa());
+                            SpinnerKD.setValue(control.getCubo(cuboSelecIndice).getCubo().getKd());
+                            SpinnerKS.setValue(control.getCubo(cuboSelecIndice).getCubo().getKs());
+                            SpinnerN.setValue(control.getCubo(cuboSelecIndice).getCubo().getN());
+                            SpinnerEscala.setValue(control.getCubo(cuboSelecIndice).getFatorEscalaZ());
+                        }
+                        habilitarBotoes(true);
+                        setarValoresBotoes(control.getCubo(cuboSelecIndice).getAnguloRotacaoX());
+                    } else {
+                        if (cuboIsSelected) {
+                            cuboIsSelected = false;
+                            if (selecLado) {
+                                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecLado = false;
+                            }
+                            if (selecFrente) {
+                                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecFrente = false;
+                            }
+                            if (selecTopo) {
+                                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
+                                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                                selecTopo = false;
+                            }
+                            habilitarBotoes(false);
+                            if (last != -1 && last < control.getListaCubos().size()) {
+                                PainelLado.pintarSelecaoLado(control.getCubo(last), Color.WHITE);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        repintarBotoesAlternar();
+    }//GEN-LAST:event_PainelLadooperacoesCuboLado
+
+    private void PainelLadomouseReleasedLado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelLadomouseReleasedLado
+        if (permiteAgrupar) {
+            PainelLado.pintarSelecaoLado(control.getCubo(last), Color.WHITE);
+            PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
+            PainelFrente.apagarTodosCubosFrente(control.getListaCubos());
+            PainelTopo.apagarTodosCubosTopo(control.getListaCubos());
+            PainelLado.apagarTodosCubosLado(control.getListaCubos());
+            if (SelecProjecaoPerspectiva.isSelected()) {
+                PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+            } else {
+                if (SelecProjecaoIsometrica.isSelected()) {
+                    PainelProjecao.apagarTodosCubosIsometrica(control.getListaCubos());
+                }
+            }
+            //System.out.println(cuboSelecIndice);
+            control.agruparDoisCubos(cuboSelecIndice, last);
+            desenharVisoesPaineis();
+            BotaoDesagrupar.setEnabled(false);
+            ExcluirCubo.setEnabled(false);
+            SpinnerEscala.setEnabled(false);
+            SpinnerRotacao.setEnabled(false);
+            /*BotaoFazerRotacao.setEnabled(false);
+            BotaoFazerEscala.setEnabled(false);*/
+            cuboIsSelected = false;
+            selecFrente = false;
+            selecLado = false;
+            selecTopo = false;
+            permiteAgrupar = false;
+            repintarBotoesAlternar();
+        }
+    }//GEN-LAST:event_PainelLadomouseReleasedLado
+
+    private void PainelLadoresizedLado(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PainelLadoresizedLado
+        if (!control.getListaCubos().isEmpty()) {
+            PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+            pintarCorSelecao();
+        }
+    }//GEN-LAST:event_PainelLadoresizedLado
+
+    private void AlternarVisaoProjecaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternarVisaoProjecaoActionPerformed
+        if (alternaProjecao) {
+            AlternarVisaoProjecao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaBaixo.jpg")));
+            alternaProjecao = false;
+            PainelBaseFrente.setVisible(false);
+            PainelBaseTopo.setVisible(false);
+            PainelBaseLado.setVisible(false);
+            PainelTopo.setVisible(false);
+            PainelLado.setVisible(false);
+            PainelFrente.setVisible(false);
+            if (!control.getListaCubos().isEmpty()) {
+                if (SelecProjecaoPerspectiva.isSelected()) {
+                    int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
+                    int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
+                    int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
+                    Ponto vrp = new Ponto(vrpx, vrpy, vrpz);
+                    int px = Integer.parseInt(SpinnerPX.getValue().toString());
+                    int py = Integer.parseInt(SpinnerPY.getValue().toString());
+                    int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
+                    Ponto p = new Ponto(px, py, pz);
+                    int dp = Integer.parseInt(SpinnerDP.getValue().toString());
+                    PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected(), vrp, p, dp);
+                } else {
+                    if (SelecProjecaoIsometrica.isSelected()) {
+                        int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
+                        Ponto vrpIso = new Ponto(vrp, vrp, vrp);
+                        int px = Integer.parseInt(SpinnerPX.getValue().toString());
+                        int py = Integer.parseInt(SpinnerPY.getValue().toString());
+                        int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
+                        Ponto p = new Ponto(px, py, pz);
+                        PainelProjecao.desenharVisaoIsometrica(control.getListaCubos(), OcultaFaces.isSelected(), vrpIso, p);
+                    }
+                }
+            }
+        } else {
+            AlternarVisaoProjecao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
+            alternaProjecao = true;
+            PainelBaseFrente.setVisible(true);
+            PainelBaseTopo.setVisible(true);
+            PainelBaseLado.setVisible(true);
+            PainelTopo.setVisible(true);
+            PainelLado.setVisible(true);
+            PainelFrente.setVisible(true);
+            desenharVisoesPaineis();
+        }
+    }//GEN-LAST:event_AlternarVisaoProjecaoActionPerformed
+
+    private void PainelProjecaoresizedProjecao(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PainelProjecaoresizedProjecao
+        if (!control.getListaCubos().isEmpty()) {
+            if (SelecProjecaoPerspectiva.isSelected()) {
+                int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
+                int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
+                int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
+                Ponto vrp = new Ponto(vrpx, vrpy, vrpz);
+                int px = Integer.parseInt(SpinnerPX.getValue().toString());
+                int py = Integer.parseInt(SpinnerPY.getValue().toString());
+                int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
+                Ponto p = new Ponto(px, py, pz);
+                int dp = Integer.parseInt(SpinnerDP.getValue().toString());
+                PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected(), vrp, p, dp);
+            } else {
+                if (SelecProjecaoIsometrica.isSelected()) {
+                    int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
+                    Ponto vrpIso = new Ponto(vrp, vrp, vrp);
+                    int px = Integer.parseInt(SpinnerPX.getValue().toString());
+                    int py = Integer.parseInt(SpinnerPY.getValue().toString());
+                    int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
+                    Ponto p = new Ponto(px, py, pz);
+                    PainelProjecao.desenharVisaoIsometrica(control.getListaCubos(), OcultaFaces.isSelected(), vrpIso, p);
+                }
+            }
+            pintarCorSelecao();
+        }
+    }//GEN-LAST:event_PainelProjecaoresizedProjecao
 
     private void repintarBotoesAlternar() {
         AlternarVisaoFrente.repaint();

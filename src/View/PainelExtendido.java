@@ -117,6 +117,8 @@ public class PainelExtendido extends JPanel {
         //System.out.println("");
         p[3][3] = 0;
         srusrc = SRUSRC(VRP, P);
+        //transformar para coordenadas de tela SRC->SRT
+        //trocar a variavel srusrc por srusrt no trecho de codigo abaixo
         for (ListaCubos cubo : listaCubos) {
             for (int i = 0; i < cubo.getListaCubos().size(); i++) {
                 m = multiplicaMatrizes(srusrc, cubo.getListaCubos().get(i).getMatriz().getMatriz(), 4, 9);

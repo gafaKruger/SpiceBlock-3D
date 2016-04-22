@@ -29,6 +29,7 @@ public class Ajuda extends javax.swing.JFrame {
     private void initComponents() {
 
         setTitle("Menu de Ajuda");
+        setName("Menu de Ajuda"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

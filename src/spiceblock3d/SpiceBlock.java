@@ -1,7 +1,7 @@
 
-package blockbuilder;
+package spiceblock3d;
 
-import Controller.Controlador;
+import Controller.Controller;
 import View.Painel;
 import java.awt.Frame;
 import javax.swing.UIManager;
@@ -10,7 +10,7 @@ import javax.swing.UIManager;
  *
  * @author Rafael Fiori Kruger
  */
-public class BlockBuilder {
+public class SpiceBlock {
 
     /**
      * @param args the command line arguments
@@ -24,7 +24,7 @@ public class BlockBuilder {
                 }
             }
         }catch(Exception ex){}   
-        Controlador C = new Controlador(); 
+        Controller C = new Controller(); 
         Painel P = new Painel(C);
         //C.setPainel(P);
         P.setExtendedState(Frame.MAXIMIZED_BOTH);
