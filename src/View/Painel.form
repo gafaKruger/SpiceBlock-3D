@@ -256,23 +256,29 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="1" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="PainelBaseLado" alignment="0" max="32767" attributes="0"/>
-                  <Component id="PainelBaseFrente" alignment="0" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="PainelBaseTopo" max="32767" attributes="0"/>
-                  <Component id="PainelBaseProjecao" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="PainelBaseLado" alignment="0" max="32767" attributes="0"/>
+                          <Component id="PainelBaseFrente" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="PainelBaseTopo" max="32767" attributes="0"/>
+                          <Component id="PainelBaseProjecao" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="PainelDesenho" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                      <Component id="PainelObservacao" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                      <Component id="PainelCor" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <Component id="PainelDesenho" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-              <Component id="PainelObservacao" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-              <Component id="PainelCor" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -382,7 +388,6 @@
                       <Component id="jLabel2" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="SpinnerEscala" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
                   <Component id="jLabel5" min="-2" pref="13" max="-2" attributes="0"/>
@@ -457,7 +462,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imagens/lixeira.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Excluir um Cubo"/>
+            <Property name="toolTipText" type="java.lang.String" value="Excluir Cubo"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExcluirCuboActionPerformed"/>
@@ -551,35 +556,41 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="BotaoCorPreenchimento" max="32767" attributes="0"/>
-                      <Component id="BotaoCorBordas" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          <Component id="jLabel25" min="-2" pref="117" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="BotaoCorPreenchimento" pref="118" max="32767" attributes="0"/>
+                          <Component id="BotaoCorBordas" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                   <Component id="jSeparator6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="SpinnerLuzAmbiente" pref="55" max="32767" attributes="0"/>
-                              <Component id="SpinnerLuzPontual" max="32767" attributes="0"/>
+                              <Component id="SpinnerLuzAmbiente" max="32767" attributes="0"/>
+                              <Component id="SpinnerLuzPontual" min="-2" pref="55" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="jLabel6" pref="108" max="32767" attributes="0"/>
+                      <Component id="jLabel6" min="-2" pref="108" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                   <Component id="jSeparator7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel10" pref="19" max="32767" attributes="0"/>
-                              <Component id="jLabel11" max="32767" attributes="0"/>
+                              <Component id="jLabel10" max="32767" attributes="0"/>
+                              <Component id="jLabel11" min="-2" pref="19" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -593,13 +604,13 @@
                           </Group>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="SpinnerKS" pref="55" max="32767" attributes="0"/>
-                              <Component id="SpinnerN" max="32767" attributes="0"/>
+                              <Component id="SpinnerKS" max="32767" attributes="0"/>
+                              <Component id="SpinnerN" min="-2" pref="55" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="jLabel9" max="32767" attributes="0"/>
+                      <Component id="jLabel9" min="-2" pref="148" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="100" max="32767" attributes="0"/>
+                  <EmptySpace pref="114" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -607,6 +618,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jSeparator6" alignment="0" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="BotaoCorBordas" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -647,7 +660,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -655,7 +668,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="BotaoCorBordas">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cor Bordas"/>
+            <Property name="text" type="java.lang.String" value="Bordas"/>
             <Property name="toolTipText" type="java.lang.String" value="Definir a Cor das Bordas do Cubo"/>
           </Properties>
           <Events>
@@ -664,7 +677,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="BotaoCorPreenchimento">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cor Preenchimento"/>
+            <Property name="text" type="java.lang.String" value="Preenchimento"/>
             <Property name="toolTipText" type="java.lang.String" value="Definir a Cor de Preenchimento do Cubo"/>
           </Properties>
           <Events>
@@ -771,6 +784,12 @@
             <Property name="toolTipText" type="java.lang.String" value="Editar Aproxima&#xe7;&#xe3;o da Distribui&#xe7;&#xe3;o Espacial da Luz Refletida Especularmente (N)"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="jLabel25">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Cores:"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="PainelBaseFrente">
@@ -792,12 +811,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="PainelFrente" alignment="0" pref="655" max="32767" attributes="0"/>
+              <Component id="PainelFrente" alignment="0" pref="660" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="PainelFrente" alignment="1" pref="242" max="32767" attributes="0"/>
+              <Component id="PainelFrente" alignment="1" pref="239" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -843,7 +862,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="AlternarVisaoFrente" min="-2" pref="20" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="222" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="219" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -880,12 +899,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="PainelLado" alignment="0" pref="655" max="32767" attributes="0"/>
+              <Component id="PainelLado" alignment="0" pref="660" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="PainelLado" alignment="0" pref="216" max="32767" attributes="0"/>
+              <Component id="PainelLado" alignment="0" pref="213" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -929,7 +948,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="AlternarVisaoLado" min="-2" pref="20" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="196" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="193" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -966,12 +985,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="PainelTopo" alignment="0" pref="646" max="32767" attributes="0"/>
+              <Component id="PainelTopo" alignment="0" pref="660" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="PainelTopo" alignment="0" pref="242" max="32767" attributes="0"/>
+              <Component id="PainelTopo" alignment="0" pref="239" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -1015,7 +1034,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="AlternarVisaoTopo" min="-2" pref="20" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="222" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="219" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1053,12 +1072,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="PainelProjecao" alignment="0" pref="646" max="32767" attributes="0"/>
+              <Component id="PainelProjecao" alignment="0" pref="660" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="PainelProjecao" alignment="0" pref="216" max="32767" attributes="0"/>
+              <Component id="PainelProjecao" alignment="0" pref="213" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -1134,18 +1153,12 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel20" max="32767" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel15" max="32767" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel20" max="32767" attributes="0"/>
+                              <Component id="jLabel15" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="SpinnerPX" min="-2" pref="55" max="-2" attributes="0"/>
@@ -1202,7 +1215,6 @@
                           <Component id="SpinnerDP" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1247,10 +1259,9 @@
                           <Component id="jLabel24" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="SpinnerVRPIsometrica" min="-2" pref="22" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
