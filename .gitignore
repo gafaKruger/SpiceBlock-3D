@@ -1,0 +1,8 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+/SpiceBlock-3D/nbproject/private/
+/SpiceBlock-3D/build/
