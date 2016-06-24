@@ -2,9 +2,10 @@
 package spiceblock3d;
 
 import Controller.Controller;
-import View.Painel;
+import View.PainelPrincipal;
 import java.awt.Frame;
 import javax.swing.UIManager;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,9 +24,14 @@ public class SpiceBlock {
                     break;
                 }
             }
-        }catch(Exception ex){}   
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog
+                    (null, ex.getMessage(), "Erro ao carregar configurações de aparência (javax.swing.UIManager).", 
+                    JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
+        }   
         Controller C = new Controller(); 
-        Painel P = new Painel(C);
+        PainelPrincipal P = new PainelPrincipal(C);
         //C.setPainel(P);
         P.setExtendedState(Frame.MAXIMIZED_BOTH);
         //P.setResizable(false);

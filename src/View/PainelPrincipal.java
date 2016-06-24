@@ -31,7 +31,7 @@ import static javax.swing.JOptionPane.YES_NO_OPTION;
  *
  * @author Rafael Fiori Kruger
  */
-public class Painel extends javax.swing.JFrame {
+public class PainelPrincipal extends javax.swing.JFrame {
 
     private Controller control;
     private boolean alternaFrente, alternaTopo, alternaLado, alternaProjecao, plotDesenho, selecionaCubo;
@@ -51,11 +51,11 @@ public class Painel extends javax.swing.JFrame {
     //teste
     //private ChangeListener PropertyChangeEvent;
 
-    public Painel() {
+    public PainelPrincipal() {
         initialize();
     }
 
-    public Painel(Controller c) {
+    public PainelPrincipal(Controller c) {
         this.control = c;
         initialize();
     }
@@ -274,27 +274,27 @@ public class Painel extends javax.swing.JFrame {
         setName("SpiceBlock-3D"); // NOI18N
         addWindowStateListener(new java.awt.event.WindowStateListener() {
             public void windowStateChanged(java.awt.event.WindowEvent evt) {
-                Painel.this.windowStateChanged(evt);
+                PainelPrincipal.this.windowStateChanged(evt);
             }
         });
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
-                Painel.this.windowGainedFocus(evt);
+                PainelPrincipal.this.windowGainedFocus(evt);
             }
             public void windowLostFocus(java.awt.event.WindowEvent evt) {
             }
         });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
-                Painel.this.windowClosing(evt);
+                PainelPrincipal.this.windowClosing(evt);
             }
         });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Painel.this.keyPressed(evt);
+                PainelPrincipal.this.keyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                Painel.this.keyTyped(evt);
+                PainelPrincipal.this.keyTyped(evt);
             }
         });
 
@@ -579,7 +579,6 @@ public class Painel extends javax.swing.JFrame {
             PainelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator6)
             .addGroup(PainelCorLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BotaoCorBordas)
@@ -1258,8 +1257,7 @@ public class Painel extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addComponent(PainelObservacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(3, 3, 3)
-                        .addComponent(PainelCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)))
+                        .addComponent(PainelCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
@@ -1293,7 +1291,7 @@ public class Painel extends javax.swing.JFrame {
                     salvarArquivo();
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(rootPane, "Não foi possível salvar!", "Erro", ERROR_MESSAGE);
-                    Logger.getLogger(Painel.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -1521,10 +1519,10 @@ public class Painel extends javax.swing.JFrame {
                     }
                     return true;
                 } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Painel.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                     return false;
                 } catch (IOException ex) {
-                    Logger.getLogger(Painel.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                     return false;
                 }
             }
@@ -1601,10 +1599,10 @@ public class Painel extends javax.swing.JFrame {
                 carregaStatus.setVisible(false);
                 return true;
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(Painel.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 return false;
             } catch (IOException ex) {
-                Logger.getLogger(Painel.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 return false;
             }
         }
@@ -1681,7 +1679,7 @@ public class Painel extends javax.swing.JFrame {
                     salvarArquivo();
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(rootPane, "Não foi possível salvar!", "Erro", ERROR_MESSAGE);
-                    Logger.getLogger(Painel.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -1912,7 +1910,7 @@ public class Painel extends javax.swing.JFrame {
         try {
             abrirArquivo();
         } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(Painel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(rootPane, "Não foi possível abrir o arquivo!", "Erro", ERROR_MESSAGE);
         }
     }//GEN-LAST:event_AbrirProjetoActionPerformed
@@ -1921,7 +1919,7 @@ public class Painel extends javax.swing.JFrame {
         try {
             salvarArquivo();
         } catch (IOException ex) {
-            Logger.getLogger(Painel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(rootPane, "Não foi possível salvar o arquivo!", "Erro", ERROR_MESSAGE);
         }
     }//GEN-LAST:event_SalvarProjetoActionPerformed
@@ -3069,20 +3067,21 @@ public class Painel extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Painel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Painel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Painel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Painel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Painel().setVisible(true);
+                new PainelPrincipal().setVisible(true);
             }
         });
     }
