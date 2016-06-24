@@ -12,22 +12,71 @@ public class Listas implements Serializable {
     //private final ArrayList<Cubo> listaCubos;
     //private final ArrayList<Cubo> listaCubosAgrupados;
     //private final ArrayList<ArrayList> listaAgrupados;
-    private final ArrayList<ListaCubos> lista;
+    private final ArrayList<ListaCubos> listaCub;
+    private final ArrayList<ListaPiramides> listaPiram;
+    private final ArrayList<ListaPrismas> listaPri;
+    private final ArrayList<ListaEsferas> listaEsf;
+    private final ArrayList<ListaCones> listaCone;
+    private final ArrayList<ListaCilindros> listaCil;
     
     public Listas () {
         //listaCubos = new ArrayList<>();
         //listaCubosAgrupados = new ArrayList<>();
         //listaAgrupados = new ArrayList<>();
-        lista = new ArrayList<>();
+        listaCub = new ArrayList<>();
+        listaCil = new ArrayList<>();
+        listaCone = new ArrayList<>();
+        listaEsf = new ArrayList<>();
+        listaPri = new ArrayList<>();
+        listaPiram = new ArrayList<>();
     }
     
-    public void adicionarLista (ListaCubos listaC) {
-        lista.add(listaC);
-        
+    public void adicionarCuboLista (ListaCubos listaC) {
+        listaCub.add(listaC);
+    }
+    
+    public void adicionarPiramideLista (ListaCubos listaPi) {
+        listaCub.add(listaPi);
+    }
+    
+    public void adicionarPrismaLista (ListaCubos listaPr) {
+        listaCub.add(listaPr);
+    }
+    
+    public void adicionarEsferaLista (ListaCubos listaE) {
+        listaCub.add(listaE);
+    }
+    
+    public void adicionarConeLista (ListaCubos listaCo) {
+        listaCub.add(listaCo);
+    }
+    
+    public void adicionarCilindroLista (ListaCubos listaCi) {
+        listaCub.add(listaCi);
     }
     
     public ArrayList<ListaCubos> getCubos () {
-        return lista;
+        return listaCub;
+    }
+    
+    public ArrayList<ListaPrismas> getPrismas () {
+        return listaPri;
+    }
+    
+    public ArrayList<ListaCilindros> getCilindros () {
+        return listaCil;
+    }
+    
+    public ArrayList<ListaEsferas> getEsferas () {
+        return listaEsf;
+    }
+    
+    public ArrayList<ListaCones> getCones () {
+        return listaCone;
+    }
+    
+    public ArrayList<ListaPiramides> getPiramides () {
+        return listaPiram;
     }
     
     public void agruparDoisCubos (int index1, int index2) {
@@ -35,39 +84,39 @@ public class Listas implements Serializable {
         Cubo c;
         Angulos angulos = new Angulos();
         ListaCubos a;
-        a = lista.get(index1);
+        a = listaCub.get(index1);
         for (int i = a.getListaCubos().size()-1; i >= 0; i--) {
             c = a.getListaCubos().remove(i);
             c.setAgrupado(true);
             double x = 0, y = 0, z = 0;
-            x = lista.get(index2).getCentroX();
-            y = lista.get(index2).getCentroY();
-            z = lista.get(index2).getCentroZ();
+            x = listaCub.get(index2).getCentroX();
+            y = listaCub.get(index2).getCentroY();
+            z = listaCub.get(index2).getCentroZ();
             int erro1 = 60, erro2 = 30;
-            if (c.getMatriz().getExtremoDireita() > lista.get(index2).getExtremoEsquerda()+erro2) {
+            if (c.getMatriz().getExtremoDireita() > listaCub.get(index2).getExtremoEsquerda()+erro2) {
                 x = x - erro1;
             } else {
-                if (c.getMatriz().getExtremoEsquerda() > lista.get(index2).getExtremoEsquerda()+erro2) {
+                if (c.getMatriz().getExtremoEsquerda() > listaCub.get(index2).getExtremoEsquerda()+erro2) {
                     x = x + erro1;
                 }
             }
-            if (c.getMatriz().getExtremoCima() < lista.get(index2).getExtremoCima()-erro2) {
+            if (c.getMatriz().getExtremoCima() < listaCub.get(index2).getExtremoCima()-erro2) {
                 y = y - erro1;
             } else {
-                if (c.getMatriz().getExtremoCima() > lista.get(index2).getExtremoCima()+erro2) {
+                if (c.getMatriz().getExtremoCima() > listaCub.get(index2).getExtremoCima()+erro2) {
                     y = y + erro1;
                 }
             }
-            if (c.getMatriz().getExtremoFrente() > lista.get(index2).getExtremoTras()+erro2) {
+            if (c.getMatriz().getExtremoFrente() > listaCub.get(index2).getExtremoTras()+erro2) {
                 z = z + erro1;
             } else {
-                if (c.getMatriz().getExtremoTras() > lista.get(index2).getExtremoTras()+erro2) {
+                if (c.getMatriz().getExtremoTras() > listaCub.get(index2).getExtremoTras()+erro2) {
                     z = z - erro1;
                 }
             }
             c.getMatriz().refazerMatriz(x, y, z);
-            if (c.getMatriz().getAnguloRotacaoX() != lista.get(index2).getAnguloRotacaoX()) {
-                int ang = lista.get(index2).getAnguloRotacaoX();
+            if (c.getMatriz().getAnguloRotacaoX() != listaCub.get(index2).getAnguloRotacaoX()) {
+                int ang = listaCub.get(index2).getAnguloRotacaoX();
                 double sen, cos;
                 if (ang >= 0) {
                     sen = angulos.getSenos()[360 - ang];
@@ -83,8 +132,8 @@ public class Listas implements Serializable {
                 }
                 c.getMatriz().rotacaoX(ang, sen, cos);
             }
-            if (c.getMatriz().getAnguloRotacaoY() != lista.get(index2).getAnguloRotacaoY()) {
-                int ang = lista.get(index2).getAnguloRotacaoY();
+            if (c.getMatriz().getAnguloRotacaoY() != listaCub.get(index2).getAnguloRotacaoY()) {
+                int ang = listaCub.get(index2).getAnguloRotacaoY();
                 double sen, cos;
                 if (ang >= 0) {
                     sen = angulos.getSenos()[360 - ang];
@@ -100,8 +149,8 @@ public class Listas implements Serializable {
                 }
                 c.getMatriz().rotacaoY(ang, sen, cos);
             }
-            if (c.getMatriz().getAnguloRotacaoZ() != lista.get(index2).getAnguloRotacaoZ()) {
-                int ang = lista.get(index2).getAnguloRotacaoZ();
+            if (c.getMatriz().getAnguloRotacaoZ() != listaCub.get(index2).getAnguloRotacaoZ()) {
+                int ang = listaCub.get(index2).getAnguloRotacaoZ();
                 double sen, cos;
                 if (ang >= 0) {
                     sen = angulos.getSenos()[360 - ang];
@@ -117,11 +166,31 @@ public class Listas implements Serializable {
                 }
                 c.getMatriz().rotacaoZ(ang, sen, cos);
             }
-            lista.get(index2).getListaCubos().add(c);
+            listaCub.get(index2).getListaCubos().add(c);
         }
-        lista.get(index2).calculoCentroGeometrico();
-        lista.get(index2).setarAgrupamentoCubos();
-        a = lista.remove(index1);
+        listaCub.get(index2).calculoCentroGeometrico();
+        listaCub.get(index2).setarAgrupamentoCubos();
+        a = listaCub.remove(index1);
+    }
+    
+    public void agruparDoisCilindros () {
+        
+    }
+    
+    public void agruparDoisCones () {
+        
+    }
+    
+    public void agruparDuasEsferas () {
+        
+    }
+    
+    public void agruparDuasPiramides () {
+        
+    }
+    
+    public void agruparDoisPrismas () {
+        
     }
     
     public void desagruparCubos (int index) {
@@ -129,11 +198,11 @@ public class Listas implements Serializable {
         ListaCubos l;
         ArrayList<Cubo> a;
         double x, y, z;
-        for (int i = lista.get(index).getListaCubos().size()-1; i >= 0; i--) {
-            x = lista.get(index).getCentroX();
-            y = lista.get(index).getCentroY();
-            z = lista.get(index).getCentroZ();
-            c = lista.get(index).getListaCubos().remove(i);
+        for (int i = listaCub.get(index).getListaCubos().size()-1; i >= 0; i--) {
+            x = listaCub.get(index).getCentroX();
+            y = listaCub.get(index).getCentroY();
+            z = listaCub.get(index).getCentroZ();
+            c = listaCub.get(index).getListaCubos().remove(i);
             c.setAgrupado(false);
             //Distanciando os cubos
             //Ordenada X
@@ -176,22 +245,79 @@ public class Listas implements Serializable {
             a = new ArrayList<>();
             a.add(c);
             l = new ListaCubos(a);
-            lista.add(l);            
-            lista.get(lista.size()-1).calculoCentroGeometrico();
-            lista.get(lista.size()-1).setarAgrupamentoCubos();
+            listaCub.add(l);            
+            listaCub.get(listaCub.size()-1).calculoCentroGeometrico();
+            listaCub.get(listaCub.size()-1).setarAgrupamentoCubos();
         }
-        if (lista.get(index).getListaCubos().isEmpty()) {
-            lista.remove(index);
+        if (listaCub.get(index).getListaCubos().isEmpty()) {
+            listaCub.remove(index);
         } 
     }
     
+    public void desagruparDoisCilindros () {
+        
+    }
+    
+    public void desagruparDoisCones () {
+        
+    }
+    
+    public void desagruparDuasEsferas () {
+        
+    }
+    
+    public void desagruparDuasPiramides () {
+        
+    }
+    
+    public void desagruparDoisPrismas () {
+        
+    }
+    
     public void limparListas () {
-        int i = lista.size()-1;
-        while (!lista.isEmpty()) {
-            lista.get(i).removerTodosCubos();
-            lista.remove(i);
+        int i;
+        i = listaCub.size()-1;
+        while (!listaCub.isEmpty()) {
+            listaCub.get(i).removerTodosCubos();
+            listaCub.remove(i);
             i--;
         }
+        
+        i = listaPiram.size()-1;
+        while (!listaPiram.isEmpty()) {
+            listaPiram.get(i).removerTodasPiramides();
+            listaPiram.remove(i);
+            i--;
+        }
+        
+        i = listaPri.size()-1;
+        while (!listaPri.isEmpty()) {
+            listaPri.get(i).removerTodosPrismas();
+            listaPri.remove(i);
+            i--;
+        }
+        
+        i = listaEsf.size()-1;
+        while (!listaEsf.isEmpty()) {
+            listaEsf.get(i).removerTodasEsferas();
+            listaEsf.remove(i);
+            i--;
+        }
+        
+        i = listaCone.size()-1;
+        while (!listaCone.isEmpty()) {
+            listaCone.get(i).removerTodosCones();
+            listaCone.remove(i);
+            i--;
+        }
+        
+        i = listaCil.size()-1;
+        while (!listaCil.isEmpty()) {
+            listaCil.get(i).removerTodosCilindros();
+            listaCil.remove(i);
+            i--;
+        }
+        
         /*int i = listaAgrupados.size()-1;
         while (!listaAgrupados.isEmpty()) {
             listaAgrupados.remove(i);

@@ -3,6 +3,7 @@ package Model;
 
 import java.awt.Color;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,8 +27,7 @@ public class ConfigCubo implements Serializable {
         countArestas = countCubos = countFaces = 0;
     }
     
-    public Cubo criaCubo (int centroX, int centroY, int centroZ, int altura, int largura) {
-        Matriz M = new Matriz (centroX, centroY, centroZ, countCubos, altura, largura);
+    public void criaArestas () {
         //Arestas
         A1 = new Aresta(0, 1, countArestas);
         countArestas++;
@@ -53,25 +53,95 @@ public class ConfigCubo implements Serializable {
         countArestas++;
         A12 = new Aresta(7, 4, countArestas);
         countArestas++;
+    }
+    
+    public void criaFaces (int d) {
+        ArrayList<Aresta> aux = new ArrayList<>();
         //Faces
-        //Frente
+        //Frente 
+        /*
+        aux.clear();
+        aux.add(A1);
+        aux.add(A2);
+        aux.add(A3);
+        aux.add(A4);
+        F1 = new Face(d, countFaces);
+        F1.definirArestas(aux);
+        countFaces++;
+        */
         F1 = new Face(A1, A2, A3, A4, countFaces);
         countFaces++;
         //Esquerda
+        /*
+        aux.clear();
+        aux.add(A5);
+        aux.add(A4);
+        aux.add(A8);
+        aux.add(A12);
+        F2 = new Face(d, countFaces);
+        F2.definirArestas(aux);
+        countFaces++;
+        */
         F2 = new Face(A5, A4, A8, A12, countFaces);
         countFaces++;
         //Trás
+        /*
+        aux.clear();
+        aux.add(A9);
+        aux.add(A10);
+        aux.add(A11);
+        aux.add(A12);
+        F3 = new Face(d, countFaces);
+        F3.definirArestas(aux);
+        countFaces++;
+        */
         F3 = new Face(A9, A10, A11, A12, countFaces);
         countFaces++;
         //Direita
+        /*
+        aux.clear();
+        aux.add(A6);
+        aux.add(A10);
+        aux.add(A7);
+        aux.add(A2);
+        F4 = new Face(d, countFaces);
+        F4.definirArestas(aux);
+        countFaces++;
+        */
         F4 = new Face(A6, A10, A7, A2, countFaces);
         countFaces++;
         //Cima
+        /*
+        aux.clear();
+        aux.add(A5);
+        aux.add(A9);
+        aux.add(A6);
+        aux.add(A1);
+        F5 = new Face(d, countFaces);
+        F5.definirArestas(aux);
+        countFaces++;
+        */
         F5 = new Face(A5, A9, A6, A1, countFaces);
         countFaces++;
         //Baixo
+        /*
+        aux.clear();
+        aux.add(A3);
+        aux.add(A7);
+        aux.add(A11);
+        aux.add(A8);
+        F6 = new Face(d, countFaces);
+        F6.definirArestas(aux);
+        countFaces++;
+        */
         F6 = new Face(A3, A7, A11, A8, countFaces);
         countFaces++;
+    }
+    
+    public Cubo criaCubo (int centroX, int centroY, int centroZ, int altura, int largura) {
+        Matriz M = new Matriz (centroX, centroY, centroZ, countCubos, altura, largura);
+        criaArestas();
+        criaFaces(4);
         //Cubo
         C = new Cubo(F1, F2, F3, F4, F5, F6, countCubos);
         countCubos++;
@@ -81,44 +151,8 @@ public class ConfigCubo implements Serializable {
     
     public Cubo criaCubo (int centroX, int centroY, int centroZ, Color borda, int altura, int largura) {
         Matriz M = new Matriz (centroX, centroY, centroZ, countCubos, altura, largura);
-        //Arestas
-        A1 = new Aresta(0, 1, countArestas);
-        countArestas++;
-        A2 = new Aresta(1, 2, countArestas);
-        countArestas++;
-        A3 = new Aresta(2, 3, countArestas);
-        countArestas++;
-        A4 = new Aresta(3, 0, countArestas);
-        countArestas++;
-        A5 = new Aresta(0, 4, countArestas);
-        countArestas++;
-        A6 = new Aresta(1, 5, countArestas);
-        countArestas++;
-        A7 = new Aresta(2, 6, countArestas);
-        countArestas++;
-        A8 = new Aresta(3, 7, countArestas);
-        countArestas++;
-        A9 = new Aresta(4, 5, countArestas);
-        countArestas++;
-        A10 = new Aresta(5, 6, countArestas);
-        countArestas++;
-        A11 = new Aresta(6, 7, countArestas);
-        countArestas++;
-        A12 = new Aresta(7, 4, countArestas);
-        countArestas++;
-        //Faces
-        F1 = new Face(A1, A2, A3, A4, countFaces);
-        countFaces++;
-        F2 = new Face(A5, A4, A8, A12, countFaces);
-        countFaces++;
-        F3 = new Face(A9, A10, A11, A12, countFaces);
-        countFaces++;
-        F4 = new Face(A6, A10, A7, A2, countFaces);
-        countFaces++;
-        F5 = new Face(A5, A9, A6, A1, countFaces);
-        countFaces++;
-        F6 = new Face(A3, A7, A11, A8, countFaces);
-        countFaces++;
+        criaArestas();
+        criaFaces(4);
         //Cubo
         C = new Cubo(F1, F2, F3, F4, F5, F6, countCubos, borda);
         countCubos++;
@@ -128,44 +162,8 @@ public class ConfigCubo implements Serializable {
     
     public Cubo criaCubo (int centroX, int centroY, int centroZ, Color borda, Color preenc, int altura, int largura) {
         Matriz M = new Matriz (centroX, centroY, centroZ, countCubos, altura, largura);
-        //Arestas
-        A1 = new Aresta(0, 1, countArestas);
-        countArestas++;
-        A2 = new Aresta(1, 2, countArestas);
-        countArestas++;
-        A3 = new Aresta(2, 3, countArestas);
-        countArestas++;
-        A4 = new Aresta(3, 0, countArestas);
-        countArestas++;
-        A5 = new Aresta(0, 4, countArestas);
-        countArestas++;
-        A6 = new Aresta(1, 5, countArestas);
-        countArestas++;
-        A7 = new Aresta(2, 6, countArestas);
-        countArestas++;
-        A8 = new Aresta(3, 7, countArestas);
-        countArestas++;
-        A9 = new Aresta(4, 5, countArestas);
-        countArestas++;
-        A10 = new Aresta(5, 6, countArestas);
-        countArestas++;
-        A11 = new Aresta(6, 7, countArestas);
-        countArestas++;
-        A12 = new Aresta(7, 4, countArestas);
-        countArestas++;
-        //Faces
-        F1 = new Face(A1, A2, A3, A4, countFaces);
-        countFaces++;
-        F2 = new Face(A5, A4, A8, A12, countFaces);
-        countFaces++;
-        F3 = new Face(A9, A10, A11, A12, countFaces);
-        countFaces++;
-        F4 = new Face(A6, A10, A7, A2, countFaces);
-        countFaces++;
-        F5 = new Face(A5, A9, A6, A1, countFaces);
-        countFaces++;
-        F6 = new Face(A3, A7, A11, A8, countFaces);
-        countFaces++;
+        criaArestas();
+        criaFaces(4);
         //Cubo
         C = new Cubo(F1, F2, F3, F4, F5, F6, countCubos, borda, preenc);
         countCubos++;
