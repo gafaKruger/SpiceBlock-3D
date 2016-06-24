@@ -246,6 +246,9 @@ public class PainelPrincipal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         Sair = new javax.swing.JMenuItem();
         Editar = new javax.swing.JMenu();
+        botaoDesfazer = new javax.swing.JMenuItem();
+        botaoRefazer = new javax.swing.JMenuItem();
+        jSeparator8 = new javax.swing.JPopupMenu.Separator();
         Sombreamento = new javax.swing.JMenu();
         SombreamentoNenhum = new javax.swing.JCheckBoxMenuItem();
         SombreamentoFlat = new javax.swing.JCheckBoxMenuItem();
@@ -1052,6 +1055,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
 
         Arquivo.setText("Arquivo");
 
+        AbrirProjeto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         AbrirProjeto.setText("Abrir Projeto...");
         AbrirProjeto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1060,6 +1064,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
         });
         Arquivo.add(AbrirProjeto);
 
+        SalvarProjeto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         SalvarProjeto.setText("Salvar Projeto...");
         SalvarProjeto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1080,6 +1085,15 @@ public class PainelPrincipal extends javax.swing.JFrame {
         BarraDeMenu.add(Arquivo);
 
         Editar.setText("Editar");
+
+        botaoDesfazer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
+        botaoDesfazer.setText("Desfazer");
+        Editar.add(botaoDesfazer);
+
+        botaoRefazer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
+        botaoRefazer.setText("Refazer");
+        Editar.add(botaoRefazer);
+        Editar.add(jSeparator8);
 
         Sombreamento.setText("Sombreamento");
 
@@ -3157,6 +3171,8 @@ public class PainelPrincipal extends javax.swing.JFrame {
     private javax.swing.JSpinner SpinnerViewUpX;
     private javax.swing.JSpinner SpinnerViewUpY;
     private javax.swing.JSpinner SpinnerViewUpZ;
+    private javax.swing.JMenuItem botaoDesfazer;
+    private javax.swing.JMenuItem botaoRefazer;
     private javax.swing.ButtonGroup buttonGroupCores;
     private javax.swing.ButtonGroup buttonGroupProjecao;
     private javax.swing.ButtonGroup buttonGroupSombreamento;
@@ -3192,5 +3208,6 @@ public class PainelPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JPopupMenu.Separator jSeparator8;
     // End of variables declaration//GEN-END:variables
 }
