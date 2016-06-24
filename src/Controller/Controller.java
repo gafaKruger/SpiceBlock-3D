@@ -17,6 +17,12 @@ public class Controller implements Serializable {
     private final Listas listas;
     private final ListaCubos listaCubos;
     private ConfigCubo Ccubo;
+    ControlEsfera cEsf;
+    ControlCilindro cCil;
+    ControlCone cCone;
+    ControlCubo cCubo;
+    ControlPiramide cPir;
+    ControlPrisma cPris;
     //private Cubo auxCubo;
     //private Color corBorda, corPreenchimento;
     //private Painel painel;
