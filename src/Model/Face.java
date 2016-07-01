@@ -9,10 +9,10 @@ import java.util.ArrayList;
  * @author Rafael Fiori Kruger
  */
 public class Face implements Serializable {
-    private Aresta A1, A2, A3, A4;
+    //private Aresta A1, A2, A3, A4;
     //modificando para obter faces com quantidade variável de arestas
     private Aresta arestas[];
-    private int dimensao;
+    private int dimensao; //numero de arestas na face
     private long ID;
     
     public Face () {
@@ -26,23 +26,6 @@ public class Face implements Serializable {
         arestas = new Aresta[t];
     }
     
-    //Método específico para faces de 4 lados
-    public Face (Aresta a1, Aresta a2, Aresta a3, Aresta a4) {
-        this.A1 = a1;
-        this.A2 = a2;
-        this.A3 = a3;
-        this.A4 = a4;
-    }
-    
-    //Método específico para faces de 4 lados
-    public Face (Aresta a1, Aresta a2, Aresta a3, Aresta a4, long id) {
-        this.A1 = a1;
-        this.A2 = a2;
-        this.A3 = a3;
-        this.A4 = a4;
-        this.ID = id;
-    }
-
     public long getID() {
         return ID;
     }
@@ -73,43 +56,53 @@ public class Face implements Serializable {
         }
     }
 
-    //Método específico para faces de 4 lados
+    /*
+    //Métodos específico para faces de 4 lados
+    public Face (Aresta a1, Aresta a2, Aresta a3, Aresta a4) {
+        this.A1 = a1;
+        this.A2 = a2;
+        this.A3 = a3;
+        this.A4 = a4;
+    }
+    
+    public Face (Aresta a1, Aresta a2, Aresta a3, Aresta a4, long id) {
+        this.A1 = a1;
+        this.A2 = a2;
+        this.A3 = a3;
+        this.A4 = a4;
+        this.ID = id;
+    }
+    
     public Aresta getA1() {
         return A1;
     }
 
-    //Método específico para faces de 4 lados
     public void setA1(Aresta A1) {
         this.A1 = A1;
     }
 
-    //Método específico para faces de 4 lados
     public Aresta getA2() {
         return A2;
     }
 
-    //Método específico para faces de 4 lados
     public void setA2(Aresta A2) {
         this.A2 = A2;
     }
 
-    //Método específico para faces de 4 lados
     public Aresta getA3() {
         return A3;
     }
 
-    //Método específico para faces de 4 lados
     public void setA3(Aresta A3) {
         this.A3 = A3;
     }
 
-    //Método específico para faces de 4 lados
     public Aresta getA4() {
         return A4;
     }
 
-    //Método específico para faces de 4 lados
     public void setA4(Aresta A4) {
         this.A4 = A4;
     }
+    */
 }

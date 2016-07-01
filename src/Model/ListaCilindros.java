@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Rafael Fiori Kruger
  */
-public class ListaCilindros {
+public class ListaCilindros extends ListaPrimitivas {
 
     private ArrayList<Cilindro> listaCilindros;
     private boolean isAgrupado;

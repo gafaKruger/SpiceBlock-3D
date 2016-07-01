@@ -1,8 +1,8 @@
-package View;
+package ExtendedElements;
 
-import Model.Cubo;
+import Model.Primitiva;
 import Model.Face;
-import Model.ListaCubos;
+import Model.ListaPrimitivas;
 import Model.Matriz;
 import Model.Ponto;
 import java.awt.Color;
@@ -17,16 +17,16 @@ import javax.swing.JPanel;
 public class PainelExtendido extends JPanel {
 
     private Graphics g;
-    private ArrayList<ListaCubos> cubosPossiveis = new ArrayList<>();
+    private ArrayList<ListaPrimitivas> primitivasPossiveis = new ArrayList<>();
 
     public PainelExtendido() {
     }
 
-    public void desenharVisaoTopo(ArrayList<ListaCubos> listaCubos, boolean ocultarFaces) {
+    public void desenharVisaoTopo(ArrayList<ListaPrimitivas> listaPrimitivas, boolean ocultarFaces) {
         g = getGraphics();
         if (ocultarFaces) {
-            visibilidadeFacesTopo(listaCubos);
-            /*int tam = listaCubos.size();
+            visibilidadeFacesTopo(listaPrimitivas);
+            /*int tam = listaPrimitivas.size();
              int pos, count;
              double valor[][] = new double[6][8];
              double aux;
@@ -37,59 +37,56 @@ public class PainelExtendido extends JPanel {
 
              }*/
         } else {
-            for (ListaCubos cubo : listaCubos) {
-                for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                    g.setColor(cubo.getListaCubos().get(i).getCorBordas());
-                    desenhoFaceTopo(cubo.getListaCubos().get(i).getF1(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceTopo(cubo.getListaCubos().get(i).getF2(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceTopo(cubo.getListaCubos().get(i).getF3(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceTopo(cubo.getListaCubos().get(i).getF4(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceTopo(cubo.getListaCubos().get(i).getF5(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceTopo(cubo.getListaCubos().get(i).getF6(), cubo.getListaCubos().get(i).getMatriz());
+            int numFaces;
+            for (ListaPrimitivas primitiva : listaPrimitivas) {
+                for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                    g.setColor(primitiva.getListaPrimitivas().get(i).getCorBordas());
+                    numFaces = primitiva.getListaPrimitivas().get(i).getQTDFaces();
+                    for (int j = 0; j < numFaces; j++) {
+                        desenhoFaceTopo(primitiva.getListaPrimitivas().get(i).getFaces()[j], primitiva.getListaPrimitivas().get(i).getMatriz());
+                    }
                 }
             }
         }
     }
 
-    public void desenharVisaoLadoEsquerdo(ArrayList<ListaCubos> listaCubos, boolean ocultarFaces) {
+    public void desenharVisaoLadoEsquerdo(ArrayList<ListaPrimitivas> listaPrimitivas, boolean ocultarFaces) {
         g = getGraphics();
         if (ocultarFaces) {
-            visibilidadeFacesLado(listaCubos);
+            visibilidadeFacesLado(listaPrimitivas);
         } else {
-            for (ListaCubos cubo : listaCubos) {
-                for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                    g.setColor(cubo.getListaCubos().get(i).getCorBordas());
-                    desenhoFaceLado(cubo.getListaCubos().get(i).getF1(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceLado(cubo.getListaCubos().get(i).getF2(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceLado(cubo.getListaCubos().get(i).getF3(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceLado(cubo.getListaCubos().get(i).getF4(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceLado(cubo.getListaCubos().get(i).getF5(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceLado(cubo.getListaCubos().get(i).getF6(), cubo.getListaCubos().get(i).getMatriz());
+            int numFaces;
+            for (ListaPrimitivas primitiva : listaPrimitivas) {  
+                for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                    g.setColor(primitiva.getListaPrimitivas().get(i).getCorBordas());
+                    numFaces = primitiva.getListaPrimitivas().get(i).getQTDFaces();
+                    for (int j = 0; j < numFaces; j++) {
+                        desenhoFaceLado(primitiva.getListaPrimitivas().get(i).getFaces()[j], primitiva.getListaPrimitivas().get(i).getMatriz());
+                    }
                 }
             }
         }
     }
 
-    public void desenharVisaoFrente(ArrayList<ListaCubos> listaCubos, boolean ocultarFaces) {
+    public void desenharVisaoFrente(ArrayList<ListaPrimitivas> listaPrimitivas, boolean ocultarFaces) {
         g = getGraphics();
         if (ocultarFaces) {
-            visibilidadeFacesFrente(listaCubos);
+            visibilidadeFacesFrente(listaPrimitivas);
         } else {
-            for (ListaCubos cubo : listaCubos) {
-                for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                    g.setColor(cubo.getListaCubos().get(i).getCorBordas());
-                    desenhoFaceFrente(cubo.getListaCubos().get(i).getF1(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceFrente(cubo.getListaCubos().get(i).getF2(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceFrente(cubo.getListaCubos().get(i).getF3(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceFrente(cubo.getListaCubos().get(i).getF4(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceFrente(cubo.getListaCubos().get(i).getF5(), cubo.getListaCubos().get(i).getMatriz());
-                    desenhoFaceFrente(cubo.getListaCubos().get(i).getF6(), cubo.getListaCubos().get(i).getMatriz());
+            int numFaces;
+            for (ListaPrimitivas primitiva : listaPrimitivas) {
+                for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                    g.setColor(primitiva.getListaPrimitivas().get(i).getCorBordas());
+                    numFaces = primitiva.getListaPrimitivas().get(i).getQTDFaces();
+                    for (int j = 0; j < numFaces; j++) {
+                        desenhoFaceFrente(primitiva.getListaPrimitivas().get(i).getFaces()[j], primitiva.getListaPrimitivas().get(i).getMatriz());
+                    }
                 }
             }
         }
     }
 
-    public void desenharVisaoPerspectiva(ArrayList<ListaCubos> listaCubos, boolean ocultarFaces, Ponto VRP, Ponto P, int dp) {
+    public void desenharVisaoPerspectiva(ArrayList<ListaPrimitivas> listaPrimitivas, boolean ocultarFaces, Ponto VRP, Ponto P, int dp) {
         g = getGraphics();
         //Assumindo que Zprp = 0, então -Zvp = dp;
         double[][] srusrc = new double[4][4];
@@ -119,57 +116,55 @@ public class PainelExtendido extends JPanel {
         srusrc = SRUSRC(VRP, P);
         //transformar para coordenadas de tela SRC->SRT
         //trocar a variavel srusrc por srusrt no trecho de codigo abaixo
-        for (ListaCubos cubo : listaCubos) {
-            for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                m = multiplicaMatrizes(srusrc, cubo.getListaCubos().get(i).getMatriz().getMatriz(), 4, 9);
+        for (ListaPrimitivas primitiva : listaPrimitivas) {
+            for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                m = multiplicaMatrizes(srusrc, primitiva.getListaPrimitivas().get(i).getMatriz().getMatriz(), 4, 9);
                 m = multiplicaMatrizes(p, m, 4, 9);
                 Matriz mpers = new Matriz(m, 1);
                 mpers.homogeneizar();
-                cubo.getListaCubos().get(i).setMatrizPerspectiva(mpers);
+                primitiva.getListaPrimitivas().get(i).setMatrizPerspectiva(mpers);
             }
         }
         if (ocultarFaces) {
-            visibilidadesFacesPerspectiva(listaCubos);
+            visibilidadesFacesPerspectiva(listaPrimitivas);
         } else {
-            for (ListaCubos cubo : listaCubos) {
-                for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                    g.setColor(cubo.getListaCubos().get(i).getCorBordas());
-                    desenhoFacePerspectiva(cubo.getListaCubos().get(i).getF1(), cubo.getListaCubos().get(i).getMatrizPerspectiva());
-                    desenhoFacePerspectiva(cubo.getListaCubos().get(i).getF2(), cubo.getListaCubos().get(i).getMatrizPerspectiva());
-                    desenhoFacePerspectiva(cubo.getListaCubos().get(i).getF3(), cubo.getListaCubos().get(i).getMatrizPerspectiva());
-                    desenhoFacePerspectiva(cubo.getListaCubos().get(i).getF4(), cubo.getListaCubos().get(i).getMatrizPerspectiva());
-                    desenhoFacePerspectiva(cubo.getListaCubos().get(i).getF5(), cubo.getListaCubos().get(i).getMatrizPerspectiva());
-                    desenhoFacePerspectiva(cubo.getListaCubos().get(i).getF6(), cubo.getListaCubos().get(i).getMatrizPerspectiva());
+            int numFaces;
+            for (ListaPrimitivas primitiva : listaPrimitivas) {
+                for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                    g.setColor(primitiva.getListaPrimitivas().get(i).getCorBordas());
+                    numFaces = primitiva.getListaPrimitivas().get(i).getQTDFaces();
+                    for (int j = 0; j < numFaces; j++) {
+                        desenhoFacePerspectiva(primitiva.getListaPrimitivas().get(i).getFaces()[j], primitiva.getListaPrimitivas().get(i).getMatrizPerspectiva());
+                    }
                 }
             }
         }
     }
 
-    public void desenharVisaoIsometrica(ArrayList<ListaCubos> listaCubos, boolean ocultarFaces, Ponto VRP, Ponto P) {
+    public void desenharVisaoIsometrica(ArrayList<ListaPrimitivas> listaPrimitivas, boolean ocultarFaces, Ponto VRP, Ponto P) {
         g = getGraphics();
         double[][] srusrc = new double[4][4];
         double[][] m = new double[4][4];
         srusrc = SRUSRC(VRP, P);
-        for (ListaCubos cubo : listaCubos) {
-            for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                m = multiplicaMatrizes(srusrc, cubo.getListaCubos().get(i).getMatriz().getMatriz(), 4, 9);
+        for (ListaPrimitivas primitiva : listaPrimitivas) {
+            for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                m = multiplicaMatrizes(srusrc, primitiva.getListaPrimitivas().get(i).getMatriz().getMatriz(), 4, 9);
                 Matriz mIso = new Matriz(m, 1);
                 mIso.adaptar();
-                cubo.getListaCubos().get(i).setMatrizIsometrica(mIso);
+                primitiva.getListaPrimitivas().get(i).setMatrizIsometrica(mIso);
             }
         }
         if (ocultarFaces) {
-            visibilidadeFacesIsometrica(listaCubos);
+            visibilidadeFacesIsometrica(listaPrimitivas);
         } else {
-            for (ListaCubos cubo : listaCubos) {
-                for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                    g.setColor(cubo.getListaCubos().get(i).getCorBordas());
-                    desenhoFaceIsometrica(cubo.getListaCubos().get(i).getF1(), cubo.getListaCubos().get(i).getMatrizIsometrica());
-                    desenhoFaceIsometrica(cubo.getListaCubos().get(i).getF2(), cubo.getListaCubos().get(i).getMatrizIsometrica());
-                    desenhoFaceIsometrica(cubo.getListaCubos().get(i).getF3(), cubo.getListaCubos().get(i).getMatrizIsometrica());
-                    desenhoFaceIsometrica(cubo.getListaCubos().get(i).getF4(), cubo.getListaCubos().get(i).getMatrizIsometrica());
-                    desenhoFaceIsometrica(cubo.getListaCubos().get(i).getF5(), cubo.getListaCubos().get(i).getMatrizIsometrica());
-                    desenhoFaceIsometrica(cubo.getListaCubos().get(i).getF6(), cubo.getListaCubos().get(i).getMatrizIsometrica());
+            int numFaces;
+            for (ListaPrimitivas primitiva : listaPrimitivas) { 
+                for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                    g.setColor(primitiva.getListaPrimitivas().get(i).getCorBordas());
+                    numFaces = primitiva.getListaPrimitivas().get(i).getQTDFaces();
+                    for (int j = 0; j < numFaces; j++) {
+                        desenhoFaceIsometrica(primitiva.getListaPrimitivas().get(i).getFaces()[j], primitiva.getListaPrimitivas().get(i).getMatrizIsometrica());
+                    }
                 }
             }
         }
@@ -276,182 +271,184 @@ public class PainelExtendido extends JPanel {
     }
 
     public void desenhoFaceFrente(Face f, Matriz m) {
-        g.drawLine((int) m.getMatriz()[0][f.getA1().getP1()], (int) m.getMatriz()[1][f.getA1().getP1()],
-                (int) m.getMatriz()[0][f.getA1().getP2()], (int) m.getMatriz()[1][f.getA1().getP2()]);
+        //****************MODIFICAR METODO PARA USAR NUMERO VARIAVEL DE FACES
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(0).getP1()], (int) m.getMatriz()[1][f.getAresta(0).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(0).getP2()], (int) m.getMatriz()[1][f.getAresta(0).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[0][f.getA2().getP1()], (int) m.getMatriz()[1][f.getA2().getP1()],
-                (int) m.getMatriz()[0][f.getA2().getP2()], (int) m.getMatriz()[1][f.getA2().getP2()]);
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(1).getP1()], (int) m.getMatriz()[1][f.getAresta(1).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(1).getP2()], (int) m.getMatriz()[1][f.getAresta(1).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[0][f.getA3().getP1()], (int) m.getMatriz()[1][f.getA3().getP1()],
-                (int) m.getMatriz()[0][f.getA3().getP2()], (int) m.getMatriz()[1][f.getA3().getP2()]);
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(2).getP1()], (int) m.getMatriz()[1][f.getAresta(2).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(2).getP2()], (int) m.getMatriz()[1][f.getAresta(2).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[0][f.getA4().getP1()], (int) m.getMatriz()[1][f.getA4().getP1()],
-                (int) m.getMatriz()[0][f.getA4().getP2()], (int) m.getMatriz()[1][f.getA4().getP2()]);
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(3).getP1()], (int) m.getMatriz()[1][f.getAresta(3).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(3).getP2()], (int) m.getMatriz()[1][f.getAresta(3).getP2()]);
     }
 
     public void desenhoFaceTopo(Face f, Matriz m) {
-        g.drawLine((int) m.getMatriz()[0][f.getA1().getP1()], (int) m.getMatriz()[2][f.getA1().getP1()],
-                (int) m.getMatriz()[0][f.getA1().getP2()], (int) m.getMatriz()[2][f.getA1().getP2()]);
+        //****************MODIFICAR METODO PARA USAR NUMERO VARIAVEL DE FACES
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(0).getP1()], (int) m.getMatriz()[2][f.getAresta(0).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(0).getP2()], (int) m.getMatriz()[2][f.getAresta(0).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[0][f.getA2().getP1()], (int) m.getMatriz()[2][f.getA2().getP1()],
-                (int) m.getMatriz()[0][f.getA2().getP2()], (int) m.getMatriz()[2][f.getA2().getP2()]);
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(1).getP1()], (int) m.getMatriz()[2][f.getAresta(1).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(1).getP2()], (int) m.getMatriz()[2][f.getAresta(1).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[0][f.getA3().getP1()], (int) m.getMatriz()[2][f.getA3().getP1()],
-                (int) m.getMatriz()[0][f.getA3().getP2()], (int) m.getMatriz()[2][f.getA3().getP2()]);
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(2).getP1()], (int) m.getMatriz()[2][f.getAresta(2).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(2).getP2()], (int) m.getMatriz()[2][f.getAresta(2).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[0][f.getA4().getP1()], (int) m.getMatriz()[2][f.getA4().getP1()],
-                (int) m.getMatriz()[0][f.getA4().getP2()], (int) m.getMatriz()[2][f.getA4().getP2()]);
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(3).getP1()], (int) m.getMatriz()[2][f.getAresta(3).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(3).getP2()], (int) m.getMatriz()[2][f.getAresta(3).getP2()]);
     }
 
     public void desenhoFaceLado(Face f, Matriz m) {
-        g.drawLine((int) m.getMatriz()[2][f.getA1().getP1()], (int) m.getMatriz()[1][f.getA1().getP1()],
-                (int) m.getMatriz()[2][f.getA1().getP2()], (int) m.getMatriz()[1][f.getA1().getP2()]);
+        //****************MODIFICAR METODO PARA USAR NUMERO VARIAVEL DE FACES
+        g.drawLine((int) m.getMatriz()[2][f.getAresta(0).getP1()], (int) m.getMatriz()[1][f.getAresta(0).getP1()],
+                (int) m.getMatriz()[2][f.getAresta(0).getP2()], (int) m.getMatriz()[1][f.getAresta(0).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[2][f.getA2().getP1()], (int) m.getMatriz()[1][f.getA2().getP1()],
-                (int) m.getMatriz()[2][f.getA2().getP2()], (int) m.getMatriz()[1][f.getA2().getP2()]);
+        g.drawLine((int) m.getMatriz()[2][f.getAresta(1).getP1()], (int) m.getMatriz()[1][f.getAresta(1).getP1()],
+                (int) m.getMatriz()[2][f.getAresta(1).getP2()], (int) m.getMatriz()[1][f.getAresta(1).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[2][f.getA3().getP1()], (int) m.getMatriz()[1][f.getA3().getP1()],
-                (int) m.getMatriz()[2][f.getA3().getP2()], (int) m.getMatriz()[1][f.getA3().getP2()]);
+        g.drawLine((int) m.getMatriz()[2][f.getAresta(2).getP1()], (int) m.getMatriz()[1][f.getAresta(2).getP1()],
+                (int) m.getMatriz()[2][f.getAresta(2).getP2()], (int) m.getMatriz()[1][f.getAresta(2).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[2][f.getA4().getP1()], (int) m.getMatriz()[1][f.getA4().getP1()],
-                (int) m.getMatriz()[2][f.getA4().getP2()], (int) m.getMatriz()[1][f.getA4().getP2()]);
+        g.drawLine((int) m.getMatriz()[2][f.getAresta(3).getP1()], (int) m.getMatriz()[1][f.getAresta(3).getP1()],
+                (int) m.getMatriz()[2][f.getAresta(3).getP2()], (int) m.getMatriz()[1][f.getAresta(3).getP2()]);
     }
 
     private void valoresPontosFaces(Face f, Matriz m, int a, int b) {
-        System.out.println((int) m.getMatriz()[a][f.getA1().getP1()] + " " + (int) m.getMatriz()[b][f.getA1().getP1()]
-                + " " + (int) m.getMatriz()[a][f.getA1().getP2()] + " " + (int) m.getMatriz()[b][f.getA1().getP2()]);
+        //****************MODIFICAR METODO PARA USAR NUMERO VARIAVEL DE FACES
+        System.out.println((int) m.getMatriz()[a][f.getAresta(0).getP1()] + " " + (int) m.getMatriz()[b][f.getAresta(0).getP1()]
+                + " " + (int) m.getMatriz()[a][f.getAresta(0).getP2()] + " " + (int) m.getMatriz()[b][f.getAresta(0).getP2()]);
 
-        System.out.println((int) m.getMatriz()[a][f.getA2().getP1()] + " " + (int) m.getMatriz()[b][f.getA2().getP1()]
-                + " " + (int) m.getMatriz()[a][f.getA2().getP2()] + " " + (int) m.getMatriz()[b][f.getA2().getP2()]);
+        System.out.println((int) m.getMatriz()[a][f.getAresta(1).getP1()] + " " + (int) m.getMatriz()[b][f.getAresta(1).getP1()]
+                + " " + (int) m.getMatriz()[a][f.getAresta(1).getP2()] + " " + (int) m.getMatriz()[b][f.getAresta(1).getP2()]);
 
-        System.out.println((int) m.getMatriz()[a][f.getA3().getP1()] + " " + (int) m.getMatriz()[b][f.getA3().getP1()]
-                + " " + (int) m.getMatriz()[a][f.getA3().getP2()] + " " + (int) m.getMatriz()[b][f.getA3().getP2()]);
+        System.out.println((int) m.getMatriz()[a][f.getAresta(2).getP1()] + " " + (int) m.getMatriz()[b][f.getAresta(2).getP1()]
+                + " " + (int) m.getMatriz()[a][f.getAresta(2).getP2()] + " " + (int) m.getMatriz()[b][f.getAresta(2).getP2()]);
 
-        System.out.println((int) m.getMatriz()[a][f.getA4().getP1()] + " " + (int) m.getMatriz()[b][f.getA4().getP1()]
-                + " " + (int) m.getMatriz()[a][f.getA4().getP2()] + " " + (int) m.getMatriz()[b][f.getA4().getP2()]);
+        System.out.println((int) m.getMatriz()[a][f.getAresta(3).getP1()] + " " + (int) m.getMatriz()[b][f.getAresta(3).getP1()]
+                + " " + (int) m.getMatriz()[a][f.getAresta(3).getP2()] + " " + (int) m.getMatriz()[b][f.getAresta(3).getP2()]);
     }
 
     public void desenhoFacePerspectiva(Face f, Matriz m) {
-        g.drawLine((int) m.getMatriz()[0][f.getA1().getP1()], (int) m.getMatriz()[1][f.getA1().getP1()],
-                (int) m.getMatriz()[0][f.getA1().getP2()], (int) m.getMatriz()[1][f.getA1().getP2()]);
+        //****************MODIFICAR METODO PARA USAR NUMERO VARIAVEL DE FACES
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(0).getP1()], (int) m.getMatriz()[1][f.getAresta(0).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(0).getP2()], (int) m.getMatriz()[1][f.getAresta(0).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[0][f.getA2().getP1()], (int) m.getMatriz()[1][f.getA2().getP1()],
-                (int) m.getMatriz()[0][f.getA2().getP2()], (int) m.getMatriz()[1][f.getA2().getP2()]);
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(1).getP1()], (int) m.getMatriz()[1][f.getAresta(1).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(1).getP2()], (int) m.getMatriz()[1][f.getAresta(1).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[0][f.getA3().getP1()], (int) m.getMatriz()[1][f.getA3().getP1()],
-                (int) m.getMatriz()[0][f.getA3().getP2()], (int) m.getMatriz()[1][f.getA3().getP2()]);
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(2).getP1()], (int) m.getMatriz()[1][f.getAresta(2).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(2).getP2()], (int) m.getMatriz()[1][f.getAresta(2).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[0][f.getA4().getP1()], (int) m.getMatriz()[1][f.getA4().getP1()],
-                (int) m.getMatriz()[0][f.getA4().getP2()], (int) m.getMatriz()[1][f.getA4().getP2()]);
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(3).getP1()], (int) m.getMatriz()[1][f.getAresta(3).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(3).getP2()], (int) m.getMatriz()[1][f.getAresta(3).getP2()]);
     }
 
     public void desenhoFaceIsometrica(Face f, Matriz m) {
-        g.drawLine((int) m.getMatriz()[0][f.getA1().getP1()], (int) m.getMatriz()[1][f.getA1().getP1()],
-                (int) m.getMatriz()[0][f.getA1().getP2()], (int) m.getMatriz()[1][f.getA1().getP2()]);
+        //****************MODIFICAR METODO PARA USAR NUMERO VARIAVEL DE FACES
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(0).getP1()], (int) m.getMatriz()[1][f.getAresta(0).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(0).getP2()], (int) m.getMatriz()[1][f.getAresta(0).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[0][f.getA2().getP1()], (int) m.getMatriz()[1][f.getA2().getP1()],
-                (int) m.getMatriz()[0][f.getA2().getP2()], (int) m.getMatriz()[1][f.getA2().getP2()]);
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(1).getP1()], (int) m.getMatriz()[1][f.getAresta(1).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(1).getP2()], (int) m.getMatriz()[1][f.getAresta(1).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[0][f.getA3().getP1()], (int) m.getMatriz()[1][f.getA3().getP1()],
-                (int) m.getMatriz()[0][f.getA3().getP2()], (int) m.getMatriz()[1][f.getA3().getP2()]);
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(2).getP1()], (int) m.getMatriz()[1][f.getAresta(2).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(2).getP2()], (int) m.getMatriz()[1][f.getAresta(2).getP2()]);
 
-        g.drawLine((int) m.getMatriz()[0][f.getA4().getP1()], (int) m.getMatriz()[1][f.getA4().getP1()],
-                (int) m.getMatriz()[0][f.getA4().getP2()], (int) m.getMatriz()[1][f.getA4().getP2()]);
+        g.drawLine((int) m.getMatriz()[0][f.getAresta(3).getP1()], (int) m.getMatriz()[1][f.getAresta(3).getP1()],
+                (int) m.getMatriz()[0][f.getAresta(3).getP2()], (int) m.getMatriz()[1][f.getAresta(3).getP2()]);
     }
 
-    public void apagarTodosCubosPerspectiva(ArrayList<ListaCubos> listaCubos) {
+    public void apagarTodosPrimitivasPerspectiva(ArrayList<ListaPrimitivas> listaPrimitivas) {
         g = getGraphics();
-        for (ListaCubos cubo : listaCubos) {
-            for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                g.setColor(Color.WHITE);
-                desenhoFacePerspectiva(cubo.getListaCubos().get(i).getF1(), cubo.getListaCubos().get(i).getMatrizPerspectiva());
-                desenhoFacePerspectiva(cubo.getListaCubos().get(i).getF2(), cubo.getListaCubos().get(i).getMatrizPerspectiva());
-                desenhoFacePerspectiva(cubo.getListaCubos().get(i).getF3(), cubo.getListaCubos().get(i).getMatrizPerspectiva());
-                desenhoFacePerspectiva(cubo.getListaCubos().get(i).getF4(), cubo.getListaCubos().get(i).getMatrizPerspectiva());
-                desenhoFacePerspectiva(cubo.getListaCubos().get(i).getF5(), cubo.getListaCubos().get(i).getMatrizPerspectiva());
-                desenhoFacePerspectiva(cubo.getListaCubos().get(i).getF6(), cubo.getListaCubos().get(i).getMatrizPerspectiva());
+        g.setColor(Color.WHITE);
+        int numFaces;
+        for (ListaPrimitivas primitiva : listaPrimitivas) {
+            for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                numFaces = primitiva.getListaPrimitivas().get(i).getQTDFaces();
+                for (int j = 0; j < numFaces; j++) {
+                    desenhoFacePerspectiva(primitiva.getListaPrimitivas().get(i).getFaces()[j], primitiva.getListaPrimitivas().get(i).getMatrizPerspectiva());
+                }
             }
         }
     }
 
-    public void apagarTodosCubosIsometrica(ArrayList<ListaCubos> listaCubos) {
+    public void apagarTodosPrimitivasIsometrica(ArrayList<ListaPrimitivas> listaPrimitivas) {
         g = getGraphics();
-        for (ListaCubos cubo : listaCubos) {
-            for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                g.setColor(Color.WHITE);
-                desenhoFaceIsometrica(cubo.getListaCubos().get(i).getF1(), cubo.getListaCubos().get(i).getMatrizIsometrica());
-                desenhoFaceIsometrica(cubo.getListaCubos().get(i).getF2(), cubo.getListaCubos().get(i).getMatrizIsometrica());
-                desenhoFaceIsometrica(cubo.getListaCubos().get(i).getF3(), cubo.getListaCubos().get(i).getMatrizIsometrica());
-                desenhoFaceIsometrica(cubo.getListaCubos().get(i).getF4(), cubo.getListaCubos().get(i).getMatrizIsometrica());
-                desenhoFaceIsometrica(cubo.getListaCubos().get(i).getF5(), cubo.getListaCubos().get(i).getMatrizIsometrica());
-                desenhoFaceIsometrica(cubo.getListaCubos().get(i).getF6(), cubo.getListaCubos().get(i).getMatrizIsometrica());
+        g.setColor(Color.WHITE);
+        int numFaces;
+        for (ListaPrimitivas primitiva : listaPrimitivas) {
+            for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                numFaces = primitiva.getListaPrimitivas().get(i).getQTDFaces();
+                for (int j = 0; j < numFaces; j++) {
+                    desenhoFaceIsometrica(primitiva.getListaPrimitivas().get(i).getFaces()[j], primitiva.getListaPrimitivas().get(i).getMatrizIsometrica());
+                }
             }
         }
     }
 
-    public void apagarTodosCubosFrente(ArrayList<ListaCubos> listaCubos) {
+    public void apagarTodosPrimitivasFrente(ArrayList<ListaPrimitivas> listaPrimitivas) {
         g = getGraphics();
-        for (ListaCubos cubo : listaCubos) {
-            for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                g.setColor(Color.WHITE);
-                desenhoFaceFrente(cubo.getListaCubos().get(i).getF1(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceFrente(cubo.getListaCubos().get(i).getF2(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceFrente(cubo.getListaCubos().get(i).getF3(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceFrente(cubo.getListaCubos().get(i).getF4(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceFrente(cubo.getListaCubos().get(i).getF5(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceFrente(cubo.getListaCubos().get(i).getF6(), cubo.getListaCubos().get(i).getMatriz());
+        g.setColor(Color.WHITE);
+        int numFaces;
+        for (ListaPrimitivas primitiva : listaPrimitivas) {
+            for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                numFaces = primitiva.getListaPrimitivas().get(i).getQTDFaces();
+                for (int j = 0; j < numFaces; j++) {
+                    desenhoFaceFrente(primitiva.getListaPrimitivas().get(i).getFaces()[j], primitiva.getListaPrimitivas().get(i).getMatriz());
+                }
             }
         }
     }
 
-    public void apagarTodosCubosTopo(ArrayList<ListaCubos> listaCubos) {
+    public void apagarTodosPrimitivasTopo(ArrayList<ListaPrimitivas> listaPrimitivas) {
         g = getGraphics();
-        for (ListaCubos cubo : listaCubos) {
-            for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                g.setColor(Color.WHITE);
-                desenhoFaceTopo(cubo.getListaCubos().get(i).getF1(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceTopo(cubo.getListaCubos().get(i).getF2(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceTopo(cubo.getListaCubos().get(i).getF3(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceTopo(cubo.getListaCubos().get(i).getF4(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceTopo(cubo.getListaCubos().get(i).getF5(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceTopo(cubo.getListaCubos().get(i).getF6(), cubo.getListaCubos().get(i).getMatriz());
+        g.setColor(Color.WHITE);
+        int numFaces;
+        for (ListaPrimitivas primitiva : listaPrimitivas) {
+            for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                numFaces = primitiva.getListaPrimitivas().get(i).getQTDFaces();
+                for (int j = 0; j < numFaces; j++) {
+                    desenhoFaceTopo(primitiva.getListaPrimitivas().get(i).getFaces()[j], primitiva.getListaPrimitivas().get(i).getMatriz());
+                }
             }
         }
     }
 
-    public void apagarTodosCubosLado(ArrayList<ListaCubos> listaCubos) {
+    public void apagarTodosPrimitivasLado(ArrayList<ListaPrimitivas> listaPrimitivas) {
         g = getGraphics();
-        for (ListaCubos cubo : listaCubos) {
-            for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                g.setColor(Color.WHITE);
-                desenhoFaceLado(cubo.getListaCubos().get(i).getF1(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceLado(cubo.getListaCubos().get(i).getF2(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceLado(cubo.getListaCubos().get(i).getF3(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceLado(cubo.getListaCubos().get(i).getF4(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceLado(cubo.getListaCubos().get(i).getF5(), cubo.getListaCubos().get(i).getMatriz());
-                desenhoFaceLado(cubo.getListaCubos().get(i).getF6(), cubo.getListaCubos().get(i).getMatriz());
+        g.setColor(Color.WHITE);
+        int numFaces;
+        for (ListaPrimitivas primitiva : listaPrimitivas) {
+            for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                numFaces = primitiva.getListaPrimitivas().get(i).getQTDFaces();
+                for (int j = 0; j < numFaces; j++) {
+                    desenhoFaceLado(primitiva.getListaPrimitivas().get(i).getFaces()[j], primitiva.getListaPrimitivas().get(i).getMatriz());
+                }
             }
         }
     }
 
-    public void visibilidadeFacesFrente(ArrayList<ListaCubos> listaCubos) {
+    public void visibilidadeFacesFrente(ArrayList<ListaPrimitivas> listaPrimitivas) {
+        //****************MODIFICAR METODO PARA USAR NUMERO VARIAVEL DE FACES
         double a, b, c, raiz;
         int p1, p2, p3, ang;
-        Cubo aux;
-        for (ListaCubos cubo : listaCubos) {
-            for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                aux = cubo.getListaCubos().get(i);
+        Primitiva aux;
+        for (ListaPrimitivas primitiva : listaPrimitivas) {
+            for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                aux = primitiva.getListaPrimitivas().get(i);
                 g.setColor(aux.getCorBordas());
                 ang = Math.abs(aux.getMatriz().getAnguloRotacaoZ());
                 //Face que está na frente
                 if (ang < 180) {
-                    p1 = aux.getF1().getA3().getP2();
-                    p2 = aux.getF1().getA2().getP2();
-                    p3 = aux.getF1().getA2().getP1();
+                    p1 = aux.getFaces()[0].getAresta(2).getP2();
+                    p2 = aux.getFaces()[0].getAresta(1).getP2();
+                    p3 = aux.getFaces()[0].getAresta(1).getP1();
                 } else {
-                    p3 = aux.getF1().getA3().getP2();
-                    p2 = aux.getF1().getA2().getP2();
-                    p1 = aux.getF1().getA2().getP1();
+                    p3 = aux.getFaces()[0].getAresta(2).getP2();
+                    p2 = aux.getFaces()[0].getAresta(1).getP2();
+                    p1 = aux.getFaces()[0].getAresta(1).getP1();
                 }
                 //System.out.println("p1 " + p1);
                 //System.out.println("p2 " + p2);
@@ -493,23 +490,23 @@ public class PainelExtendido extends JPanel {
                 //System.out.println("raiz 1 " + raiz);
                 if (ang < 180) {
                     if (c <= 0) {
-                        desenhoFaceFrente(aux.getF1(), aux.getMatriz());
+                        desenhoFaceFrente(aux.getFaces()[0], aux.getMatriz());
                     }
                 } else {
                     if (c >= 0) {
-                        desenhoFaceFrente(aux.getF1(), aux.getMatriz());
+                        desenhoFaceFrente(aux.getFaces()[0], aux.getMatriz());
                     }
                 }
 
                 //Face que está na esquerda
                 if (ang < 180) {
-                    p1 = aux.getF2().getA3().getP2();
-                    p2 = aux.getF2().getA2().getP1();
-                    p3 = aux.getF2().getA2().getP2();
+                    p1 = aux.getFaces()[1].getAresta(2).getP2();
+                    p2 = aux.getFaces()[1].getAresta(1).getP1();
+                    p3 = aux.getFaces()[1].getAresta(1).getP2();
                 } else {
-                    p3 = aux.getF2().getA3().getP2();
-                    p2 = aux.getF2().getA2().getP1();
-                    p1 = aux.getF2().getA2().getP2();
+                    p3 = aux.getFaces()[1].getAresta(2).getP2();
+                    p2 = aux.getFaces()[1].getAresta(1).getP1();
+                    p1 = aux.getFaces()[1].getAresta(1).getP2();
                 }
                 //System.out.println("p1 " + p1);
                 //System.out.println("p2 " + p2);
@@ -547,23 +544,23 @@ public class PainelExtendido extends JPanel {
                 //System.out.println("2 " + c);
                 if (ang < 180) {
                     if (c <= 0) {
-                        desenhoFaceFrente(aux.getF2(), aux.getMatriz());
+                        desenhoFaceFrente(aux.getFaces()[1], aux.getMatriz());
                     }
                 } else {
                     if (c >= 0) {
-                        desenhoFaceFrente(aux.getF2(), aux.getMatriz());
+                        desenhoFaceFrente(aux.getFaces()[1], aux.getMatriz());
                     }
                 }
 
                 //Face que está atrás
                 if (ang < 180) {
-                    p1 = aux.getF3().getA4().getP1();
-                    p2 = aux.getF3().getA1().getP1();
-                    p3 = aux.getF3().getA1().getP2();
+                    p1 = aux.getFaces()[2].getAresta(3).getP1();
+                    p2 = aux.getFaces()[2].getAresta(0).getP1();
+                    p3 = aux.getFaces()[2].getAresta(0).getP2();
                 } else {
-                    p3 = aux.getF3().getA4().getP1();
-                    p2 = aux.getF3().getA1().getP1();
-                    p1 = aux.getF3().getA1().getP2();
+                    p3 = aux.getFaces()[2].getAresta(3).getP1();
+                    p2 = aux.getFaces()[2].getAresta(0).getP1();
+                    p1 = aux.getFaces()[2].getAresta(0).getP2();
                 }
                 //System.out.println("p1 " + p1);
                 //System.out.println("p2 " + p2);
@@ -601,23 +598,23 @@ public class PainelExtendido extends JPanel {
                 //System.out.println("3 " + c);
                 if (ang < 180) {
                     if (c <= 0) {
-                        desenhoFaceFrente(aux.getF3(), aux.getMatriz());
+                        desenhoFaceFrente(aux.getFaces()[2], aux.getMatriz());
                     }
                 } else {
                     if (c >= 0) {
-                        desenhoFaceFrente(aux.getF3(), aux.getMatriz());
+                        desenhoFaceFrente(aux.getFaces()[2], aux.getMatriz());
                     }
                 }
 
                 //Face que está na direita
                 if (ang < 180) {
-                    p1 = aux.getF4().getA3().getP1();
-                    p2 = aux.getF4().getA2().getP2();
-                    p3 = aux.getF4().getA2().getP1();
+                    p1 = aux.getFaces()[3].getAresta(2).getP1();
+                    p2 = aux.getFaces()[3].getAresta(1).getP2();
+                    p3 = aux.getFaces()[3].getAresta(1).getP1();
                 } else {
-                    p3 = aux.getF4().getA3().getP1();
-                    p2 = aux.getF4().getA2().getP2();
-                    p1 = aux.getF4().getA2().getP1();
+                    p3 = aux.getFaces()[3].getAresta(2).getP1();
+                    p2 = aux.getFaces()[3].getAresta(1).getP2();
+                    p1 = aux.getFaces()[3].getAresta(1).getP1();
                 }
                 //System.out.println("p1 " + p1);
                 //System.out.println("p2 " + p2);
@@ -655,23 +652,23 @@ public class PainelExtendido extends JPanel {
                 //System.out.println("4 " + c);
                 if (ang < 180) {
                     if (c <= 0) {
-                        desenhoFaceFrente(aux.getF4(), aux.getMatriz());
+                        desenhoFaceFrente(aux.getFaces()[3], aux.getMatriz());
                     }
                 } else {
                     if (c >= 0) {
-                        desenhoFaceFrente(aux.getF4(), aux.getMatriz());
+                        desenhoFaceFrente(aux.getFaces()[3], aux.getMatriz());
                     }
                 }
 
                 //Face que está no topo
                 if (ang < 180) {
-                    p1 = aux.getF5().getA3().getP1();
-                    p2 = aux.getF5().getA2().getP2();
-                    p3 = aux.getF5().getA2().getP1();
+                    p1 = aux.getFaces()[4].getAresta(2).getP1();
+                    p2 = aux.getFaces()[4].getAresta(1).getP2();
+                    p3 = aux.getFaces()[4].getAresta(1).getP1();
                 } else {
-                    p3 = aux.getF5().getA3().getP1();
-                    p2 = aux.getF5().getA2().getP2();
-                    p1 = aux.getF5().getA2().getP1();
+                    p3 = aux.getFaces()[4].getAresta(2).getP1();
+                    p2 = aux.getFaces()[4].getAresta(1).getP2();
+                    p1 = aux.getFaces()[4].getAresta(1).getP1();
                 }
                 //System.out.println("p1 " + p1);
                 //System.out.println("p2 " + p2);
@@ -709,23 +706,23 @@ public class PainelExtendido extends JPanel {
                 //System.out.println("5 " + c);
                 if (ang < 180) {
                     if (c <= 0) {
-                        desenhoFaceFrente(aux.getF5(), aux.getMatriz());
+                        desenhoFaceFrente(aux.getFaces()[4], aux.getMatriz());
                     }
                 } else {
                     if (c >= 0) {
-                        desenhoFaceFrente(aux.getF5(), aux.getMatriz());
+                        desenhoFaceFrente(aux.getFaces()[4], aux.getMatriz());
                     }
                 }
 
                 //Face que está abaixo
                 if (ang < 180) {
-                    p1 = aux.getF6().getA3().getP2();
-                    p2 = aux.getF6().getA2().getP2();
-                    p3 = aux.getF6().getA2().getP1();
+                    p1 = aux.getFaces()[5].getAresta(2).getP2();
+                    p2 = aux.getFaces()[5].getAresta(1).getP2();
+                    p3 = aux.getFaces()[5].getAresta(1).getP1();
                 } else {
-                    p3 = aux.getF6().getA3().getP2();
-                    p2 = aux.getF6().getA2().getP2();
-                    p1 = aux.getF6().getA2().getP1();
+                    p3 = aux.getFaces()[5].getAresta(2).getP2();
+                    p2 = aux.getFaces()[5].getAresta(1).getP2();
+                    p1 = aux.getFaces()[5].getAresta(1).getP1();
                 }
                 //System.out.println("p1 " + p1);
                 //System.out.println("p2 " + p2);
@@ -763,30 +760,31 @@ public class PainelExtendido extends JPanel {
                 //System.out.println("6 " + c);
                 if (ang < 180) {
                     if (c <= 0) {
-                        desenhoFaceFrente(aux.getF6(), aux.getMatriz());
+                        desenhoFaceFrente(aux.getFaces()[5], aux.getMatriz());
                     }
                 } else {
                     if (c >= 0) {
-                        desenhoFaceFrente(aux.getF6(), aux.getMatriz());
+                        desenhoFaceFrente(aux.getFaces()[5], aux.getMatriz());
                     }
                 }
             }
         }
     }
 
-    public void visibilidadeFacesTopo(ArrayList<ListaCubos> listaCubos) {
+    public void visibilidadeFacesTopo(ArrayList<ListaPrimitivas> listaPrimitivas) {
+        //****************MODIFICAR METODO PARA USAR NUMERO VARIAVEL DE FACES
         double a, b, c, raiz;
         int p1, p2, p3, ang;
-        Cubo aux;
-        for (ListaCubos cubo : listaCubos) {
-            for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                aux = cubo.getListaCubos().get(i);
+        Primitiva aux;
+        for (ListaPrimitivas primitiva : listaPrimitivas) {
+            for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                aux = primitiva.getListaPrimitivas().get(i);
                 g.setColor(aux.getCorBordas());
                 ang = Math.abs(aux.getMatriz().getAnguloRotacaoY());
                 //Face que está na frente
-                p1 = aux.getF1().getA3().getP2();
-                p2 = aux.getF1().getA2().getP2();
-                p3 = aux.getF1().getA2().getP1();
+                p1 = aux.getFaces()[0].getAresta(2).getP2();
+                p2 = aux.getFaces()[0].getAresta(1).getP2();
+                p3 = aux.getFaces()[0].getAresta(1).getP1();
 
                 a = (aux.getMatriz().getMatriz()[1][p3] - aux.getMatriz().getMatriz()[1][p2])
                         * (aux.getMatriz().getMatriz()[2][p1] - aux.getMatriz().getMatriz()[2][p2])
@@ -818,13 +816,13 @@ public class PainelExtendido extends JPanel {
                 //System.out.println(d);
                 //System.out.println(R);
                 if (b <= 0) {
-                    desenhoFaceTopo(aux.getF1(), aux.getMatriz());
+                    desenhoFaceTopo(aux.getFaces()[0], aux.getMatriz());
                 }
 
                 //Face que está na esquerda
-                p1 = aux.getF2().getA3().getP2();
-                p2 = aux.getF2().getA2().getP1();
-                p3 = aux.getF2().getA2().getP2();
+                p1 = aux.getFaces()[1].getAresta(2).getP2();
+                p2 = aux.getFaces()[1].getAresta(1).getP1();
+                p3 = aux.getFaces()[1].getAresta(1).getP2();
 
                 a = (aux.getMatriz().getMatriz()[1][p3] - aux.getMatriz().getMatriz()[1][p2])
                         * (aux.getMatriz().getMatriz()[2][p1] - aux.getMatriz().getMatriz()[2][p2])
@@ -852,13 +850,13 @@ public class PainelExtendido extends JPanel {
                 //R = c;
                 //R = a + b + c + d;
                 if (b <= 0) {
-                    desenhoFaceTopo(aux.getF2(), aux.getMatriz());
+                    desenhoFaceTopo(aux.getFaces()[1], aux.getMatriz());
                 }
 
                 //Face que está atrás
-                p1 = aux.getF3().getA4().getP1();
-                p2 = aux.getF3().getA1().getP1();
-                p3 = aux.getF3().getA1().getP2();
+                p1 = aux.getFaces()[2].getAresta(3).getP1();
+                p2 = aux.getFaces()[2].getAresta(0).getP1();
+                p3 = aux.getFaces()[2].getAresta(0).getP2();
 
                 a = (aux.getMatriz().getMatriz()[1][p3] - aux.getMatriz().getMatriz()[1][p2])
                         * (aux.getMatriz().getMatriz()[2][p1] - aux.getMatriz().getMatriz()[2][p2])
@@ -887,13 +885,13 @@ public class PainelExtendido extends JPanel {
                 //R = c;
                 //R = a + b + c + d;
                 if (b <= 0) {
-                    desenhoFaceTopo(aux.getF3(), aux.getMatriz());
+                    desenhoFaceTopo(aux.getFaces()[2], aux.getMatriz());
                 }
 
                 //Face que está na direita
-                p1 = aux.getF4().getA3().getP1();
-                p2 = aux.getF4().getA2().getP2();
-                p3 = aux.getF4().getA2().getP1();
+                p1 = aux.getFaces()[3].getAresta(2).getP1();
+                p2 = aux.getFaces()[3].getAresta(1).getP2();
+                p3 = aux.getFaces()[3].getAresta(1).getP1();
 
                 a = (aux.getMatriz().getMatriz()[1][p3] - aux.getMatriz().getMatriz()[1][p2])
                         * (aux.getMatriz().getMatriz()[2][p1] - aux.getMatriz().getMatriz()[2][p2])
@@ -922,13 +920,13 @@ public class PainelExtendido extends JPanel {
                 //R = c;
                 //R = a + b + c + d;
                 if (b <= 0) {
-                    desenhoFaceTopo(aux.getF4(), aux.getMatriz());
+                    desenhoFaceTopo(aux.getFaces()[3], aux.getMatriz());
                 }
 
                 //Face que está no topo
-                p1 = aux.getF5().getA3().getP1();
-                p2 = aux.getF5().getA2().getP2();
-                p3 = aux.getF5().getA2().getP1();
+                p1 = aux.getFaces()[4].getAresta(2).getP1();
+                p2 = aux.getFaces()[4].getAresta(1).getP2();
+                p3 = aux.getFaces()[4].getAresta(1).getP1();
 
                 a = (aux.getMatriz().getMatriz()[1][p3] - aux.getMatriz().getMatriz()[1][p2])
                         * (aux.getMatriz().getMatriz()[2][p1] - aux.getMatriz().getMatriz()[2][p2])
@@ -957,13 +955,13 @@ public class PainelExtendido extends JPanel {
                 //R = c;
                 //R = a + b + c + d;
                 if (b <= 0) {
-                    desenhoFaceTopo(aux.getF5(), aux.getMatriz());
+                    desenhoFaceTopo(aux.getFaces()[4], aux.getMatriz());
                 }
 
                 //Face que está abaixo
-                p1 = aux.getF6().getA3().getP2();
-                p2 = aux.getF6().getA2().getP2();
-                p3 = aux.getF6().getA2().getP1();
+                p1 = aux.getFaces()[5].getAresta(2).getP2();
+                p2 = aux.getFaces()[5].getAresta(1).getP2();
+                p3 = aux.getFaces()[5].getAresta(1).getP1();
 
                 a = (aux.getMatriz().getMatriz()[1][p3] - aux.getMatriz().getMatriz()[1][p2])
                         * (aux.getMatriz().getMatriz()[2][p1] - aux.getMatriz().getMatriz()[2][p2])
@@ -992,25 +990,26 @@ public class PainelExtendido extends JPanel {
                 //R = c;
                 //R = a + b + c + d;
                 if (b <= 0) {
-                    desenhoFaceTopo(aux.getF6(), aux.getMatriz());
+                    desenhoFaceTopo(aux.getFaces()[5], aux.getMatriz());
                 }
             }
         }
     }
 
-    public void visibilidadeFacesLado(ArrayList<ListaCubos> listaCubos) {
+    public void visibilidadeFacesLado(ArrayList<ListaPrimitivas> listaPrimitivas) {
+        //****************MODIFICAR METODO PARA USAR NUMERO VARIAVEL DE FACES
         double a, b, c, raiz;
         int p1, p2, p3, ang;
-        Cubo aux;
-        for (ListaCubos cubo : listaCubos) {
-            for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                aux = cubo.getListaCubos().get(i);
+        Primitiva aux;
+        for (ListaPrimitivas primitiva : listaPrimitivas) {
+            for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                aux = primitiva.getListaPrimitivas().get(i);
                 g.setColor(aux.getCorBordas());
                 ang = Math.abs(aux.getMatriz().getAnguloRotacaoX());
                 //Face que está na frente
-                p1 = aux.getF1().getA3().getP2();
-                p2 = aux.getF1().getA2().getP2();
-                p3 = aux.getF1().getA2().getP1();
+                p1 = aux.getFaces()[0].getAresta(2).getP2();
+                p2 = aux.getFaces()[0].getAresta(1).getP2();
+                p3 = aux.getFaces()[0].getAresta(1).getP1();
 
                 a = (aux.getMatriz().getMatriz()[1][p3] - aux.getMatriz().getMatriz()[1][p2])
                         * (aux.getMatriz().getMatriz()[2][p1] - aux.getMatriz().getMatriz()[2][p2])
@@ -1042,13 +1041,13 @@ public class PainelExtendido extends JPanel {
                 //System.out.println(d);
                 //System.out.println(R);
                 if (a <= 0) {
-                    desenhoFaceLado(aux.getF1(), aux.getMatriz());
+                    desenhoFaceLado(aux.getFaces()[0], aux.getMatriz());
                 }
 
                 //Face que está na esquerda
-                p1 = aux.getF2().getA3().getP2();
-                p2 = aux.getF2().getA2().getP1();
-                p3 = aux.getF2().getA2().getP2();
+                p1 = aux.getFaces()[1].getAresta(2).getP2();
+                p2 = aux.getFaces()[1].getAresta(1).getP1();
+                p3 = aux.getFaces()[1].getAresta(1).getP2();
 
                 a = (aux.getMatriz().getMatriz()[1][p3] - aux.getMatriz().getMatriz()[1][p2])
                         * (aux.getMatriz().getMatriz()[2][p1] - aux.getMatriz().getMatriz()[2][p2])
@@ -1076,13 +1075,13 @@ public class PainelExtendido extends JPanel {
                 //R = c;
                 //R = a + b + c + d;
                 if (a <= 0) {
-                    desenhoFaceLado(aux.getF2(), aux.getMatriz());
+                    desenhoFaceLado(aux.getFaces()[1], aux.getMatriz());
                 }
 
                 //Face que está atrás
-                p1 = aux.getF3().getA4().getP1();
-                p2 = aux.getF3().getA1().getP1();
-                p3 = aux.getF3().getA1().getP2();
+                p1 = aux.getFaces()[2].getAresta(3).getP1();
+                p2 = aux.getFaces()[2].getAresta(0).getP1();
+                p3 = aux.getFaces()[2].getAresta(0).getP2();
 
                 a = (aux.getMatriz().getMatriz()[1][p3] - aux.getMatriz().getMatriz()[1][p2])
                         * (aux.getMatriz().getMatriz()[2][p1] - aux.getMatriz().getMatriz()[2][p2])
@@ -1111,13 +1110,13 @@ public class PainelExtendido extends JPanel {
                 //R = c;
                 //R = a + b + c + d;
                 if (a <= 0) {
-                    desenhoFaceLado(aux.getF3(), aux.getMatriz());
+                    desenhoFaceLado(aux.getFaces()[2], aux.getMatriz());
                 }
 
                 //Face que está na direita
-                p1 = aux.getF4().getA3().getP1();
-                p2 = aux.getF4().getA2().getP2();
-                p3 = aux.getF4().getA2().getP1();
+                p1 = aux.getFaces()[3].getAresta(2).getP1();
+                p2 = aux.getFaces()[3].getAresta(1).getP2();
+                p3 = aux.getFaces()[3].getAresta(1).getP1();
 
                 a = (aux.getMatriz().getMatriz()[1][p3] - aux.getMatriz().getMatriz()[1][p2])
                         * (aux.getMatriz().getMatriz()[2][p1] - aux.getMatriz().getMatriz()[2][p2])
@@ -1146,13 +1145,13 @@ public class PainelExtendido extends JPanel {
                 //R = c;
                 //R = a + b + c + d;
                 if (a <= 0) {
-                    desenhoFaceLado(aux.getF4(), aux.getMatriz());
+                    desenhoFaceLado(aux.getFaces()[3], aux.getMatriz());
                 }
 
                 //Face que está no topo
-                p1 = aux.getF5().getA3().getP1();
-                p2 = aux.getF5().getA2().getP2();
-                p3 = aux.getF5().getA2().getP1();
+                p1 = aux.getFaces()[4].getAresta(2).getP1();
+                p2 = aux.getFaces()[4].getAresta(1).getP2();
+                p3 = aux.getFaces()[4].getAresta(1).getP1();
 
                 a = (aux.getMatriz().getMatriz()[1][p3] - aux.getMatriz().getMatriz()[1][p2])
                         * (aux.getMatriz().getMatriz()[2][p1] - aux.getMatriz().getMatriz()[2][p2])
@@ -1181,13 +1180,13 @@ public class PainelExtendido extends JPanel {
                 //R = c;
                 //R = a + b + c + d;
                 if (a <= 0) {
-                    desenhoFaceLado(aux.getF5(), aux.getMatriz());
+                    desenhoFaceLado(aux.getFaces()[4], aux.getMatriz());
                 }
 
                 //Face que está abaixo
-                p1 = aux.getF6().getA3().getP2();
-                p2 = aux.getF6().getA2().getP2();
-                p3 = aux.getF6().getA2().getP1();
+                p1 = aux.getFaces()[5].getAresta(2).getP2();
+                p2 = aux.getFaces()[5].getAresta(1).getP2();
+                p3 = aux.getFaces()[5].getAresta(1).getP1();
 
                 a = (aux.getMatriz().getMatriz()[1][p3] - aux.getMatriz().getMatriz()[1][p2])
                         * (aux.getMatriz().getMatriz()[2][p1] - aux.getMatriz().getMatriz()[2][p2])
@@ -1216,30 +1215,31 @@ public class PainelExtendido extends JPanel {
                 //R = c;
                 //R = a + b + c + d;
                 if (a <= 0) {
-                    desenhoFaceLado(aux.getF6(), aux.getMatriz());
+                    desenhoFaceLado(aux.getFaces()[5], aux.getMatriz());
                 }
             }
         }
     }
 
-    public void visibilidadesFacesPerspectiva(ArrayList<ListaCubos> listaCubos) {
+    public void visibilidadesFacesPerspectiva(ArrayList<ListaPrimitivas> listaPrimitivas) {
+        //****************MODIFICAR METODO PARA USAR NUMERO VARIAVEL DE FACES
         double a, b, c, raiz, R;
         int p1, p2, p3, ang;
-        Cubo aux;
-        for (ListaCubos cubo : listaCubos) {
-            for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                aux = cubo.getListaCubos().get(i);
+        Primitiva aux;
+        for (ListaPrimitivas primitiva : listaPrimitivas) {
+            for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                aux = primitiva.getListaPrimitivas().get(i);
                 g.setColor(aux.getCorBordas());
                 ang = Math.abs(aux.getMatrizPerspectiva().getAnguloRotacaoZ());
                 //Face que está na frente
                 if (ang < 180) {
-                    p1 = aux.getF1().getA3().getP2();
-                    p2 = aux.getF1().getA2().getP2();
-                    p3 = aux.getF1().getA2().getP1();
+                    p1 = aux.getFaces()[0].getAresta(2).getP2();
+                    p2 = aux.getFaces()[0].getAresta(1).getP2();
+                    p3 = aux.getFaces()[0].getAresta(1).getP1();
                 } else {
-                    p3 = aux.getF1().getA3().getP2();
-                    p2 = aux.getF1().getA2().getP2();
-                    p1 = aux.getF1().getA2().getP1();
+                    p3 = aux.getFaces()[0].getAresta(2).getP2();
+                    p2 = aux.getFaces()[0].getAresta(1).getP2();
+                    p1 = aux.getFaces()[0].getAresta(1).getP1();
                 }
 
                 a = (aux.getMatrizPerspectiva().getMatriz()[1][p3] - aux.getMatrizPerspectiva().getMatriz()[1][p2])
@@ -1265,23 +1265,23 @@ public class PainelExtendido extends JPanel {
 
                 if (ang < 180) {
                     if (R <= 0) {
-                        desenhoFacePerspectiva(aux.getF1(), aux.getMatrizPerspectiva());
+                        desenhoFacePerspectiva(aux.getFaces()[0], aux.getMatrizPerspectiva());
                     }
                 } else {
                     if (R >= 0) {
-                        desenhoFacePerspectiva(aux.getF1(), aux.getMatrizPerspectiva());
+                        desenhoFacePerspectiva(aux.getFaces()[0], aux.getMatrizPerspectiva());
                     }
                 }
 
                 //Face que está na esquerda
                 if (ang < 180) {
-                    p1 = aux.getF2().getA3().getP2();
-                    p2 = aux.getF2().getA2().getP1();
-                    p3 = aux.getF2().getA2().getP2();
+                    p1 = aux.getFaces()[1].getAresta(2).getP2();
+                    p2 = aux.getFaces()[1].getAresta(1).getP1();
+                    p3 = aux.getFaces()[1].getAresta(1).getP2();
                 } else {
-                    p3 = aux.getF2().getA3().getP2();
-                    p2 = aux.getF2().getA2().getP1();
-                    p1 = aux.getF2().getA2().getP2();
+                    p3 = aux.getFaces()[1].getAresta(2).getP2();
+                    p2 = aux.getFaces()[1].getAresta(1).getP1();
+                    p1 = aux.getFaces()[1].getAresta(1).getP2();
                 }
 
                 a = (aux.getMatrizPerspectiva().getMatriz()[1][p3] - aux.getMatrizPerspectiva().getMatriz()[1][p2])
@@ -1306,23 +1306,23 @@ public class PainelExtendido extends JPanel {
                 R = a + b + c;
                 if (ang < 180) {
                     if (R <= 0) {
-                        desenhoFacePerspectiva(aux.getF2(), aux.getMatrizPerspectiva());
+                        desenhoFacePerspectiva(aux.getFaces()[1], aux.getMatrizPerspectiva());
                     }
                 } else {
                     if (R >= 0) {
-                        desenhoFacePerspectiva(aux.getF2(), aux.getMatrizPerspectiva());
+                        desenhoFacePerspectiva(aux.getFaces()[1], aux.getMatrizPerspectiva());
                     }
                 }
 
                 //Face que está atrás
                 if (ang < 180) {
-                    p1 = aux.getF3().getA4().getP1();
-                    p2 = aux.getF3().getA1().getP1();
-                    p3 = aux.getF3().getA1().getP2();
+                    p1 = aux.getFaces()[2].getAresta(3).getP1();
+                    p2 = aux.getFaces()[2].getAresta(0).getP1();
+                    p3 = aux.getFaces()[2].getAresta(0).getP2();
                 } else {
-                    p3 = aux.getF3().getA4().getP1();
-                    p2 = aux.getF3().getA1().getP1();
-                    p1 = aux.getF3().getA1().getP2();
+                    p3 = aux.getFaces()[2].getAresta(3).getP1();
+                    p2 = aux.getFaces()[2].getAresta(0).getP1();
+                    p1 = aux.getFaces()[2].getAresta(0).getP2();
                 }
 
                 a = (aux.getMatrizPerspectiva().getMatriz()[1][p3] - aux.getMatrizPerspectiva().getMatriz()[1][p2])
@@ -1347,23 +1347,23 @@ public class PainelExtendido extends JPanel {
                 R = a + b + c;
                 if (ang < 180) {
                     if (R <= 0) {
-                        desenhoFacePerspectiva(aux.getF3(), aux.getMatrizPerspectiva());
+                        desenhoFacePerspectiva(aux.getFaces()[2], aux.getMatrizPerspectiva());
                     }
                 } else {
                     if (R >= 0) {
-                        desenhoFacePerspectiva(aux.getF3(), aux.getMatrizPerspectiva());
+                        desenhoFacePerspectiva(aux.getFaces()[2], aux.getMatrizPerspectiva());
                     }
                 }
 
                 //Face que está na direita
                 if (ang < 180) {
-                    p1 = aux.getF4().getA3().getP1();
-                    p2 = aux.getF4().getA2().getP2();
-                    p3 = aux.getF4().getA2().getP1();
+                    p1 = aux.getFaces()[3].getAresta(2).getP1();
+                    p2 = aux.getFaces()[3].getAresta(1).getP2();
+                    p3 = aux.getFaces()[3].getAresta(1).getP1();
                 } else {
-                    p3 = aux.getF4().getA3().getP1();
-                    p2 = aux.getF4().getA2().getP2();
-                    p1 = aux.getF4().getA2().getP1();
+                    p3 = aux.getFaces()[3].getAresta(2).getP1();
+                    p2 = aux.getFaces()[3].getAresta(1).getP2();
+                    p1 = aux.getFaces()[3].getAresta(1).getP1();
                 }
 
                 a = (aux.getMatrizPerspectiva().getMatriz()[1][p3] - aux.getMatrizPerspectiva().getMatriz()[1][p2])
@@ -1388,23 +1388,23 @@ public class PainelExtendido extends JPanel {
                 R = a + b + c;
                 if (ang < 180) {
                     if (R <= 0) {
-                        desenhoFacePerspectiva(aux.getF4(), aux.getMatrizPerspectiva());
+                        desenhoFacePerspectiva(aux.getFaces()[3], aux.getMatrizPerspectiva());
                     }
                 } else {
                     if (R >= 0) {
-                        desenhoFacePerspectiva(aux.getF4(), aux.getMatrizPerspectiva());
+                        desenhoFacePerspectiva(aux.getFaces()[3], aux.getMatrizPerspectiva());
                     }
                 }
 
                 //Face que está no topo
                 if (ang < 180) {
-                    p1 = aux.getF5().getA3().getP1();
-                    p2 = aux.getF5().getA2().getP2();
-                    p3 = aux.getF5().getA2().getP1();
+                    p1 = aux.getFaces()[4].getAresta(2).getP1();
+                    p2 = aux.getFaces()[4].getAresta(1).getP2();
+                    p3 = aux.getFaces()[4].getAresta(1).getP1();
                 } else {
-                    p3 = aux.getF5().getA3().getP1();
-                    p2 = aux.getF5().getA2().getP2();
-                    p1 = aux.getF5().getA2().getP1();
+                    p3 = aux.getFaces()[4].getAresta(2).getP1();
+                    p2 = aux.getFaces()[4].getAresta(1).getP2();
+                    p1 = aux.getFaces()[4].getAresta(1).getP1();
                 }
 
                 a = (aux.getMatrizPerspectiva().getMatriz()[1][p3] - aux.getMatrizPerspectiva().getMatriz()[1][p2])
@@ -1429,23 +1429,23 @@ public class PainelExtendido extends JPanel {
                 R = a + b + c;
                 if (ang < 180) {
                     if (R <= 0) {
-                        desenhoFacePerspectiva(aux.getF5(), aux.getMatrizPerspectiva());
+                        desenhoFacePerspectiva(aux.getFaces()[4], aux.getMatrizPerspectiva());
                     }
                 } else {
                     if (R >= 0) {
-                        desenhoFacePerspectiva(aux.getF5(), aux.getMatrizPerspectiva());
+                        desenhoFacePerspectiva(aux.getFaces()[4], aux.getMatrizPerspectiva());
                     }
                 }
 
                 //Face que está abaixo
                 if (ang < 180) {
-                    p1 = aux.getF6().getA3().getP2();
-                    p2 = aux.getF6().getA2().getP2();
-                    p3 = aux.getF6().getA2().getP1();
+                    p1 = aux.getFaces()[5].getAresta(2).getP2();
+                    p2 = aux.getFaces()[5].getAresta(1).getP2();
+                    p3 = aux.getFaces()[5].getAresta(1).getP1();
                 } else {
-                    p3 = aux.getF6().getA3().getP2();
-                    p2 = aux.getF6().getA2().getP2();
-                    p1 = aux.getF6().getA2().getP1();
+                    p3 = aux.getFaces()[5].getAresta(2).getP2();
+                    p2 = aux.getFaces()[5].getAresta(1).getP2();
+                    p1 = aux.getFaces()[5].getAresta(1).getP1();
                 }
 
                 a = (aux.getMatrizPerspectiva().getMatriz()[1][p3] - aux.getMatrizPerspectiva().getMatriz()[1][p2])
@@ -1470,29 +1470,30 @@ public class PainelExtendido extends JPanel {
                 R = a + b + c;
                 if (ang < 180) {
                     if (R <= 0) {
-                        desenhoFacePerspectiva(aux.getF6(), aux.getMatrizPerspectiva());
+                        desenhoFacePerspectiva(aux.getFaces()[5], aux.getMatrizPerspectiva());
                     }
                 } else {
                     if (R >= 0) {
-                        desenhoFacePerspectiva(aux.getF6(), aux.getMatrizPerspectiva());
+                        desenhoFacePerspectiva(aux.getFaces()[5], aux.getMatrizPerspectiva());
                     }
                 }
             }
         }
     }
 
-    public void visibilidadeFacesIsometrica(ArrayList<ListaCubos> listaCubos) {
+    public void visibilidadeFacesIsometrica(ArrayList<ListaPrimitivas> listaPrimitivas) {
+        //****************MODIFICAR METODO PARA USAR NUMERO VARIAVEL DE FACES
         double a, b, c, raiz, R;
         int p1, p2, p3;
-        Cubo aux;
-        for (ListaCubos cubo : listaCubos) {
-            for (int i = 0; i < cubo.getListaCubos().size(); i++) {
-                aux = cubo.getListaCubos().get(i);
+        Primitiva aux;
+        for (ListaPrimitivas primitiva : listaPrimitivas) {
+            for (int i = 0; i < primitiva.getListaPrimitivas().size(); i++) {
+                aux = primitiva.getListaPrimitivas().get(i);
                 g.setColor(aux.getCorBordas());
                 //Face que está na frente
-                p1 = aux.getF1().getA3().getP2();
-                p2 = aux.getF1().getA2().getP2();
-                p3 = aux.getF1().getA2().getP1();
+                p1 = aux.getFaces()[0].getAresta(2).getP2();
+                p2 = aux.getFaces()[0].getAresta(1).getP2();
+                p3 = aux.getFaces()[0].getAresta(1).getP1();
 
                 a = (aux.getMatrizIsometrica().getMatriz()[1][p3] - aux.getMatrizIsometrica().getMatriz()[1][p2])
                         * (aux.getMatrizIsometrica().getMatriz()[2][p1] - aux.getMatrizIsometrica().getMatriz()[2][p2])
@@ -1516,13 +1517,13 @@ public class PainelExtendido extends JPanel {
                 R = a + b + c;
 
                 if (R <= 0) {
-                    desenhoFaceIsometrica(aux.getF1(), aux.getMatrizIsometrica());
+                    desenhoFaceIsometrica(aux.getFaces()[0], aux.getMatrizIsometrica());
                 }
 
                 //Face que está na esquerda
-                p1 = aux.getF2().getA3().getP2();
-                p2 = aux.getF2().getA2().getP1();
-                p3 = aux.getF2().getA2().getP2();
+                p1 = aux.getFaces()[1].getAresta(2).getP2();
+                p2 = aux.getFaces()[1].getAresta(1).getP1();
+                p3 = aux.getFaces()[1].getAresta(1).getP2();
 
                 a = (aux.getMatrizIsometrica().getMatriz()[1][p3] - aux.getMatrizIsometrica().getMatriz()[1][p2])
                         * (aux.getMatrizIsometrica().getMatriz()[2][p1] - aux.getMatrizIsometrica().getMatriz()[2][p2])
@@ -1545,13 +1546,13 @@ public class PainelExtendido extends JPanel {
                 c = c / raiz;
                 R = a + b + c;
                 if (R <= 0) {
-                    desenhoFaceIsometrica(aux.getF2(), aux.getMatrizIsometrica());
+                    desenhoFaceIsometrica(aux.getFaces()[1], aux.getMatrizIsometrica());
                 }
 
                 //Face que está atrás
-                p1 = aux.getF3().getA4().getP1();
-                p2 = aux.getF3().getA1().getP1();
-                p3 = aux.getF3().getA1().getP2();
+                p1 = aux.getFaces()[2].getAresta(3).getP1();
+                p2 = aux.getFaces()[2].getAresta(0).getP1();
+                p3 = aux.getFaces()[2].getAresta(0).getP2();
 
                 a = (aux.getMatrizIsometrica().getMatriz()[1][p3] - aux.getMatrizIsometrica().getMatriz()[1][p2])
                         * (aux.getMatrizIsometrica().getMatriz()[2][p1] - aux.getMatrizIsometrica().getMatriz()[2][p2])
@@ -1574,13 +1575,13 @@ public class PainelExtendido extends JPanel {
                 c = c / raiz;
                 R = a + b + c;
                 if (R <= 0) {
-                    desenhoFaceIsometrica(aux.getF3(), aux.getMatrizIsometrica());
+                    desenhoFaceIsometrica(aux.getFaces()[2], aux.getMatrizIsometrica());
                 }
 
                 //Face que está na direita
-                p1 = aux.getF4().getA3().getP1();
-                p2 = aux.getF4().getA2().getP2();
-                p3 = aux.getF4().getA2().getP1();
+                p1 = aux.getFaces()[3].getAresta(2).getP1();
+                p2 = aux.getFaces()[3].getAresta(1).getP2();
+                p3 = aux.getFaces()[3].getAresta(1).getP1();
 
                 a = (aux.getMatrizIsometrica().getMatriz()[1][p3] - aux.getMatrizIsometrica().getMatriz()[1][p2])
                         * (aux.getMatrizIsometrica().getMatriz()[2][p1] - aux.getMatrizIsometrica().getMatriz()[2][p2])
@@ -1603,13 +1604,13 @@ public class PainelExtendido extends JPanel {
                 c = c / raiz;
                 R = a + b + c;
                 if (R <= 0) {
-                    desenhoFaceIsometrica(aux.getF4(), aux.getMatrizIsometrica());
+                    desenhoFaceIsometrica(aux.getFaces()[3], aux.getMatrizIsometrica());
                 }
 
                 //Face que está no topo
-                p1 = aux.getF5().getA3().getP1();
-                p2 = aux.getF5().getA2().getP2();
-                p3 = aux.getF5().getA2().getP1();
+                p1 = aux.getFaces()[4].getAresta(2).getP1();
+                p2 = aux.getFaces()[4].getAresta(1).getP2();
+                p3 = aux.getFaces()[4].getAresta(1).getP1();
 
                 a = (aux.getMatrizIsometrica().getMatriz()[1][p3] - aux.getMatrizIsometrica().getMatriz()[1][p2])
                         * (aux.getMatrizIsometrica().getMatriz()[2][p1] - aux.getMatrizIsometrica().getMatriz()[2][p2])
@@ -1632,13 +1633,13 @@ public class PainelExtendido extends JPanel {
                 c = c / raiz;
                 R = a + b + c;
                 if (R <= 0) {
-                    desenhoFaceIsometrica(aux.getF5(), aux.getMatrizIsometrica());
+                    desenhoFaceIsometrica(aux.getFaces()[4], aux.getMatrizIsometrica());
                 }
 
                 //Face que está abaixo
-                p1 = aux.getF6().getA3().getP2();
-                p2 = aux.getF6().getA2().getP2();
-                p3 = aux.getF6().getA2().getP1();
+                p1 = aux.getFaces()[5].getAresta(2).getP2();
+                p2 = aux.getFaces()[5].getAresta(1).getP2();
+                p3 = aux.getFaces()[5].getAresta(1).getP1();
 
                 a = (aux.getMatrizIsometrica().getMatriz()[1][p3] - aux.getMatrizIsometrica().getMatriz()[1][p2])
                         * (aux.getMatrizIsometrica().getMatriz()[2][p1] - aux.getMatrizIsometrica().getMatriz()[2][p2])
@@ -1661,127 +1662,114 @@ public class PainelExtendido extends JPanel {
                 c = c / raiz;
                 R = a + b + c;
                 if (R <= 0) {
-                    desenhoFaceIsometrica(aux.getF6(), aux.getMatrizIsometrica());
+                    desenhoFaceIsometrica(aux.getFaces()[5], aux.getMatrizIsometrica());
                 }
             }
         }
     }
 
-    public void apagarCubo(ListaCubos listaCubos) {
+    public void apagarPrimitiva(ListaPrimitivas listaPrimitivas) {
         g.setColor(Color.WHITE);
-        Cubo cubo;
-        for (int i = 0; i < listaCubos.getListaCubos().size(); i++) {
-            cubo = listaCubos.getListaCubos().get(i);
-            //Frente
-            desenhoFaceFrente(cubo.getF1(), cubo.getMatriz());
-            desenhoFaceFrente(cubo.getF2(), cubo.getMatriz());
-            desenhoFaceFrente(cubo.getF3(), cubo.getMatriz());
-            desenhoFaceFrente(cubo.getF4(), cubo.getMatriz());
-            desenhoFaceFrente(cubo.getF5(), cubo.getMatriz());
-            desenhoFaceFrente(cubo.getF6(), cubo.getMatriz());
-            //Topo
-            desenhoFaceTopo(cubo.getF1(), cubo.getMatriz());
-            desenhoFaceTopo(cubo.getF2(), cubo.getMatriz());
-            desenhoFaceTopo(cubo.getF3(), cubo.getMatriz());
-            desenhoFaceTopo(cubo.getF4(), cubo.getMatriz());
-            desenhoFaceTopo(cubo.getF5(), cubo.getMatriz());
-            desenhoFaceTopo(cubo.getF6(), cubo.getMatriz());
-            //Lado
-            desenhoFaceLado(cubo.getF1(), cubo.getMatriz());
-            desenhoFaceLado(cubo.getF2(), cubo.getMatriz());
-            desenhoFaceLado(cubo.getF3(), cubo.getMatriz());
-            desenhoFaceLado(cubo.getF4(), cubo.getMatriz());
-            desenhoFaceLado(cubo.getF5(), cubo.getMatriz());
-            desenhoFaceLado(cubo.getF6(), cubo.getMatriz());
+        Primitiva primitiva;
+        int numFaces;
+        for (int i = 0; i < listaPrimitivas.getListaPrimitivas().size(); i++) {
+            primitiva = listaPrimitivas.getListaPrimitivas().get(i);
+            numFaces = primitiva.getQTDFaces();
+            for (int j = 0; j < numFaces; j++) {
+                desenhoFaceFrente(primitiva.getFaces()[j], primitiva.getMatriz());
+                desenhoFaceTopo(primitiva.getFaces()[j], primitiva.getMatriz());
+                desenhoFaceLado(primitiva.getFaces()[j], primitiva.getMatriz());
+            }
         }
     }
 
-    public void apagarCuboProjecao(ListaCubos listaCubos, int n) {
+    public void apagarPrimitivaProjecao(ListaPrimitivas listaPrimitivas, int n) {
         g.setColor(Color.WHITE);
-        Cubo cubo;
+        Primitiva primitiva;
+        int numFaces;
         if (n == 1) {
-            for (int i = 0; i < listaCubos.getListaCubos().size(); i++) {
-                cubo = listaCubos.getListaCubos().get(i);
-                //Perspectiva
-                desenhoFacePerspectiva(cubo.getF1(), cubo.getMatrizPerspectiva());
-                desenhoFacePerspectiva(cubo.getF2(), cubo.getMatrizPerspectiva());
-                desenhoFacePerspectiva(cubo.getF3(), cubo.getMatrizPerspectiva());
-                desenhoFacePerspectiva(cubo.getF4(), cubo.getMatrizPerspectiva());
-                desenhoFacePerspectiva(cubo.getF5(), cubo.getMatrizPerspectiva());
-                desenhoFacePerspectiva(cubo.getF6(), cubo.getMatrizPerspectiva());
+            for (int i = 0; i < listaPrimitivas.getListaPrimitivas().size(); i++) {
+                primitiva = listaPrimitivas.getListaPrimitivas().get(i);
+                numFaces = primitiva.getQTDFaces();
+                for (int j = 0; j < numFaces; j++) {
+                    desenhoFacePerspectiva(primitiva.getFaces()[j], primitiva.getMatrizPerspectiva());
+                }
             }
         } else {
             if (n == 2) {
-                for (int i = 0; i < listaCubos.getListaCubos().size(); i++) {
-                    cubo = listaCubos.getListaCubos().get(i);
-                    //Isometrica
-                    desenhoFaceIsometrica(cubo.getF1(), cubo.getMatrizIsometrica());
-                    desenhoFaceIsometrica(cubo.getF2(), cubo.getMatrizIsometrica());
-                    desenhoFaceIsometrica(cubo.getF3(), cubo.getMatrizIsometrica());
-                    desenhoFaceIsometrica(cubo.getF4(), cubo.getMatrizIsometrica());
-                    desenhoFaceIsometrica(cubo.getF5(), cubo.getMatrizIsometrica());
-                    desenhoFaceIsometrica(cubo.getF6(), cubo.getMatrizIsometrica());
+                for (int i = 0; i < listaPrimitivas.getListaPrimitivas().size(); i++) {
+                    primitiva = listaPrimitivas.getListaPrimitivas().get(i);
+                    numFaces = primitiva.getQTDFaces();
+                    for (int j = 0; j < numFaces; j++) {
+                        desenhoFaceIsometrica(primitiva.getFaces()[j], primitiva.getMatrizIsometrica());
+                    }
                 }
             }
         }
     }
 
-    public boolean existemCubosPossiveisFrente(ArrayList<ListaCubos> cb, int cord1, int cord2) {
-        cubosPossiveis.clear();
-        cubosPossiveis = new ArrayList<>();
+    public boolean existemPrimitivasPossiveisFrente(ArrayList<ListaPrimitivas> cb, int cord1, int cord2) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
+        primitivasPossiveis.clear();
+        primitivasPossiveis = new ArrayList<>();
         for (int i = 0; i < cb.size(); i++) {
-            if (clickDentroCuboFrente(cb.get(i), cord1, cord2)) {
-                cubosPossiveis.add(cb.get(i));
+            if (clickDentroPrimitivaFrente(cb.get(i), cord1, cord2)) {
+                primitivasPossiveis.add(cb.get(i));
                 //System.out.println("possivel " + i);
             }
         }
-        return !cubosPossiveis.isEmpty();
+        return !primitivasPossiveis.isEmpty();
     }
 
-    public boolean existemCubosPossiveisTopo(ArrayList<ListaCubos> cb, int cord1, int cord2) {
-        cubosPossiveis.clear();
-        cubosPossiveis = new ArrayList<>();
+    public boolean existemPrimitivasPossiveisTopo(ArrayList<ListaPrimitivas> cb, int cord1, int cord2) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
+        primitivasPossiveis.clear();
+        primitivasPossiveis = new ArrayList<>();
         for (int i = 0; i < cb.size(); i++) {
-            if (clickDentroCuboTopo(cb.get(i), cord1, cord2)) {
-                cubosPossiveis.add(cb.get(i));
+            if (clickDentroPrimitivaTopo(cb.get(i), cord1, cord2)) {
+                primitivasPossiveis.add(cb.get(i));
             }
         }
-        return !cubosPossiveis.isEmpty();
+        return !primitivasPossiveis.isEmpty();
     }
 
-    public boolean existemCubosPossiveisLado(ArrayList<ListaCubos> cb, int cord1, int cord2) {
-        cubosPossiveis.clear();
-        cubosPossiveis = new ArrayList<>();
+    public boolean existemPrimitivasPossiveisLado(ArrayList<ListaPrimitivas> cb, int cord1, int cord2) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
+        primitivasPossiveis.clear();
+        primitivasPossiveis = new ArrayList<>();
         for (int i = 0; i < cb.size(); i++) {
             //Invertido por conta da ordenada y invertida no painel do java
-            if (clickDentroCuboLado(cb.get(i), cord1, cord2)) {
-                cubosPossiveis.add(cb.get(i));
+            if (clickDentroPrimitivaLado(cb.get(i), cord1, cord2)) {
+                primitivasPossiveis.add(cb.get(i));
             }
         }
-        return !cubosPossiveis.isEmpty();
+        return !primitivasPossiveis.isEmpty();
     }
 
-    public boolean clickDentroCuboFrente(ListaCubos c, int cord1, int cord2) {
+    public boolean clickDentroPrimitivaFrente(ListaPrimitivas c, int cord1, int cord2) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
         if (cord1 >= c.getExtremoEsquerda() && cord1 <= c.getExtremoDireita()) {
             if (cord2 >= c.getExtremoCima() && cord2 <= c.getExtremoBaixo()) {
                 return true;
             }
         }
         return false;
-        //return (clickDentroCubo(c, cord1, cord2, 0, 1));
+        //return (clickDentroPrimitiva(c, cord1, cord2, 0, 1));
     }
 
-    public boolean clickDentroCuboTopo(ListaCubos c, int cord1, int cord2) {
+    public boolean clickDentroPrimitivaTopo(ListaPrimitivas c, int cord1, int cord2) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
         if (cord1 >= c.getExtremoEsquerda() && cord1 <= c.getExtremoDireita()) {
             if (cord2 >= c.getExtremoTras() && cord2 <= c.getExtremoFrente()) {
                 return true;
             }
         }
         return false;
-        //return (clickDentroCubo(c, cord1, cord2, 0, 2));
+        //return (clickDentroPrimitiva(c, cord1, cord2, 0, 2));
     }
 
-    public boolean clickDentroCuboLado(ListaCubos c, int cord1, int cord2) {
+    public boolean clickDentroPrimitivaLado(ListaPrimitivas c, int cord1, int cord2) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
         //Invertido por conta da ordenada y invertida no painel do java
         if (cord1 >= c.getExtremoTras() && cord1 <= c.getExtremoFrente()) {
             if (cord2 >= c.getExtremoCima() && cord2 <= c.getExtremoBaixo()) {
@@ -1789,14 +1777,15 @@ public class PainelExtendido extends JPanel {
             }
         }
         return false;
-        //return (clickDentroCubo(c, cord1, cord2, 2, 1));
+        //return (clickDentroPrimitiva(c, cord1, cord2, 2, 1));
     }
 
-    public int selecionarCuboFrente(ArrayList<ListaCubos> listaCubos, int cord1, int cord2) {
+    public int selecionarPrimitivaFrente(ArrayList<ListaPrimitivas> listaPrimitivas, int cord1, int cord2) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
         double menorDist = 999999999, dist;
         int selec = 0;
-        for (int i = 0; i < listaCubos.size(); i++) {
-            dist = listaCubos.get(i).distanciaCentroPontoXY(cord1, cord2);
+        for (int i = 0; i < listaPrimitivas.size(); i++) {
+            dist = listaPrimitivas.get(i).distanciaCentroPontoXY(cord1, cord2);
             if (dist < menorDist) {
                 menorDist = dist;
                 selec = i;
@@ -1806,11 +1795,12 @@ public class PainelExtendido extends JPanel {
         return selec;
     }
 
-    public int selecionarCuboTopo(ArrayList<ListaCubos> listaCubos, int cord1, int cord2) {
+    public int selecionarPrimitivaTopo(ArrayList<ListaPrimitivas> listaPrimitivas, int cord1, int cord2) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
         double menorDist = 999999999, dist;
         int selec = 0;
-        for (int i = 0; i < listaCubos.size(); i++) {
-            dist = listaCubos.get(i).distanciaCentroPontoXZ(cord1, cord2);
+        for (int i = 0; i < listaPrimitivas.size(); i++) {
+            dist = listaPrimitivas.get(i).distanciaCentroPontoXZ(cord1, cord2);
             if (dist < menorDist) {
                 menorDist = dist;
                 selec = i;
@@ -1819,12 +1809,13 @@ public class PainelExtendido extends JPanel {
         return selec;
     }
 
-    public int selecionarCuboLado(ArrayList<ListaCubos> listaCubos, int cord1, int cord2) {
+    public int selecionarPrimitivaLado(ArrayList<ListaPrimitivas> listaPrimitivas, int cord1, int cord2) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
         double menorDist = 999999999, dist;
         int selec = 0;
-        for (int i = 0; i < listaCubos.size(); i++) {
+        for (int i = 0; i < listaPrimitivas.size(); i++) {
             //Invertido por causa do painel do java
-            dist = listaCubos.get(i).distanciaCentroPontoYZ(cord2, cord1);
+            dist = listaPrimitivas.get(i).distanciaCentroPontoYZ(cord2, cord1);
             if (dist < menorDist) {
                 menorDist = dist;
                 selec = i;
@@ -1833,7 +1824,8 @@ public class PainelExtendido extends JPanel {
         return selec;
     }
 
-    public void pintarSelecaoFrente(ListaCubos c, Color cor) {
+    public void pintarSelecaoFrente(ListaPrimitivas c, Color cor) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
         g = getGraphics();
         g.setColor(cor);
         boolean trocar = true;
@@ -1880,7 +1872,8 @@ public class PainelExtendido extends JPanel {
         //pintarSelecao(c, cor, 0, 1);
     }
 
-    public void pintarSelecaoTopo(ListaCubos c, Color cor) {
+    public void pintarSelecaoTopo(ListaPrimitivas c, Color cor) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
         g = getGraphics();
         g.setColor(cor);
         boolean trocar = true;
@@ -1927,7 +1920,8 @@ public class PainelExtendido extends JPanel {
         //pintarSelecao(c, cor, 0, 2);
     }
 
-    public void pintarSelecaoLado(ListaCubos c, Color cor) {
+    public void pintarSelecaoLado(ListaPrimitivas c, Color cor) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
         //Invertido por conta da ordenada y invertida no painel do java
         g = getGraphics();
         g.setColor(cor);
@@ -1975,15 +1969,16 @@ public class PainelExtendido extends JPanel {
         //pintarSelecao(c, cor, 2, 1);
     }
 
-    public int getCuboMaisProximoFrente(ArrayList<ListaCubos> listaCubos, int sel) {
+    public int getPrimitivaMaisProximoFrente(ArrayList<ListaPrimitivas> listaPrimitivas, int sel) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
         double menorDist = 999999999, dist;
         double cX, cY;
-        cX = listaCubos.get(sel).getCentroX();
-        cY = listaCubos.get(sel).getCentroY();
+        cX = listaPrimitivas.get(sel).getCentroX();
+        cY = listaPrimitivas.get(sel).getCentroY();
         int index = -1;
-        for (int i = 0; i < listaCubos.size(); i++) {
+        for (int i = 0; i < listaPrimitivas.size(); i++) {
             if (i != sel) {
-                dist = listaCubos.get(i).distanciaCentroPontoXY(cX, cY);
+                dist = listaPrimitivas.get(i).distanciaCentroPontoXY(cX, cY);
                 if (dist < menorDist) {
                     menorDist = dist;
                     index = i;
@@ -1997,15 +1992,16 @@ public class PainelExtendido extends JPanel {
         }
     }
 
-    public int getCuboMaisProximoTopo(ArrayList<ListaCubos> listaCubos, int sel) {
+    public int getPrimitivaMaisProximoTopo(ArrayList<ListaPrimitivas> listaPrimitivas, int sel) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
         double menorDist = 999999999, dist;
         double cX, cZ;
-        cX = listaCubos.get(sel).getCentroX();
-        cZ = listaCubos.get(sel).getCentroZ();
+        cX = listaPrimitivas.get(sel).getCentroX();
+        cZ = listaPrimitivas.get(sel).getCentroZ();
         int index = -1;
-        for (int i = 0; i < listaCubos.size(); i++) {
+        for (int i = 0; i < listaPrimitivas.size(); i++) {
             if (i != sel) {
-                dist = listaCubos.get(i).distanciaCentroPontoXZ(cX, cZ);
+                dist = listaPrimitivas.get(i).distanciaCentroPontoXZ(cX, cZ);
                 if (dist < menorDist) {
                     menorDist = dist;
                     index = i;
@@ -2019,15 +2015,16 @@ public class PainelExtendido extends JPanel {
         }
     }
 
-    public int getCuboMaisProximoLado(ArrayList<ListaCubos> listaCubos, int sel) {
+    public int getPrimitivaMaisProximoLado(ArrayList<ListaPrimitivas> listaPrimitivas, int sel) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
         double menorDist = 999999999, dist;
         double cY, cZ;
-        cY = listaCubos.get(sel).getCentroY();
-        cZ = listaCubos.get(sel).getCentroZ();
+        cY = listaPrimitivas.get(sel).getCentroY();
+        cZ = listaPrimitivas.get(sel).getCentroZ();
         int index = -1;
-        for (int i = 0; i < listaCubos.size(); i++) {
+        for (int i = 0; i < listaPrimitivas.size(); i++) {
             if (i != sel) {
-                dist = listaCubos.get(i).distanciaCentroPontoYZ(cY, cZ);
+                dist = listaPrimitivas.get(i).distanciaCentroPontoYZ(cY, cZ);
                 if (dist < menorDist) {
                     menorDist = dist;
                     index = i;

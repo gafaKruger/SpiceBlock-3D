@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package View;
+package ExtendedElements;
 
 /**
  *
  * @author Rafael Fiori Kruger
  */
-public class ManipulacoesPrisma {
+public class ManipulacoesEsfera {
 
 }

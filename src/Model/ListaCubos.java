@@ -1,39 +1,18 @@
 package Model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Rafael Fiori Kruger
  */
-public class ListaCubos implements Serializable {
-
+public class ListaCubos extends ListaPrimitivas {
+    //REVER SE OS METODOS ESTAO OK COM A SUPERCLASSE LISTAPRIMITIVAS OU NECESSITAM MODIFICAÇÃO ESPECIALIZADA
     private ArrayList<Cubo> listaCubos;
-    private boolean isAgrupado;
-    private double centroX, centroY, centroZ;
-    private int extremoCima, extremoBaixo, extremoEsquerda, extremoDireita, extremoFrente, extremoTras;
-    private float fatorEscalaZ, fatorTraslacaoX, fatorTraslacaoY, fatorTraslacaoZ;
-    private int anguloRotacaoX, anguloRotacaoY, anguloRotacaoZ;
-    private boolean travaFrente, travaTopo, travaLado, controleTelaFrente, controleTelaTopo, controleTelaLado;
-
+    
     public ListaCubos() {
-        listaCubos = new ArrayList<>();
-        isAgrupado = false;
-        centroX = 0;
-        centroY = 0;
-        centroZ = 0;
-        extremoCima = 999999999;
-        extremoBaixo = -999999999;
-        extremoEsquerda = 999999999;
-        extremoDireita = -999999999;
-        extremoTras = 999999999;
-        extremoFrente = -999999999;
-        fatorTraslacaoX = fatorTraslacaoY = fatorTraslacaoZ = 0;
-        anguloRotacaoX = anguloRotacaoY = anguloRotacaoZ = 0;
-        fatorEscalaZ = (float) 1.0f;
-        travaFrente = travaLado = travaTopo = false;
-        controleTelaLado = controleTelaTopo = controleTelaFrente = false;
+        super();
+        listaCubos = new ArrayList<>(); 
     }
 
     public ListaCubos(ArrayList<Cubo> listaCubos) {
@@ -466,59 +445,7 @@ public class ListaCubos implements Serializable {
         d = Math.sqrt(d);
         return d;
     }
-
-    public void defineAgrupado() {
-        isAgrupado = listaCubos.size() > 1;
-    }
-
-    public int getExtremoCima() {
-        return extremoCima;
-    }
-
-    public void setExtremoCima(int extremoCima) {
-        this.extremoCima = extremoCima;
-    }
-
-    public int getExtremoBaixo() {
-        return extremoBaixo;
-    }
-
-    public void setExtremoBaixo(int extremoBaixo) {
-        this.extremoBaixo = extremoBaixo;
-    }
-
-    public int getExtremoEsquerda() {
-        return extremoEsquerda;
-    }
-
-    public void setExtremoEsquerda(int extremoEsquerda) {
-        this.extremoEsquerda = extremoEsquerda;
-    }
-
-    public int getExtremoDireita() {
-        return extremoDireita;
-    }
-
-    public void setExtremoDireita(int extremoDireita) {
-        this.extremoDireita = extremoDireita;
-    }
-
-    public int getExtremoFrente() {
-        return extremoFrente;
-    }
-
-    public void setExtremoFrente(int extremoFrente) {
-        this.extremoFrente = extremoFrente;
-    }
-
-    public int getExtremoTras() {
-        return extremoTras;
-    }
-
-    public void setExtremoTras(int extremoTras) {
-        this.extremoTras = extremoTras;
-    }
-
+    
     public void adicionarCubo(Cubo c) {
         listaCubos.add(c);
         calculoCentroGeometrico();
@@ -536,44 +463,7 @@ public class ListaCubos implements Serializable {
     public void setListaCubos(ArrayList<Cubo> lista) {
         this.listaCubos = lista;
     }
-
-    public boolean isAgrupado() {
-        defineAgrupado();
-        return isAgrupado;
-    }
-
-    public void setAgrupado(boolean agrupado) {
-        this.isAgrupado = agrupado;
-    }
-
-    public double getCentroX() {
-        return centroX;
-    }
-
-    public double getCentroY() {
-        return centroY;
-    }
-
-    public double getCentroZ() {
-        return centroZ;
-    }
-
-    public void setCentroX(double cx) {
-        this.centroX = cx;
-    }
-
-    public void setCentroY(double cy) {
-        this.centroY = cy;
-    }
-
-    public void setCentroZ(double cz) {
-        this.centroZ = cz;
-    }
-
-    public int getTamanhoLista() {
-        return listaCubos.size();
-    }
-
+    
     public void removerTodosCubos() {
         int i = listaCubos.size() - 1;
         while (!listaCubos.isEmpty()) {
@@ -590,61 +480,5 @@ public class ListaCubos implements Serializable {
         } else {
             listaCubos.get(0).setAgrupado(false);
         }
-    }
-
-    public float getFatorEscalaZ() {
-        return fatorEscalaZ;
-    }
-
-    public void setFatorEscalaZ(float fatorEscalaZ) {
-        this.fatorEscalaZ = fatorEscalaZ;
-    }
-
-    public float getFatorTraslacaoX() {
-        return fatorTraslacaoX;
-    }
-
-    public void setFatorTraslacaoX(float fatorTraslacaoX) {
-        this.fatorTraslacaoX = fatorTraslacaoX;
-    }
-
-    public float getFatorTraslacaoY() {
-        return fatorTraslacaoY;
-    }
-
-    public void setFatorTraslacaoY(float fatorTraslacaoY) {
-        this.fatorTraslacaoY = fatorTraslacaoY;
-    }
-
-    public float getFatorTraslacaoZ() {
-        return fatorTraslacaoZ;
-    }
-
-    public void setFatorTraslacaoZ(float fatorTraslacaoZ) {
-        this.fatorTraslacaoZ = fatorTraslacaoZ;
-    }
-
-    public int getAnguloRotacaoX() {
-        return anguloRotacaoX;
-    }
-
-    public void setAnguloRotacaoX(int anguloRotacaoX) {
-        this.anguloRotacaoX = anguloRotacaoX;
-    }
-
-    public int getAnguloRotacaoY() {
-        return anguloRotacaoY;
-    }
-
-    public void setAnguloRotacaoY(int anguloRotacaoY) {
-        this.anguloRotacaoY = anguloRotacaoY;
-    }
-
-    public int getAnguloRotacaoZ() {
-        return anguloRotacaoZ;
-    }
-
-    public void setAnguloRotacaoZ(int anguloRotacaoZ) {
-        this.anguloRotacaoZ = anguloRotacaoZ;
     }
 }

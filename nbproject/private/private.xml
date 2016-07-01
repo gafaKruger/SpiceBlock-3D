@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Rafael/Desktop/SpiceBlock-3D/src/View/Painel.java</file>
-            <file>file:/C:/Users/Rafael/Desktop/SpiceBlock-3D/src/View/PainelExtendido.java</file>
+            <file>file:/C:/Users/Rafael/Desktop/SpiceBlock-3D/src/ExtendedElements/ManipulacoesCubo.java</file>
+            <file>file:/C:/Users/Rafael/Desktop/SpiceBlock-3D/src/Model/Listas.java</file>
             <file>file:/C:/Users/Rafael/Desktop/SpiceBlock-3D/src/Model/Matriz.java</file>
-            <file>file:/C:/Users/Rafael/Desktop/SpiceBlock-3D/src/Model/ListaCubos.java</file>
+            <file>file:/C:/Users/Rafael/Desktop/SpiceBlock-3D/src/Model/Primitiva.java</file>
+            <file>file:/C:/Users/Rafael/Desktop/SpiceBlock-3D/src/Model/ListaPrimitivas.java</file>
+            <file>file:/C:/Users/Rafael/Desktop/SpiceBlock-3D/src/Controller/Controller.java</file>
+            <file>file:/C:/Users/Rafael/Desktop/SpiceBlock-3D/src/View/TelaPrincipal.java</file>
+            <file>file:/C:/Users/Rafael/Desktop/SpiceBlock-3D/src/ExtendedElements/PainelExtendido.java</file>
         </group>
     </open-files>
 </project-private>

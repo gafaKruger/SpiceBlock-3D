@@ -2,7 +2,7 @@
 package spiceblock3d;
 
 import Controller.Controller;
-import View.PainelPrincipal;
+import View.TelaPrincipal;
 import java.awt.Frame;
 import javax.swing.UIManager;
 import javax.swing.JOptionPane;
@@ -31,7 +31,7 @@ public class SpiceBlock {
             System.exit(1);
         }   
         Controller C = new Controller(); 
-        PainelPrincipal P = new PainelPrincipal(C);
+        TelaPrincipal P = new TelaPrincipal(C);
         //C.setPainel(P);
         P.setExtendedState(Frame.MAXIMIZED_BOTH);
         //P.setResizable(false);

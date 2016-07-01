@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Rafael Fiori Kruger
  */
-public class ListaEsferas {
+public class ListaEsferas extends ListaPrimitivas {
     
     private ArrayList<Esfera> listaEsferas;
     private boolean isAgrupado;

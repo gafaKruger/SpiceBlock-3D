@@ -2,7 +2,7 @@ package View;
 
 import Controller.Controller;
 import Model.Angulos;
-import Model.ListaCubos;
+import Model.ListaPrimitivas;
 import Model.Ponto;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -31,10 +31,10 @@ import static javax.swing.JOptionPane.YES_NO_OPTION;
  *
  * @author Rafael Fiori Kruger
  */
-public class PainelPrincipal extends javax.swing.JFrame {
+public class TelaPrincipal extends javax.swing.JFrame {
 
     private Controller control;
-    private boolean alternaFrente, alternaTopo, alternaLado, alternaProjecao, plotDesenho, selecionaCubo;
+    private boolean alternaFrente, alternaTopo, alternaLado, alternaProjecao, plotDesenho, selecionaPrimitiva;
     private boolean selecLado, selecFrente, selecTopo;
     private int cuboSelecIndice, cuboParaAgrupar, last;
     private boolean cuboIsSelected, alteracoesRealizadas, permiteAgrupar;
@@ -51,11 +51,11 @@ public class PainelPrincipal extends javax.swing.JFrame {
     //teste
     //private ChangeListener PropertyChangeEvent;
 
-    public PainelPrincipal() {
+    public TelaPrincipal() {
         initialize();
     }
 
-    public PainelPrincipal(Controller c) {
+    public TelaPrincipal(Controller c) {
         this.control = c;
         initialize();
     }
@@ -100,15 +100,15 @@ public class PainelPrincipal extends javax.swing.JFrame {
         AlternarVisaoTopo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
         AlternarVisaoLado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
         AlternarVisaoProjecao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
-        //DesenharCubos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cubo.png")));
-        //ExcluirCubo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lixeira.png")));
+        //DesenharPrimitivas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cubo.png")));
+        //ExcluirPrimitiva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lixeira.png")));
         //BotaoDesagrupar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cubosDesagrupados.png")));
-        //SelecionarCubos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/selecao.png")));
-        alternaFrente = alternaTopo = alternaLado = alternaProjecao = selecionaCubo = true;
+        //SelecionarPrimitivas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/selecao.png")));
+        alternaFrente = alternaTopo = alternaLado = alternaProjecao = selecionaPrimitiva = true;
         plotDesenho = cuboIsSelected = false;
         selecFrente = selecLado = selecTopo = false;
         alteracoesRealizadas = false;
-        ExcluirCubo.setEnabled(false);
+        ExcluirPrimitiva.setEnabled(false);
         SpinnerEscala.setEnabled(false);
         SpinnerRotacao.setEnabled(false);
         ((javax.swing.JSpinner.DefaultEditor) SpinnerRotacao.getEditor()).getTextField().setEditable(false);
@@ -174,13 +174,13 @@ public class PainelPrincipal extends javax.swing.JFrame {
         SpinnerRotacao = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
         SpinnerEscala = new javax.swing.JSpinner();
-        ExcluirCubo = new javax.swing.JButton();
+        ExcluirPrimitiva = new javax.swing.JButton();
         BotaoDesagrupar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         SelecProjecaoPerspectiva = new javax.swing.JRadioButton();
         SelecProjecaoIsometrica = new javax.swing.JRadioButton();
-        SelecionarCubos = new javax.swing.JToggleButton();
-        DesenharCubos = new javax.swing.JToggleButton();
+        SelecionarPrimitivas = new javax.swing.JToggleButton();
+        DesenharPrimitivas = new javax.swing.JToggleButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         PainelCor = new javax.swing.JPanel();
@@ -204,16 +204,16 @@ public class PainelPrincipal extends javax.swing.JFrame {
         SpinnerN = new javax.swing.JSpinner();
         jLabel25 = new javax.swing.JLabel();
         PainelBaseFrente = new javax.swing.JPanel();
-        PainelFrente = new View.PainelExtendido();
+        PainelFrente = new ExtendedElements.PainelExtendido();
         AlternarVisaoFrente = new javax.swing.JButton();
         PainelBaseLado = new javax.swing.JPanel();
-        PainelLado = new View.PainelExtendido();
+        PainelLado = new ExtendedElements.PainelExtendido();
         AlternarVisaoLado = new javax.swing.JButton();
         PainelBaseTopo = new javax.swing.JPanel();
-        PainelTopo = new View.PainelExtendido();
+        PainelTopo = new ExtendedElements.PainelExtendido();
         AlternarVisaoTopo = new javax.swing.JButton();
         PainelBaseProjecao = new javax.swing.JPanel();
-        PainelProjecao = new View.PainelExtendido();
+        PainelProjecao = new ExtendedElements.PainelExtendido();
         AlternarVisaoProjecao = new javax.swing.JButton();
         PainelObservacao = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -277,27 +277,27 @@ public class PainelPrincipal extends javax.swing.JFrame {
         setName("SpiceBlock-3D"); // NOI18N
         addWindowStateListener(new java.awt.event.WindowStateListener() {
             public void windowStateChanged(java.awt.event.WindowEvent evt) {
-                PainelPrincipal.this.windowStateChanged(evt);
+                TelaPrincipal.this.windowStateChanged(evt);
             }
         });
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
-                PainelPrincipal.this.windowGainedFocus(evt);
+                TelaPrincipal.this.windowGainedFocus(evt);
             }
             public void windowLostFocus(java.awt.event.WindowEvent evt) {
             }
         });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
-                PainelPrincipal.this.windowClosing(evt);
+                TelaPrincipal.this.windowClosing(evt);
             }
         });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PainelPrincipal.this.keyPressed(evt);
+                TelaPrincipal.this.keyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                PainelPrincipal.this.keyTyped(evt);
+                TelaPrincipal.this.keyTyped(evt);
             }
         });
 
@@ -337,11 +337,11 @@ public class PainelPrincipal extends javax.swing.JFrame {
             }
         });
 
-        ExcluirCubo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lixeira.png"))); // NOI18N
-        ExcluirCubo.setToolTipText("Excluir Cubo");
-        ExcluirCubo.addActionListener(new java.awt.event.ActionListener() {
+        ExcluirPrimitiva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lixeira.png"))); // NOI18N
+        ExcluirPrimitiva.setToolTipText("Excluir Cubo");
+        ExcluirPrimitiva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExcluirCuboActionPerformed(evt);
+                ExcluirPrimitivaActionPerformed(evt);
             }
         });
 
@@ -372,19 +372,19 @@ public class PainelPrincipal extends javax.swing.JFrame {
             }
         });
 
-        SelecionarCubos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/selecao.png"))); // NOI18N
-        SelecionarCubos.setToolTipText("Selecionar Cubos");
-        SelecionarCubos.addActionListener(new java.awt.event.ActionListener() {
+        SelecionarPrimitivas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/selecao.png"))); // NOI18N
+        SelecionarPrimitivas.setToolTipText("Selecionar Cubos");
+        SelecionarPrimitivas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SelecionarCubosActionPerformed(evt);
+                SelecionarPrimitivasActionPerformed(evt);
             }
         });
 
-        DesenharCubos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cubo.png"))); // NOI18N
-        DesenharCubos.setToolTipText("Desenhar Cubos");
-        DesenharCubos.addActionListener(new java.awt.event.ActionListener() {
+        DesenharPrimitivas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cubo.png"))); // NOI18N
+        DesenharPrimitivas.setToolTipText("Desenhar Cubos");
+        DesenharPrimitivas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DesenharCubosActionPerformed(evt);
+                DesenharPrimitivasActionPerformed(evt);
             }
         });
 
@@ -400,11 +400,11 @@ public class PainelPrincipal extends javax.swing.JFrame {
             PainelDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelDesenhoLayout.createSequentialGroup()
                 .addGap(3, 3, 3)
-                .addComponent(SelecionarCubos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SelecionarPrimitivas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(DesenharCubos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DesenharPrimitivas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(ExcluirCubo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ExcluirPrimitiva, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(BotaoDesagrupar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
@@ -438,10 +438,10 @@ public class PainelPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelDesenhoLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(PainelDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SelecionarCubos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SelecionarPrimitivas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotaoDesagrupar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ExcluirCubo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DesenharCubos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ExcluirPrimitiva, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DesenharPrimitivas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12))
             .addGroup(PainelDesenhoLayout.createSequentialGroup()
                 .addComponent(jLabel4)
@@ -626,12 +626,12 @@ public class PainelPrincipal extends javax.swing.JFrame {
         PainelFrente.setPreferredSize(new java.awt.Dimension(200, 200));
         PainelFrente.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                PainelFrentemoverCuboFrente(evt);
+                PainelFrentemoverPrimitivaFrente(evt);
             }
         });
         PainelFrente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PainelFrenteoperacoesCuboFrente(evt);
+                PainelFrenteOperacoesPrimitivaFrente(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 PainelFrentemouseReleasedFrente(evt);
@@ -692,12 +692,12 @@ public class PainelPrincipal extends javax.swing.JFrame {
         PainelLado.setPreferredSize(new java.awt.Dimension(200, 200));
         PainelLado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                PainelLadomoverCuboLado(evt);
+                PainelLadoMoverPrimitivaLado(evt);
             }
         });
         PainelLado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PainelLadooperacoesCuboLado(evt);
+                PainelLadoOperacoesPrimitivaLado(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 PainelLadomouseReleasedLado(evt);
@@ -750,12 +750,12 @@ public class PainelPrincipal extends javax.swing.JFrame {
         PainelTopo.setPreferredSize(new java.awt.Dimension(200, 200));
         PainelTopo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                PainelTopomoverCuboTopo(evt);
+                PainelTopoMoverPrimitivaTopo(evt);
             }
         });
         PainelTopo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PainelTopooperacoesCuboTopo(evt);
+                PainelTopoOperacoesPrimitivaTopo(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 PainelTopomouseReleasedTopo(evt);
@@ -1297,7 +1297,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
-        if (!control.getListaCubos().isEmpty() && alteracoesRealizadas) {
+        if (!control.getListaPrimitivas().isEmpty() && alteracoesRealizadas) {
             int opt;
             opt = JOptionPane.showConfirmDialog(rootPane, "Deseja salvar as alterações realizadas?", "Salvar Alterações", YES_NO_OPTION, INFORMATION_MESSAGE);
             if (opt == 0) {
@@ -1305,7 +1305,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
                     salvarArquivo();
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(rootPane, "Não foi possível salvar!", "Erro", ERROR_MESSAGE);
-                    Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -1318,10 +1318,10 @@ public class PainelPrincipal extends javax.swing.JFrame {
 
     private void habilitarBotoes(boolean b) {
         if (b) {
-            ExcluirCubo.setEnabled(true);
+            ExcluirPrimitiva.setEnabled(true);
             SpinnerRotacao.setEnabled(true);
-            if (!control.getListaCubos().isEmpty()) {
-                if (control.getCubo(cuboSelecIndice).isAgrupado()) {
+            if (!control.getListaPrimitivas().isEmpty()) {
+                if (control.getPrimitiva(cuboSelecIndice).isAgrupado()) {
                     BotaoDesagrupar.setEnabled(true);
                     SpinnerEscala.setEnabled(false);
                     SpinnerKA.setEnabled(false);
@@ -1338,7 +1338,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 }
             }
         } else {
-            ExcluirCubo.setEnabled(false);
+            ExcluirPrimitiva.setEnabled(false);
             SpinnerRotacao.setEnabled(false);
             SpinnerKA.setEnabled(false);
             SpinnerKD.setEnabled(false);
@@ -1351,12 +1351,12 @@ public class PainelPrincipal extends javax.swing.JFrame {
 
     private void setarValoresBotoes(int v) {
         SpinnerRotacao.setValue(v);
-        if (!control.getCubo(cuboSelecIndice).isAgrupado()) {
-            SpinnerEscala.setValue(control.getCubo(cuboSelecIndice).getFatorEscalaZ());
-            SpinnerKA.setValue(control.getCubo(cuboSelecIndice).getCubo().getKa());
-            SpinnerKD.setValue(control.getCubo(cuboSelecIndice).getCubo().getKd());
-            SpinnerKS.setValue(control.getCubo(cuboSelecIndice).getCubo().getKs());
-            SpinnerN.setValue(control.getCubo(cuboSelecIndice).getCubo().getN());
+        if (!control.getPrimitiva(cuboSelecIndice).isAgrupado()) {
+            SpinnerEscala.setValue(control.getPrimitiva(cuboSelecIndice).getFatorEscalaZ());
+            SpinnerKA.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getKa());
+            SpinnerKD.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getKd());
+            SpinnerKS.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getKs());
+            SpinnerN.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getN());
         }
     }
 
@@ -1377,10 +1377,10 @@ public class PainelPrincipal extends javax.swing.JFrame {
      }*/
     
     private void desenharVisoesPaineis() {
-        if (!control.getListaCubos().isEmpty()) {
-            PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
-            PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
-            PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+        if (!control.getListaPrimitivas().isEmpty()) {
+            PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
             if (SelecProjecaoPerspectiva.isSelected()) {
                 int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
                 int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
@@ -1391,7 +1391,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
                 Ponto p = new Ponto(px, py, pz);
                 int dp = Integer.parseInt(SpinnerDP.getValue().toString());
-                PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected(), vrp, p, dp);
+                PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
             } else {
                 if (SelecProjecaoIsometrica.isSelected()) {
                     int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
@@ -1400,7 +1400,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
                     int py = Integer.parseInt(SpinnerPY.getValue().toString());
                     int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
                     Ponto p = new Ponto(px, py, pz);
-                    PainelProjecao.desenharVisaoIsometrica(control.getListaCubos(), OcultaFaces.isSelected(), vrpIso, p);
+                    PainelProjecao.desenharVisaoIsometrica(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrpIso, p);
                 }
             }
         }
@@ -1409,20 +1409,20 @@ public class PainelPrincipal extends javax.swing.JFrame {
     private void pintarCorSelecao() {
         if (cuboIsSelected) {
             if (selecFrente) {
-                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), corSelecao);
+                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), corSelecao);
             }
             if (selecLado) {
-                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), corSelecao);
+                PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), corSelecao);
             }
             if (selecTopo) {
-                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), corSelecao);
+                PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), corSelecao);
             }
         }
     }
 
     private void windowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_windowGainedFocus
         //System.out.println("a");
-        if (!control.getListaCubos().isEmpty()) {
+        if (!control.getListaPrimitivas().isEmpty()) {
             desenharVisoesPaineis();
             pintarCorSelecao();
         }
@@ -1489,7 +1489,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_SelecRosaActionPerformed
 
     private void windowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_windowStateChanged
-        if (!control.getListaCubos().isEmpty()) {
+        if (!control.getListaPrimitivas().isEmpty()) {
             desenharVisoesPaineis();
             pintarCorSelecao();
         }
@@ -1504,7 +1504,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoCorPreenchimentoActionPerformed
 
     public boolean salvarArquivo() throws FileNotFoundException, IOException {
-        if (!control.getListaCubos().isEmpty()) {
+        if (!control.getListaPrimitivas().isEmpty()) {
             carregaStatus.setarProgressoInicial(0);
             File arquivo;
             int result;
@@ -1533,10 +1533,10 @@ public class PainelPrincipal extends javax.swing.JFrame {
                     }
                     return true;
                 } catch (FileNotFoundException ex) {
-                    Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                     return false;
                 } catch (IOException ex) {
-                    Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                     return false;
                 }
             }
@@ -1571,27 +1571,27 @@ public class PainelPrincipal extends javax.swing.JFrame {
                     carregaStatus.aumentarProgresso(5);
                 }
                 if (selecFrente) {
-                    PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
+                    PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
                     selecFrente = false;
                 }
                 if (selecTopo) {
-                    PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
+                    PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
                     selecTopo = false;
                 }
                 if (selecLado) {
-                    PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
+                    PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
                     selecLado = false;
                 }
                 carregaStatus.aumentarProgresso(10);
                 cuboIsSelected = plotDesenho = false;
-                PainelFrente.apagarTodosCubosFrente(control.getListaCubos());
-                PainelTopo.apagarTodosCubosTopo(control.getListaCubos());
-                PainelLado.apagarTodosCubosLado(control.getListaCubos());
+                PainelFrente.apagarTodosPrimitivasFrente(control.getListaPrimitivas());
+                PainelTopo.apagarTodosPrimitivasTopo(control.getListaPrimitivas());
+                PainelLado.apagarTodosPrimitivasLado(control.getListaPrimitivas());
                 if (SelecProjecaoPerspectiva.isSelected()) {
-                    PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+                    PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
                 } else {
                     if (SelecProjecaoIsometrica.isSelected()) {
-                        PainelProjecao.apagarTodosCubosIsometrica(control.getListaCubos());
+                        PainelProjecao.apagarTodosPrimitivasIsometrica(control.getListaPrimitivas());
                     }
                 }
                 carregaStatus.aumentarProgresso(10);
@@ -1600,7 +1600,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 carregaStatus.aumentarProgresso(5);
                 desenharVisoesPaineis();
                 carregaStatus.aumentarProgresso(40);
-                ExcluirCubo.setEnabled(false);
+                ExcluirPrimitiva.setEnabled(false);
                 SpinnerEscala.setValue(1);
                 SpinnerRotacao.setValue(0);
                 SpinnerEscala.setEnabled(false);
@@ -1613,48 +1613,48 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 carregaStatus.setVisible(false);
                 return true;
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 return false;
             } catch (IOException ex) {
-                Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 return false;
             }
         }
         return false;
     }
 
-    private void ExcluirCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirCuboActionPerformed
-        excluirCubo();
-    }//GEN-LAST:event_ExcluirCuboActionPerformed
+    private void ExcluirPrimitivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirPrimitivaActionPerformed
+        excluirPrimitiva();
+    }//GEN-LAST:event_ExcluirPrimitivaActionPerformed
 
-    public void excluirCubo() {
-        if (cuboIsSelected && !control.getListaCubos().isEmpty()) {
+    public void excluirPrimitiva() {
+        if (cuboIsSelected && !control.getListaPrimitivas().isEmpty()) {
             if (selecLado) {
-                if (last != -1 && last < control.getListaCubos().size()) {
-                    PainelLado.pintarSelecaoLado(control.getCubo(last), Color.WHITE);
+                if (last != -1 && last < control.getListaPrimitivas().size()) {
+                    PainelLado.pintarSelecaoLado(control.getPrimitiva(last), Color.WHITE);
                 }
-                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
-                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                 selecLado = false;
             }
             if (selecFrente) {
-                if (last != -1 && last < control.getListaCubos().size()) {
-                    PainelFrente.pintarSelecaoFrente(control.getCubo(last), Color.WHITE);
+                if (last != -1 && last < control.getListaPrimitivas().size()) {
+                    PainelFrente.pintarSelecaoFrente(control.getPrimitiva(last), Color.WHITE);
                 }
-                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
-                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
                 selecFrente = false;
             }
             if (selecTopo) {
-                if (last != -1 && last < control.getListaCubos().size()) {
-                    PainelTopo.pintarSelecaoTopo(control.getCubo(last), Color.WHITE);
+                if (last != -1 && last < control.getListaPrimitivas().size()) {
+                    PainelTopo.pintarSelecaoTopo(control.getPrimitiva(last), Color.WHITE);
                 }
-                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
-                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                 selecTopo = false;
             }
-            ListaCubos c = control.excluirCubo(cuboSelecIndice);
-            ExcluirCubo.setEnabled(false);
+            ListaPrimitivas c = control.excluirPrimitiva(cuboSelecIndice);
+            ExcluirPrimitiva.setEnabled(false);
             SpinnerEscala.setEnabled(false);
             SpinnerRotacao.setEnabled(false);
             /*BotaoFazerRotacao.setEnabled(false);
@@ -1662,14 +1662,14 @@ public class PainelPrincipal extends javax.swing.JFrame {
             BotaoDesagrupar.setEnabled(false);
             cuboIsSelected = false;
             cuboSelecIndice = -1;
-            PainelFrente.apagarCubo(c);
-            PainelTopo.apagarCubo(c);
-            PainelLado.apagarCubo(c);
+            PainelFrente.apagarPrimitiva(c);
+            PainelTopo.apagarPrimitiva(c);
+            PainelLado.apagarPrimitiva(c);
             if (SelecProjecaoPerspectiva.isSelected()) {
-                PainelProjecao.apagarCuboProjecao(c, 1);
+                PainelProjecao.apagarPrimitivaProjecao(c, 1);
             } else {
                 if (SelecProjecaoIsometrica.isSelected()) {
-                    PainelProjecao.apagarCuboProjecao(c, 2);
+                    PainelProjecao.apagarPrimitivaProjecao(c, 2);
                 }
             }
             desenharVisoesPaineis();
@@ -1677,15 +1677,15 @@ public class PainelPrincipal extends javax.swing.JFrame {
             alteracoesRealizadas = true;
             permiteAgrupar = false;
         }
-        if (control.getListaCubos().isEmpty()) {
-            selecionaCubo = false;
+        if (control.getListaPrimitivas().isEmpty()) {
+            selecionaPrimitiva = false;
             cuboIsSelected = false;
             alteracoesRealizadas = false;
         }
     }
 
     private void windowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_windowClosing
-        if (!control.getListaCubos().isEmpty() && alteracoesRealizadas) {
+        if (!control.getListaPrimitivas().isEmpty() && alteracoesRealizadas) {
             int opt;
             opt = JOptionPane.showConfirmDialog(rootPane, "Deseja salvar as alterações realizadas?", "Salvar Alterações", YES_NO_OPTION, INFORMATION_MESSAGE);
             if (opt == 0) {
@@ -1693,7 +1693,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
                     salvarArquivo();
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(rootPane, "Não foi possível salvar!", "Erro", ERROR_MESSAGE);
-                    Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -1704,7 +1704,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
         System.out.println("epa");
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             if (cuboIsSelected) {
-                excluirCubo();
+                excluirPrimitiva();
             }
         }
     }//GEN-LAST:event_keyPressed
@@ -1714,7 +1714,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
         System.out.println("epa2");
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             if (cuboIsSelected) {
-                excluirCubo();
+                excluirPrimitiva();
             }
         }
     }//GEN-LAST:event_keyTyped
@@ -1724,9 +1724,9 @@ public class PainelPrincipal extends javax.swing.JFrame {
             boolean flag = true;
             int valorAtual = Integer.parseInt(SpinnerRotacao.getModel().getValue().toString()); //ang
             int valorAntigoRotacao = 0;
-            ListaCubos c = control.getCubo(cuboSelecIndice);
+            ListaPrimitivas c = control.getPrimitiva(cuboSelecIndice);
             if (selecFrente) {
-                valorAntigoRotacao = control.getCubo(cuboSelecIndice).getAnguloRotacaoZ();
+                valorAntigoRotacao = control.getPrimitiva(cuboSelecIndice).getAnguloRotacaoZ();
                 if ((valorAtual != (valorAntigoRotacao + 1)) && (valorAtual != (valorAntigoRotacao - 1))) {
                     flag = false;
                 } else {
@@ -1734,7 +1734,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 }
             }
             if (selecTopo) {
-                valorAntigoRotacao = control.getCubo(cuboSelecIndice).getAnguloRotacaoY();
+                valorAntigoRotacao = control.getPrimitiva(cuboSelecIndice).getAnguloRotacaoY();
                 if ((valorAtual != (valorAntigoRotacao + 1)) && (valorAtual != (valorAntigoRotacao - 1))) {
                     flag = false;
                 } else {
@@ -1742,7 +1742,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 }
             }
             if (selecLado) {
-                valorAntigoRotacao = control.getCubo(cuboSelecIndice).getAnguloRotacaoX();
+                valorAntigoRotacao = control.getPrimitiva(cuboSelecIndice).getAnguloRotacaoX();
                 if ((valorAtual != (valorAntigoRotacao + 1)) && (valorAtual != (valorAntigoRotacao - 1))) {
                     flag = false;
                 } else {
@@ -1750,14 +1750,14 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 }
             }
             if (flag) {
-                PainelFrente.apagarCubo(c);
-                PainelTopo.apagarCubo(c);
-                PainelLado.apagarCubo(c);
+                PainelFrente.apagarPrimitiva(c);
+                PainelTopo.apagarPrimitiva(c);
+                PainelLado.apagarPrimitiva(c);
                 if (SelecProjecaoPerspectiva.isSelected()) {
-                    PainelProjecao.apagarCuboProjecao(c, 1);
+                    PainelProjecao.apagarPrimitivaProjecao(c, 1);
                 } else {
                     if (SelecProjecaoIsometrica.isSelected()) {
-                        PainelProjecao.apagarCuboProjecao(c, 2);
+                        PainelProjecao.apagarPrimitivaProjecao(c, 2);
                     }
                 }
                 double sen, cos;
@@ -1769,16 +1769,16 @@ public class PainelPrincipal extends javax.swing.JFrame {
                     sen = angulos.getSenos()[359];
                     cos = angulos.getCossenos()[359];
                     if (selecFrente) {
-                        control.getCubo(cuboSelecIndice).rotacaoZ(1, sen, cos);
-                        PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), corSelecao);
+                        control.getPrimitiva(cuboSelecIndice).rotacaoZ(1, sen, cos);
+                        PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), corSelecao);
                     }
                     if (selecLado) {
-                        control.getCubo(cuboSelecIndice).rotacaoX(1, sen, cos);
-                        PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), corSelecao);
+                        control.getPrimitiva(cuboSelecIndice).rotacaoX(1, sen, cos);
+                        PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), corSelecao);
                     }
                     if (selecTopo) {
-                        control.getCubo(cuboSelecIndice).rotacaoY(1, sen, cos);
-                        PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), corSelecao);
+                        control.getPrimitiva(cuboSelecIndice).rotacaoY(1, sen, cos);
+                        PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), corSelecao);
                     }
                 } else {
                     if ((valorAtual - valorAntigoRotacao) == -1) { //rotação negativa
@@ -1790,16 +1790,16 @@ public class PainelPrincipal extends javax.swing.JFrame {
                         sen = angulos.getSenos()[1];
                         cos = angulos.getCossenos()[1];
                         if (selecFrente) {
-                            control.getCubo(cuboSelecIndice).rotacaoZ(-1, sen, cos);
-                            PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), corSelecao);
+                            control.getPrimitiva(cuboSelecIndice).rotacaoZ(-1, sen, cos);
+                            PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), corSelecao);
                         }
                         if (selecLado) {
-                            control.getCubo(cuboSelecIndice).rotacaoX(-1, sen, cos);
-                            PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), corSelecao);
+                            control.getPrimitiva(cuboSelecIndice).rotacaoX(-1, sen, cos);
+                            PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), corSelecao);
                         }
                         if (selecTopo) {
-                            control.getCubo(cuboSelecIndice).rotacaoY(-1, sen, cos);
-                            PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), corSelecao);
+                            control.getPrimitiva(cuboSelecIndice).rotacaoY(-1, sen, cos);
+                            PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), corSelecao);
                         }
                     }
                 }
@@ -1814,7 +1814,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
     
     /*private void setRotacionar() {
      if (cuboIsSelected) {
-     ListaCubos c = control.getCubo(cuboSelecIndice);
+     ListaPrimitivas c = control.getPrimitiva(cuboSelecIndice);
      if (selecFrente) {
      PainelFrente.pintarSelecaoFrente(c, Color.WHITE);
      }
@@ -1824,10 +1824,10 @@ public class PainelPrincipal extends javax.swing.JFrame {
      if (selecLado) {
      PainelLado.pintarSelecaoLado(c, Color.WHITE);
      }
-     PainelFrente.apagarCubo(c);
-     PainelTopo.apagarCubo(c);
-     PainelLado.apagarCubo(c);
-     PainelProjecao.apagarCubo(c);
+     PainelFrente.apagarPrimitiva(c);
+     PainelTopo.apagarPrimitiva(c);
+     PainelLado.apagarPrimitiva(c);
+     PainelProjecao.apagarPrimitiva(c);
      int ang = Integer.parseInt(SpinnerRotacao.getModel().getValue().toString());
      double sen, cos;
      if (ang > 0) {
@@ -1843,16 +1843,16 @@ public class PainelPrincipal extends javax.swing.JFrame {
      cos = angulos.getCossenos()[aux];
      }
      if (selecFrente) {
-     control.getCubo(cuboSelecIndice).rotacaoZsetado(ang, sen, cos);
-     PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), corSelecao);
+     control.getPrimitiva(cuboSelecIndice).rotacaoZsetado(ang, sen, cos);
+     PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), corSelecao);
      }
      if (selecLado) {
-     control.getCubo(cuboSelecIndice).rotacaoXsetado(ang, sen, cos);
-     PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), corSelecao);
+     control.getPrimitiva(cuboSelecIndice).rotacaoXsetado(ang, sen, cos);
+     PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), corSelecao);
      }
      if (selecTopo) {
-     control.getCubo(cuboSelecIndice).rotacaoYsetado(ang, sen, cos);
-     PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), corSelecao);
+     control.getPrimitiva(cuboSelecIndice).rotacaoYsetado(ang, sen, cos);
+     PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), corSelecao);
      }
      desenharVisoesPaineis();
      repintarBotoesAlternar();
@@ -1864,7 +1864,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
         if (cuboIsSelected) {
             boolean flag = true;
             float valorAtual = (float) (Double.parseDouble(SpinnerEscala.getValue().toString()));
-            float valorAntigoEscala = control.getCubo(cuboSelecIndice).getFatorEscalaZ();
+            float valorAntigoEscala = control.getPrimitiva(cuboSelecIndice).getFatorEscalaZ();
             /*System.out.println(valorAtual);
              System.out.println(valorAntigoEscala);
              System.out.println(valorAtual - valorAntigoEscala);
@@ -1873,8 +1873,8 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 flag = false;
             }
             if (flag) {
-                if (!control.getCubo(cuboSelecIndice).isAgrupado()) {
-                    ListaCubos c = control.getCubo(cuboSelecIndice);
+                if (!control.getPrimitiva(cuboSelecIndice).isAgrupado()) {
+                    ListaPrimitivas c = control.getPrimitiva(cuboSelecIndice);
                     if (selecFrente) {
                         PainelFrente.pintarSelecaoFrente(c, Color.WHITE);
                     }
@@ -1884,21 +1884,21 @@ public class PainelPrincipal extends javax.swing.JFrame {
                     if (selecLado) {
                         PainelLado.pintarSelecaoLado(c, Color.WHITE);
                     }
-                    PainelFrente.apagarCubo(c);
-                    PainelTopo.apagarCubo(c);
-                    PainelLado.apagarCubo(c);
+                    PainelFrente.apagarPrimitiva(c);
+                    PainelTopo.apagarPrimitiva(c);
+                    PainelLado.apagarPrimitiva(c);
                     if (SelecProjecaoPerspectiva.isSelected()) {
-                        PainelProjecao.apagarCuboProjecao(c, 1);
+                        PainelProjecao.apagarPrimitivaProjecao(c, 1);
                     } else {
                         if (SelecProjecaoIsometrica.isSelected()) {
-                            PainelProjecao.apagarCuboProjecao(c, 2);
+                            PainelProjecao.apagarPrimitivaProjecao(c, 2);
                         }
                     }
                     if (valorAtual == (valorAntigoEscala + 0.1f)) {
-                        control.getCubo(cuboSelecIndice).escalaZ((float) 0.1f);
+                        control.getPrimitiva(cuboSelecIndice).escalaZ((float) 0.1f);
                     } else {
                         if (valorAtual == (valorAntigoEscala - 0.1f)) {
-                            control.getCubo(cuboSelecIndice).escalaZ((float) -0.1f);
+                            control.getPrimitiva(cuboSelecIndice).escalaZ((float) -0.1f);
                         }
                     }
                     if (selecFrente) {
@@ -1924,7 +1924,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
         try {
             abrirArquivo();
         } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(rootPane, "Não foi possível abrir o arquivo!", "Erro", ERROR_MESSAGE);
         }
     }//GEN-LAST:event_AbrirProjetoActionPerformed
@@ -1933,45 +1933,45 @@ public class PainelPrincipal extends javax.swing.JFrame {
         try {
             salvarArquivo();
         } catch (IOException ex) {
-            Logger.getLogger(PainelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(rootPane, "Não foi possível salvar o arquivo!", "Erro", ERROR_MESSAGE);
         }
     }//GEN-LAST:event_SalvarProjetoActionPerformed
 
     private void BotaoDesagruparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoDesagruparActionPerformed
         if (cuboIsSelected) {
-            ListaCubos c = control.getCubo(cuboSelecIndice);
+            ListaPrimitivas c = control.getPrimitiva(cuboSelecIndice);
             if (selecFrente) {
-                if (last != -1 && last < control.getListaCubos().size()) {
-                    PainelFrente.pintarSelecaoFrente(control.getCubo(last), Color.WHITE);
+                if (last != -1 && last < control.getListaPrimitivas().size()) {
+                    PainelFrente.pintarSelecaoFrente(control.getPrimitiva(last), Color.WHITE);
                 }
                 PainelFrente.pintarSelecaoFrente(c, Color.WHITE);
             }
             if (selecTopo) {
-                if (last != -1 && last < control.getListaCubos().size()) {
-                    PainelTopo.pintarSelecaoTopo(control.getCubo(last), Color.WHITE);
+                if (last != -1 && last < control.getListaPrimitivas().size()) {
+                    PainelTopo.pintarSelecaoTopo(control.getPrimitiva(last), Color.WHITE);
                 }
                 PainelTopo.pintarSelecaoTopo(c, Color.WHITE);
             }
             if (selecLado) {
-                if (last != -1 && last < control.getListaCubos().size()) {
-                    PainelLado.pintarSelecaoLado(control.getCubo(last), Color.WHITE);
+                if (last != -1 && last < control.getListaPrimitivas().size()) {
+                    PainelLado.pintarSelecaoLado(control.getPrimitiva(last), Color.WHITE);
                 }
                 PainelLado.pintarSelecaoLado(c, Color.WHITE);
             }
-            PainelFrente.apagarCubo(c);
-            PainelTopo.apagarCubo(c);
-            PainelLado.apagarCubo(c);
+            PainelFrente.apagarPrimitiva(c);
+            PainelTopo.apagarPrimitiva(c);
+            PainelLado.apagarPrimitiva(c);
             if (SelecProjecaoPerspectiva.isSelected()) {
-                PainelProjecao.apagarCuboProjecao(c, 1);
+                PainelProjecao.apagarPrimitivaProjecao(c, 1);
             } else {
                 if (SelecProjecaoIsometrica.isSelected()) {
-                    PainelProjecao.apagarCuboProjecao(c, 2);
+                    PainelProjecao.apagarPrimitivaProjecao(c, 2);
                 }
             }
             control.desagrupar(cuboSelecIndice);
             BotaoDesagrupar.setEnabled(false);
-            ExcluirCubo.setEnabled(false);
+            ExcluirPrimitiva.setEnabled(false);
             SpinnerEscala.setEnabled(false);
             SpinnerRotacao.setEnabled(false);
             /*BotaoFazerRotacao.setEnabled(false);
@@ -1994,14 +1994,14 @@ public class PainelPrincipal extends javax.swing.JFrame {
 
     private void mudaOpcaoOcultarFaces(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mudaOpcaoOcultarFaces
         if (OcultaFaces.isSelected()) {
-            PainelFrente.apagarTodosCubosFrente(control.getListaCubos());
-            PainelTopo.apagarTodosCubosTopo(control.getListaCubos());
-            PainelLado.apagarTodosCubosLado(control.getListaCubos());
+            PainelFrente.apagarTodosPrimitivasFrente(control.getListaPrimitivas());
+            PainelTopo.apagarTodosPrimitivasTopo(control.getListaPrimitivas());
+            PainelLado.apagarTodosPrimitivasLado(control.getListaPrimitivas());
             if (SelecProjecaoPerspectiva.isSelected()) {
-                PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+                PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
             } else {
                 if (SelecProjecaoIsometrica.isSelected()) {
-                    PainelProjecao.apagarTodosCubosIsometrica(control.getListaCubos());
+                    PainelProjecao.apagarTodosPrimitivasIsometrica(control.getListaPrimitivas());
                 }
             }
         }
@@ -2011,7 +2011,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
     private void selecPerspectivaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selecPerspectivaMouseClicked
         //((javax.swing.border.TitledBorder) PainelBaseProjecao.getBorder()).setTitle("Projeção - Perspectiva");
         //PainelBaseProjecao.repaint();
-        PainelProjecao.apagarTodosCubosIsometrica(control.getListaCubos());
+        PainelProjecao.apagarTodosPrimitivasIsometrica(control.getListaPrimitivas());
         int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
         int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
         int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
@@ -2021,21 +2021,21 @@ public class PainelPrincipal extends javax.swing.JFrame {
         int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
         Ponto p = new Ponto(px, py, pz);
         int dp = Integer.parseInt(SpinnerDP.getValue().toString());
-        PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected(), vrp, p, dp);
+        PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
         AlternarVisaoProjecao.repaint();
     }//GEN-LAST:event_selecPerspectivaMouseClicked
 
     private void selecIsometricaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selecIsometricaMouseClicked
         //((javax.swing.border.TitledBorder) PainelBaseProjecao.getBorder()).setTitle("Projeção - Isométrica");
         //PainelBaseProjecao.repaint();
-        PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+        PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
         int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
         Ponto vrpIso = new Ponto(vrp, vrp, vrp);
         int px = Integer.parseInt(SpinnerPX.getValue().toString());
         int py = Integer.parseInt(SpinnerPY.getValue().toString());
         int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
         Ponto p = new Ponto(px, py, pz);
-        PainelProjecao.desenharVisaoIsometrica(control.getListaCubos(), OcultaFaces.isSelected(), vrpIso, p);
+        PainelProjecao.desenharVisaoIsometrica(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrpIso, p);
         AlternarVisaoProjecao.repaint();
     }//GEN-LAST:event_selecIsometricaMouseClicked
 
@@ -2051,65 +2051,65 @@ public class PainelPrincipal extends javax.swing.JFrame {
         escala();
     }//GEN-LAST:event_changeSpinnerEscala
 
-    private void SelecionarCubosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelecionarCubosActionPerformed
-        if (SelecionarCubos.isSelected()) {
-            selecionaCubo = true;
+    private void SelecionarPrimitivasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelecionarPrimitivasActionPerformed
+        if (SelecionarPrimitivas.isSelected()) {
+            selecionaPrimitiva = true;
             plotDesenho = false;
-            DesenharCubos.setSelected(false);
+            DesenharPrimitivas.setSelected(false);
         } else {
             habilitarBotoes(false);
-            selecionaCubo = false;
+            selecionaPrimitiva = false;
             cuboIsSelected = false;
             if (selecLado) {
-                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
-                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                 selecLado = false;
             }
             if (selecFrente) {
-                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
-                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
                 selecFrente = false;
             }
             if (selecTopo) {
-                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
-                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                 selecTopo = false;
             }
         }
-    }//GEN-LAST:event_SelecionarCubosActionPerformed
+    }//GEN-LAST:event_SelecionarPrimitivasActionPerformed
 
-    private void DesenharCubosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DesenharCubosActionPerformed
-        if (DesenharCubos.isSelected()) {
+    private void DesenharPrimitivasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DesenharPrimitivasActionPerformed
+        if (DesenharPrimitivas.isSelected()) {
             habilitarBotoes(false);
             if (cuboIsSelected) {
                 cuboIsSelected = false;
                 if (selecLado) {
-                    PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
-                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                     selecLado = false;
                 }
                 if (selecFrente) {
-                    PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
-                    PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                    PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
                     selecFrente = false;
                 }
                 if (selecTopo) {
-                    PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
-                    PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                    PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                     selecTopo = false;
                 }
             }
-            selecionaCubo = false;
+            selecionaPrimitiva = false;
             plotDesenho = true;
-            SelecionarCubos.setSelected(false);
+            SelecionarPrimitivas.setSelected(false);
         } else {
             plotDesenho = false;
         }
-    }//GEN-LAST:event_DesenharCubosActionPerformed
+    }//GEN-LAST:event_DesenharPrimitivasActionPerformed
 
     private void SpinneVRPZChange(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinneVRPZChange
         if (SelecProjecaoPerspectiva.isSelected()) {
-            PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+            PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
             int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
             int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
             int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
@@ -2119,13 +2119,13 @@ public class PainelPrincipal extends javax.swing.JFrame {
             int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
             Ponto p = new Ponto(px, py, pz);
             int dp = Integer.parseInt(SpinnerDP.getValue().toString());
-            PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected(), vrp, p, dp);
+            PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
         }
     }//GEN-LAST:event_SpinneVRPZChange
 
     private void SpinnerVRPXChange(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerVRPXChange
         if (SelecProjecaoPerspectiva.isSelected()) {
-            PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+            PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
             int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
             int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
             int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
@@ -2135,13 +2135,13 @@ public class PainelPrincipal extends javax.swing.JFrame {
             int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
             Ponto p = new Ponto(px, py, pz);
             int dp = Integer.parseInt(SpinnerDP.getValue().toString());
-            PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected(), vrp, p, dp);
+            PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
         }
     }//GEN-LAST:event_SpinnerVRPXChange
 
     private void SpinnerVRPYChange(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerVRPYChange
         if (SelecProjecaoPerspectiva.isSelected()) {
-            PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+            PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
             int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
             int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
             int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
@@ -2151,13 +2151,13 @@ public class PainelPrincipal extends javax.swing.JFrame {
             int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
             Ponto p = new Ponto(px, py, pz);
             int dp = Integer.parseInt(SpinnerDP.getValue().toString());
-            PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected(), vrp, p, dp);
+            PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
         }
     }//GEN-LAST:event_SpinnerVRPYChange
 
     private void SpinnerDPChange(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerDPChange
         if (SelecProjecaoPerspectiva.isSelected()) {
-            PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+            PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
             int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
             int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
             int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
@@ -2167,13 +2167,13 @@ public class PainelPrincipal extends javax.swing.JFrame {
             int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
             Ponto p = new Ponto(px, py, pz);
             int dp = Integer.parseInt(SpinnerDP.getValue().toString());
-            PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected(), vrp, p, dp);
+            PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
         }
     }//GEN-LAST:event_SpinnerDPChange
 
     private void SpinnerPXChange(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPXChange
         if (SelecProjecaoPerspectiva.isSelected()) {
-            PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+            PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
             int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
             int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
             int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
@@ -2183,24 +2183,24 @@ public class PainelPrincipal extends javax.swing.JFrame {
             int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
             Ponto p = new Ponto(px, py, pz);
             int dp = Integer.parseInt(SpinnerDP.getValue().toString());
-            PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected(), vrp, p, dp);
+            PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
         } else {
             if (SelecProjecaoIsometrica.isSelected()) {
-                PainelProjecao.apagarTodosCubosIsometrica(control.getListaCubos());
+                PainelProjecao.apagarTodosPrimitivasIsometrica(control.getListaPrimitivas());
                 int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
                 Ponto vrpIso = new Ponto(vrp, vrp, vrp);
                 int px = Integer.parseInt(SpinnerPX.getValue().toString());
                 int py = Integer.parseInt(SpinnerPY.getValue().toString());
                 int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
                 Ponto p = new Ponto(px, py, pz);
-                PainelProjecao.desenharVisaoIsometrica(control.getListaCubos(), OcultaFaces.isSelected(), vrpIso, p);
+                PainelProjecao.desenharVisaoIsometrica(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrpIso, p);
             }
         }
     }//GEN-LAST:event_SpinnerPXChange
 
     private void SpinnerPYChange(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPYChange
         if (SelecProjecaoPerspectiva.isSelected()) {
-            PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+            PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
             int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
             int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
             int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
@@ -2210,24 +2210,24 @@ public class PainelPrincipal extends javax.swing.JFrame {
             int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
             Ponto p = new Ponto(px, py, pz);
             int dp = Integer.parseInt(SpinnerDP.getValue().toString());
-            PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected(), vrp, p, dp);
+            PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
         } else {
             if (SelecProjecaoIsometrica.isSelected()) {
-                PainelProjecao.apagarTodosCubosIsometrica(control.getListaCubos());
+                PainelProjecao.apagarTodosPrimitivasIsometrica(control.getListaPrimitivas());
                 int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
                 Ponto vrpIso = new Ponto(vrp, vrp, vrp);
                 int px = Integer.parseInt(SpinnerPX.getValue().toString());
                 int py = Integer.parseInt(SpinnerPY.getValue().toString());
                 int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
                 Ponto p = new Ponto(px, py, pz);
-                PainelProjecao.desenharVisaoIsometrica(control.getListaCubos(), OcultaFaces.isSelected(), vrpIso, p);
+                PainelProjecao.desenharVisaoIsometrica(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrpIso, p);
             }
         }
     }//GEN-LAST:event_SpinnerPYChange
 
     private void SpinnerPZChange(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPZChange
         if (SelecProjecaoPerspectiva.isSelected()) {
-            PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+            PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
             int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
             int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
             int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
@@ -2237,31 +2237,31 @@ public class PainelPrincipal extends javax.swing.JFrame {
             int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
             Ponto p = new Ponto(px, py, pz);
             int dp = Integer.parseInt(SpinnerDP.getValue().toString());
-            PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected(), vrp, p, dp);
+            PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
         } else {
             if (SelecProjecaoIsometrica.isSelected()) {
-                PainelProjecao.apagarTodosCubosIsometrica(control.getListaCubos());
+                PainelProjecao.apagarTodosPrimitivasIsometrica(control.getListaPrimitivas());
                 int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
                 Ponto vrpIso = new Ponto(vrp, vrp, vrp);
                 int px = Integer.parseInt(SpinnerPX.getValue().toString());
                 int py = Integer.parseInt(SpinnerPY.getValue().toString());
                 int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
                 Ponto p = new Ponto(px, py, pz);
-                PainelProjecao.desenharVisaoIsometrica(control.getListaCubos(), OcultaFaces.isSelected(), vrpIso, p);
+                PainelProjecao.desenharVisaoIsometrica(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrpIso, p);
             }
         }
     }//GEN-LAST:event_SpinnerPZChange
 
     private void SpinnerSpinnerVRPIsometricaChange(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerSpinnerVRPIsometricaChange
         if (SelecProjecaoIsometrica.isSelected()) {
-            PainelProjecao.apagarTodosCubosIsometrica(control.getListaCubos());
+            PainelProjecao.apagarTodosPrimitivasIsometrica(control.getListaPrimitivas());
             int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
             Ponto vrpIso = new Ponto(vrp, vrp, vrp);
             int px = Integer.parseInt(SpinnerPX.getValue().toString());
             int py = Integer.parseInt(SpinnerPY.getValue().toString());
             int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
             Ponto p = new Ponto(px, py, pz);
-            PainelProjecao.desenharVisaoIsometrica(control.getListaCubos(), OcultaFaces.isSelected(), vrpIso, p);
+            PainelProjecao.desenharVisaoIsometrica(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrpIso, p);
         }
     }//GEN-LAST:event_SpinnerSpinnerVRPIsometricaChange
 
@@ -2275,8 +2275,8 @@ public class PainelPrincipal extends javax.swing.JFrame {
             PainelTopo.setVisible(false);
             PainelLado.setVisible(false);
             PainelProjecao.setVisible(false);
-            if (!control.getListaCubos().isEmpty()) {
-                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+            if (!control.getListaPrimitivas().isEmpty()) {
+                PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
             }
         } else {
             AlternarVisaoFrente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
@@ -2291,28 +2291,28 @@ public class PainelPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AlternarVisaoFrenteActionPerformed
 
-    private void PainelFrentemoverCuboFrente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelFrentemoverCuboFrente
+    private void PainelFrentemoverPrimitivaFrente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelFrentemoverPrimitivaFrente
         //System.out.println(cuboSelecIndice);
-        if (cuboIsSelected && PainelFrente.clickDentroCuboFrente(control.getCubo(cuboSelecIndice), evt.getX(), evt.getY())) {
+        if (cuboIsSelected && PainelFrente.clickDentroPrimitivaFrente(control.getPrimitiva(cuboSelecIndice), evt.getX(), evt.getY())) {
             //nanoSegundosPressao = System.nanoTime();
-            ListaCubos c = control.getCubo(cuboSelecIndice);
+            ListaPrimitivas c = control.getPrimitiva(cuboSelecIndice);
             PainelFrente.pintarSelecaoFrente(c, Color.WHITE);
-            PainelFrente.apagarCubo(c);
-            PainelTopo.apagarCubo(c);
-            PainelLado.apagarCubo(c);
+            PainelFrente.apagarPrimitiva(c);
+            PainelTopo.apagarPrimitiva(c);
+            PainelLado.apagarPrimitiva(c);
             if (SelecProjecaoPerspectiva.isSelected()) {
-                PainelProjecao.apagarCuboProjecao(c, 1);
+                PainelProjecao.apagarPrimitivaProjecao(c, 1);
             } else {
                 if (SelecProjecaoIsometrica.isSelected()) {
-                    PainelProjecao.apagarCuboProjecao(c, 2);
+                    PainelProjecao.apagarPrimitivaProjecao(c, 2);
                 }
             }
 
-            control.getCubo(cuboSelecIndice).transladarCubosXY(evt.getX() - localClicadoX, evt.getY() - localClicadoY,
+            control.getPrimitiva(cuboSelecIndice).transladarPrimitivasXY(evt.getX() - localClicadoX, evt.getY() - localClicadoY,
                 PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1);
 
-            //PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
-            PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), corSelecao);
+            //PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), corSelecao);
             desenharVisoesPaineis();
 
             //System.out.println((evt.getX()-localClicadoX) + " " + (evt.getY()-localClicadoY));
@@ -2322,35 +2322,35 @@ public class PainelPrincipal extends javax.swing.JFrame {
             alteracoesRealizadas = true;
 
             //operaçoes agrupamento
-            cuboParaAgrupar = PainelFrente.getCuboMaisProximoFrente(control.getListaCubos(), cuboSelecIndice);
+            cuboParaAgrupar = PainelFrente.getPrimitivaMaisProximoFrente(control.getListaPrimitivas(), cuboSelecIndice);
             if (cuboParaAgrupar != cuboSelecIndice && cuboParaAgrupar != -1) {
                 last = cuboParaAgrupar;
-                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboParaAgrupar), Color.LIGHT_GRAY);
-                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
-                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), corSelecao);
+                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboParaAgrupar), Color.LIGHT_GRAY);
+                PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), corSelecao);
                 permiteAgrupar = true;
             } else {
-                if (last != -1 && last < control.getListaCubos().size()) {
-                    PainelFrente.pintarSelecaoFrente(control.getCubo(last), Color.WHITE);
-                    PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
-                    PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), corSelecao);
+                if (last != -1 && last < control.getListaPrimitivas().size()) {
+                    PainelFrente.pintarSelecaoFrente(control.getPrimitiva(last), Color.WHITE);
+                    PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                    PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), corSelecao);
                     permiteAgrupar = false;
                 }
             }
 
-            /*PainelFrente.pintarSelecaoFrente(control.getCubo(cuboParaAgrupar), Color.WHITE);
-            PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
-            PainelFrente.apagarTodosCubosFrente(control.getListaCubos(), OcultaFaces.isSelected());
-            PainelTopo.apagarTodosCubosTopo(control.getListaCubos(), OcultaFaces.isSelected());
-            PainelLado.apagarTodosCubosLado(control.getListaCubos(), OcultaFaces.isSelected());
-            PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos(), OcultaFaces.isSelected());
-            control.agruparDoisCubos(cuboSelecIndice, cuboParaAgrupar);
-            PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
-            PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
-            PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
-            PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected());
+            /*PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboParaAgrupar), Color.WHITE);
+            PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+            PainelFrente.apagarTodosPrimitivasFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            PainelTopo.apagarTodosPrimitivasTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            PainelLado.apagarTodosPrimitivasLado(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            control.agruparDoisPrimitivas(cuboSelecIndice, cuboParaAgrupar);
+            PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected());
             BotaoDesagrupar.setEnabled(false);
-            ExcluirCubo.setEnabled(false);
+            ExcluirPrimitiva.setEnabled(false);
             SpinnerEscala.setEnabled(false);
             SpinnerRotacao.setEnabled(false);
             BotaoFazerRotacao.setEnabled(false);
@@ -2361,110 +2361,120 @@ public class PainelPrincipal extends javax.swing.JFrame {
             selecTopo = false;
             repintarBotoesAlternar();*/
         }
-    }//GEN-LAST:event_PainelFrentemoverCuboFrente
+    }//GEN-LAST:event_PainelFrentemoverPrimitivaFrente
 
-    private void PainelFrenteoperacoesCuboFrente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelFrenteoperacoesCuboFrente
+    private int selecPrimitiva () {
+        return 1;
+    }
+    
+    private void PainelFrenteOperacoesPrimitivaFrente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelFrenteOperacoesPrimitivaFrente
         if (plotDesenho) {
             //plotDesenho = false;
+            
+            //******************IMPORTANTE --REVER METODO
+            /*if (control.criarPrimitiva(evt.getX(), evt.getY(), 1, selecionaCorBorda.getCorSelecionada(),
+                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
             if (control.criarCubo(evt.getX(), evt.getY(), 1, selecionaCorBorda.getCorSelecionada(),
                 PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+            //******************
+                
             //double sen, cos;
             //int ang = 30;
             //sen = angulos.getSenos()[360 - ang];
             //cos = angulos.getCossenos()[360 - ang];
-            //control.getCubo(control.getListaCubos().size()-1).rotacaoZ(ang, sen, cos);
-            //control.getCubo(control.getListaCubos().size()-1).rotacaoY(ang, sen, cos);
-            //control.getCubo(control.getListaCubos().size()-1).rotacaoX(ang, sen, cos);
+            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoZ(ang, sen, cos);
+            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoY(ang, sen, cos);
+            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoX(ang, sen, cos);
             if (cuboIsSelected) {
                 cuboIsSelected = false;
                 if (selecLado) {
-                    PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
-                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                     selecLado = false;
                 }
                 if (selecFrente) {
-                    PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
-                    PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                    PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
                     selecFrente = false;
                 }
                 if (selecTopo) {
-                    PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
-                    PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                    PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                     selecTopo = false;
                 }
                 habilitarBotoes(false);
             }
             desenharVisoesPaineis();
-            //selecionaCubo = true;
+            //selecionaPrimitiva = true;
             alteracoesRealizadas = true;
         } else {
             JOptionPane.showMessageDialog(rootPane, "Não foi possível criar o cubo!", "Erro!", ERROR_MESSAGE);
         }
         } else {
-            if (selecionaCubo) {
+            if (selecionaPrimitiva) {
                 //System.out.println("X: " + evt.getX() + " Y: " + evt.getY());
-                if (!control.getListaCubos().isEmpty()) {
-                    if (PainelFrente.existemCubosPossiveisFrente(control.getListaCubos(), evt.getX(), evt.getY())) {
+                if (!control.getListaPrimitivas().isEmpty()) {
+                    if (PainelFrente.existemPrimitivasPossiveisFrente(control.getListaPrimitivas(), evt.getX(), evt.getY())) {
                         if (cuboIsSelected) {
-                            int aux = PainelFrente.selecionarCuboFrente(control.getListaCubos(), evt.getX(), evt.getY());
+                            int aux = PainelFrente.selecionarPrimitivaFrente(control.getListaPrimitivas(), evt.getX(), evt.getY());
                             if (selecLado) {
-                                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecLado = false;
                             }
                             if (selecTopo) {
-                                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecTopo = false;
                             }
                             if (cuboSelecIndice != aux) {
                                 if (selecFrente) {
-                                    PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                    PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                                    PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                    PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                     //selecFrente = false;
                                 }
                             }
                             cuboSelecIndice = aux;
                         } else {
-                            cuboSelecIndice = PainelFrente.selecionarCuboFrente(control.getListaCubos(), evt.getX(), evt.getY());
+                            cuboSelecIndice = PainelFrente.selecionarPrimitivaFrente(control.getListaPrimitivas(), evt.getX(), evt.getY());
                             cuboIsSelected = true;
                             selecLado = selecTopo = false;
                         }
-                        PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), corSelecao);
+                        PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), corSelecao);
                         localClicadoX = evt.getX();
                         localClicadoY = evt.getY();
                         selecFrente = true;
-                        SpinnerRotacao.setValue(control.getCubo(cuboSelecIndice).getAnguloRotacaoZ());
-                        if (!control.getCubo(cuboSelecIndice).isAgrupado()) {
-                            SpinnerKA.setValue(control.getCubo(cuboSelecIndice).getCubo().getKa());
-                            SpinnerKD.setValue(control.getCubo(cuboSelecIndice).getCubo().getKd());
-                            SpinnerKS.setValue(control.getCubo(cuboSelecIndice).getCubo().getKs());
-                            SpinnerN.setValue(control.getCubo(cuboSelecIndice).getCubo().getN());
-                            SpinnerEscala.setValue(control.getCubo(cuboSelecIndice).getFatorEscalaZ());
+                        SpinnerRotacao.setValue(control.getPrimitiva(cuboSelecIndice).getAnguloRotacaoZ());
+                        if (!control.getPrimitiva(cuboSelecIndice).isAgrupado()) {
+                            SpinnerKA.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getKa());
+                            SpinnerKD.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getKd());
+                            SpinnerKS.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getKs());
+                            SpinnerN.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getN());
+                            SpinnerEscala.setValue(control.getPrimitiva(cuboSelecIndice).getFatorEscalaZ());
                         }
                         habilitarBotoes(true);
-                        setarValoresBotoes(control.getCubo(cuboSelecIndice).getAnguloRotacaoZ());
+                        setarValoresBotoes(control.getPrimitiva(cuboSelecIndice).getAnguloRotacaoZ());
                     } else {
                         if (cuboIsSelected) {
                             cuboIsSelected = false;
                             if (selecLado) {
-                                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecLado = false;
                             }
                             if (selecFrente) {
-                                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecFrente = false;
                             }
                             if (selecTopo) {
-                                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecTopo = false;
                             }
                             habilitarBotoes(false);
-                            if (last != -1 && last < control.getListaCubos().size()) {
-                                PainelFrente.pintarSelecaoFrente(control.getCubo(last), Color.WHITE);
+                            if (last != -1 && last < control.getListaPrimitivas().size()) {
+                                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(last), Color.WHITE);
                             }
                         }
                     }
@@ -2473,30 +2483,35 @@ public class PainelPrincipal extends javax.swing.JFrame {
         }
         repintarBotoesAlternar();
         //nanoSegundosPressao = System.nanoTime();
-    }//GEN-LAST:event_PainelFrenteoperacoesCuboFrente
+    }//GEN-LAST:event_PainelFrenteOperacoesPrimitivaFrente
 
     private void PainelFrentemouseReleasedFrente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelFrentemouseReleasedFrente
         //long tempoPressionamento = System.nanoTime() - nanoSegundosPressao;
         //System.out.println(tempoPressionamento);
         //if (tempoPressionamento >= 2000000000) {
             if (permiteAgrupar) {
-                PainelFrente.pintarSelecaoFrente(control.getCubo(last), Color.WHITE);
-                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
-                PainelFrente.apagarTodosCubosFrente(control.getListaCubos());
-                PainelTopo.apagarTodosCubosTopo(control.getListaCubos());
-                PainelLado.apagarTodosCubosLado(control.getListaCubos());
+                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(last), Color.WHITE);
+                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                PainelFrente.apagarTodosPrimitivasFrente(control.getListaPrimitivas());
+                PainelTopo.apagarTodosPrimitivasTopo(control.getListaPrimitivas());
+                PainelLado.apagarTodosPrimitivasLado(control.getListaPrimitivas());
                 if (SelecProjecaoPerspectiva.isSelected()) {
-                    PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+                    PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
                 } else {
                     if (SelecProjecaoIsometrica.isSelected()) {
-                        PainelProjecao.apagarTodosCubosIsometrica(control.getListaCubos());
+                        PainelProjecao.apagarTodosPrimitivasIsometrica(control.getListaPrimitivas());
                     }
                 }
                 //System.out.println(cuboSelecIndice);
+                
+                //******************IMPORTANTE --REVER METODO
+                //control.agruparDuasPrimitivas(cuboSelecIndice, last);
                 control.agruparDoisCubos(cuboSelecIndice, last);
+                //******************
+                
                 desenharVisoesPaineis();
                 BotaoDesagrupar.setEnabled(false);
-                ExcluirCubo.setEnabled(false);
+                ExcluirPrimitiva.setEnabled(false);
                 SpinnerEscala.setEnabled(false);
                 SpinnerRotacao.setEnabled(false);
                 /*BotaoFazerRotacao.setEnabled(false);
@@ -2511,8 +2526,8 @@ public class PainelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_PainelFrentemouseReleasedFrente
 
     private void PainelFrenteresizedFrente(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PainelFrenteresizedFrente
-        if (!control.getListaCubos().isEmpty()) {
-            PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+        if (!control.getListaPrimitivas().isEmpty()) {
+            PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
             pintarCorSelecao();
         }
     }//GEN-LAST:event_PainelFrenteresizedFrente
@@ -2521,7 +2536,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
         //Delete
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             if (cuboIsSelected) {
-                excluirCubo();
+                excluirPrimitiva();
             }
         }
     }//GEN-LAST:event_PainelFrentekeyPressedFrente
@@ -2530,7 +2545,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
         //Delete
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             if (cuboIsSelected) {
-                excluirCubo();
+                excluirPrimitiva();
             }
         }
     }//GEN-LAST:event_PainelFrentekeyTypedFrente
@@ -2545,8 +2560,8 @@ public class PainelPrincipal extends javax.swing.JFrame {
             PainelFrente.setVisible(false);
             PainelLado.setVisible(false);
             PainelProjecao.setVisible(false);
-            if (!control.getListaCubos().isEmpty()) {
-                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+            if (!control.getListaPrimitivas().isEmpty()) {
+                PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
             }
         } else {
             AlternarVisaoTopo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
@@ -2561,25 +2576,25 @@ public class PainelPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AlternarVisaoTopoActionPerformed
 
-    private void PainelTopomoverCuboTopo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelTopomoverCuboTopo
-        if (cuboIsSelected && PainelTopo.clickDentroCuboTopo(control.getCubo(cuboSelecIndice), evt.getX(), evt.getY())) {
-            ListaCubos c = control.getCubo(cuboSelecIndice);
+    private void PainelTopoMoverPrimitivaTopo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelTopoMoverPrimitivaTopo
+        if (cuboIsSelected && PainelTopo.clickDentroPrimitivaTopo(control.getPrimitiva(cuboSelecIndice), evt.getX(), evt.getY())) {
+            ListaPrimitivas c = control.getPrimitiva(cuboSelecIndice);
             PainelTopo.pintarSelecaoTopo(c, Color.WHITE);
-            PainelFrente.apagarCubo(c);
-            PainelTopo.apagarCubo(c);
-            PainelLado.apagarCubo(c);
+            PainelFrente.apagarPrimitiva(c);
+            PainelTopo.apagarPrimitiva(c);
+            PainelLado.apagarPrimitiva(c);
             if (SelecProjecaoPerspectiva.isSelected()) {
-                PainelProjecao.apagarCuboProjecao(c, 1);
+                PainelProjecao.apagarPrimitivaProjecao(c, 1);
             } else {
                 if (SelecProjecaoIsometrica.isSelected()) {
-                    PainelProjecao.apagarCuboProjecao(c, 2);
+                    PainelProjecao.apagarPrimitivaProjecao(c, 2);
                 }
             }
-            control.getCubo(cuboSelecIndice).transladarCubosXZ(evt.getX() - localClicadoX, evt.getY() - localClicadoZ,
+            control.getPrimitiva(cuboSelecIndice).transladarPrimitivasXZ(evt.getX() - localClicadoX, evt.getY() - localClicadoZ,
                 PainelTopo.getSize().height - 1, PainelTopo.getSize().width - 1);
 
-            //PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
-            PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), corSelecao);
+            //PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), corSelecao);
             desenharVisoesPaineis();
 
             //System.out.println((evt.getX()-localClicadoX) + " " + (evt.getY()-localClicadoY));
@@ -2589,126 +2604,132 @@ public class PainelPrincipal extends javax.swing.JFrame {
             alteracoesRealizadas = true;
 
             //operaçoes agrupamento
-            cuboParaAgrupar = PainelTopo.getCuboMaisProximoTopo(control.getListaCubos(), cuboSelecIndice);
+            cuboParaAgrupar = PainelTopo.getPrimitivaMaisProximoTopo(control.getListaPrimitivas(), cuboSelecIndice);
             if (cuboParaAgrupar != cuboSelecIndice && cuboParaAgrupar != -1) {
                 last = cuboParaAgrupar;
-                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboParaAgrupar), Color.LIGHT_GRAY);
-                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
-                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), corSelecao);
+                PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboParaAgrupar), Color.LIGHT_GRAY);
+                PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), corSelecao);
                 permiteAgrupar = true;
             } else {
-                if (last != -1 && last < control.getListaCubos().size()) {
-                    PainelTopo.pintarSelecaoTopo(control.getCubo(last), Color.WHITE);
-                    PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
-                    PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), corSelecao);
+                if (last != -1 && last < control.getListaPrimitivas().size()) {
+                    PainelTopo.pintarSelecaoTopo(control.getPrimitiva(last), Color.WHITE);
+                    PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                    PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), corSelecao);
                     permiteAgrupar = false;
                 }
             }
         }
-    }//GEN-LAST:event_PainelTopomoverCuboTopo
+    }//GEN-LAST:event_PainelTopoMoverPrimitivaTopo
 
-    private void PainelTopooperacoesCuboTopo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelTopooperacoesCuboTopo
+    private void PainelTopoOperacoesPrimitivaTopo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelTopoOperacoesPrimitivaTopo
         if (plotDesenho) {
             //plotDesenho = false;
+            
+            //******************IMPORTANTE --REVER METODO
+            /*if (control.criarPrimitiva(evt.getX(), evt.getY(), 2, selecionaCorBorda.getCorSelecionada(),
+                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
             if (control.criarCubo(evt.getX(), evt.getY(), 2, selecionaCorBorda.getCorSelecionada(),
-                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {                
+            //******************
+                
             double sen, cos;
             int ang = 30;
             sen = angulos.getSenos()[360 - ang];
             cos = angulos.getCossenos()[360 - ang];
-            //control.getCubo(control.getListaCubos().size()-1).rotacaoZ(ang, sen, cos);
-            //control.getCubo(control.getListaCubos().size()-1).rotacaoY(ang, sen, cos);
-            //control.getCubo(control.getListaCubos().size()-1).rotacaoX(ang, sen, cos);
+            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoZ(ang, sen, cos);
+            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoY(ang, sen, cos);
+            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoX(ang, sen, cos);
             if (cuboIsSelected) {
                 cuboIsSelected = false;
                 if (selecLado) {
-                    PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
-                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                     selecLado = false;
                 }
                 if (selecFrente) {
-                    PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
-                    PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                    PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
                     selecFrente = false;
                 }
                 if (selecTopo) {
-                    PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
-                    PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                    PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                     selecTopo = false;
                 }
                 habilitarBotoes(false);
             }
             desenharVisoesPaineis();
-            //selecionaCubo = true;
+            //selecionaPrimitiva = true;
             alteracoesRealizadas = true;
         } else {
             JOptionPane.showMessageDialog(rootPane, "Não foi possível criar o cubo!", "Erro!", ERROR_MESSAGE);
         }
         } else {
-            if (selecionaCubo) {
+            if (selecionaPrimitiva) {
                 //System.out.println("X: " + evt.getX() + " Y: " + evt.getY());
-                if (!control.getListaCubos().isEmpty()) {
-                    if (PainelTopo.existemCubosPossiveisTopo(control.getListaCubos(), evt.getX(), evt.getY())) {
+                if (!control.getListaPrimitivas().isEmpty()) {
+                    if (PainelTopo.existemPrimitivasPossiveisTopo(control.getListaPrimitivas(), evt.getX(), evt.getY())) {
                         if (cuboIsSelected) {
-                            int aux = PainelTopo.selecionarCuboTopo(control.getListaCubos(), evt.getX(), evt.getY());
+                            int aux = PainelTopo.selecionarPrimitivaTopo(control.getListaPrimitivas(), evt.getX(), evt.getY());
                             if (selecLado) {
-                                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecLado = false;
                             }
                             if (selecFrente) {
-                                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecFrente = false;
                             }
                             if (cuboSelecIndice != aux) {
                                 if (selecTopo) {
-                                    PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                    PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                                    PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                    PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                     //selecTopo = false;
                                 }
                             }
                             cuboSelecIndice = aux;
                         } else {
-                            cuboSelecIndice = PainelTopo.selecionarCuboTopo(control.getListaCubos(), evt.getX(), evt.getY());
+                            cuboSelecIndice = PainelTopo.selecionarPrimitivaTopo(control.getListaPrimitivas(), evt.getX(), evt.getY());
                             cuboIsSelected = true;
                             selecLado = selecFrente = false;
                         }
-                        PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), corSelecao);
+                        PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), corSelecao);
                         localClicadoX = evt.getX();
                         localClicadoZ = evt.getY();
                         selecTopo = true;
-                        SpinnerRotacao.setValue(control.getCubo(cuboSelecIndice).getAnguloRotacaoZ());
-                        if (!control.getCubo(cuboSelecIndice).isAgrupado()) {
-                            SpinnerKA.setValue(control.getCubo(cuboSelecIndice).getCubo().getKa());
-                            SpinnerKD.setValue(control.getCubo(cuboSelecIndice).getCubo().getKd());
-                            SpinnerKS.setValue(control.getCubo(cuboSelecIndice).getCubo().getKs());
-                            SpinnerN.setValue(control.getCubo(cuboSelecIndice).getCubo().getN());
-                            SpinnerEscala.setValue(control.getCubo(cuboSelecIndice).getFatorEscalaZ());
+                        SpinnerRotacao.setValue(control.getPrimitiva(cuboSelecIndice).getAnguloRotacaoZ());
+                        if (!control.getPrimitiva(cuboSelecIndice).isAgrupado()) {
+                            SpinnerKA.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getKa());
+                            SpinnerKD.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getKd());
+                            SpinnerKS.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getKs());
+                            SpinnerN.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getN());
+                            SpinnerEscala.setValue(control.getPrimitiva(cuboSelecIndice).getFatorEscalaZ());
                         }
                         habilitarBotoes(true);
-                        setarValoresBotoes(control.getCubo(cuboSelecIndice).getAnguloRotacaoY());
+                        setarValoresBotoes(control.getPrimitiva(cuboSelecIndice).getAnguloRotacaoY());
                     } else {
                         if (cuboIsSelected) {
                             cuboIsSelected = false;
                             if (selecLado) {
-                                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecLado = false;
                             }
                             if (selecFrente) {
-                                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecFrente = false;
                             }
                             if (selecTopo) {
-                                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecTopo = false;
                             }
                             habilitarBotoes(false);
-                            if (last != -1 && last < control.getListaCubos().size()) {
-                                PainelTopo.pintarSelecaoTopo(control.getCubo(last), Color.WHITE);
+                            if (last != -1 && last < control.getListaPrimitivas().size()) {
+                                PainelTopo.pintarSelecaoTopo(control.getPrimitiva(last), Color.WHITE);
                             }
                         }
                     }
@@ -2716,27 +2737,32 @@ public class PainelPrincipal extends javax.swing.JFrame {
             }
         }
         repintarBotoesAlternar();
-    }//GEN-LAST:event_PainelTopooperacoesCuboTopo
+    }//GEN-LAST:event_PainelTopoOperacoesPrimitivaTopo
 
     private void PainelTopomouseReleasedTopo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelTopomouseReleasedTopo
         if (permiteAgrupar) {
-            PainelTopo.pintarSelecaoTopo(control.getCubo(last), Color.WHITE);
-            PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
-            PainelFrente.apagarTodosCubosFrente(control.getListaCubos());
-            PainelTopo.apagarTodosCubosTopo(control.getListaCubos());
-            PainelLado.apagarTodosCubosLado(control.getListaCubos());
+            PainelTopo.pintarSelecaoTopo(control.getPrimitiva(last), Color.WHITE);
+            PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+            PainelFrente.apagarTodosPrimitivasFrente(control.getListaPrimitivas());
+            PainelTopo.apagarTodosPrimitivasTopo(control.getListaPrimitivas());
+            PainelLado.apagarTodosPrimitivasLado(control.getListaPrimitivas());
             if (SelecProjecaoPerspectiva.isSelected()) {
-                PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+                PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
             } else {
                 if (SelecProjecaoIsometrica.isSelected()) {
-                    PainelProjecao.apagarTodosCubosIsometrica(control.getListaCubos());
+                    PainelProjecao.apagarTodosPrimitivasIsometrica(control.getListaPrimitivas());
                 }
             }
             //System.out.println(cuboSelecIndice);
+            
+            //******************IMPORTANTE --REVER METODO
+            //control.agrupaDuasPrimitivas(cuboSelecIndice, last);
             control.agruparDoisCubos(cuboSelecIndice, last);
+            //******************
+            
             desenharVisoesPaineis();
             BotaoDesagrupar.setEnabled(false);
-            ExcluirCubo.setEnabled(false);
+            ExcluirPrimitiva.setEnabled(false);
             SpinnerEscala.setEnabled(false);
             SpinnerRotacao.setEnabled(false);
             /*BotaoFazerRotacao.setEnabled(false);
@@ -2751,8 +2777,8 @@ public class PainelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_PainelTopomouseReleasedTopo
 
     private void PainelToporesizedTopo(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PainelToporesizedTopo
-        if (!control.getListaCubos().isEmpty()) {
-            PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+        if (!control.getListaPrimitivas().isEmpty()) {
+            PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
             pintarCorSelecao();
         }
     }//GEN-LAST:event_PainelToporesizedTopo
@@ -2767,8 +2793,8 @@ public class PainelPrincipal extends javax.swing.JFrame {
             PainelTopo.setVisible(false);
             PainelFrente.setVisible(false);
             PainelProjecao.setVisible(false);
-            if (!control.getListaCubos().isEmpty()) {
-                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+            if (!control.getListaPrimitivas().isEmpty()) {
+                PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
             }
         } else {
             AlternarVisaoLado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/setaCima.jpg")));
@@ -2783,25 +2809,25 @@ public class PainelPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AlternarVisaoLadoActionPerformed
 
-    private void PainelLadomoverCuboLado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelLadomoverCuboLado
-        if (cuboIsSelected && PainelLado.clickDentroCuboLado(control.getCubo(cuboSelecIndice), evt.getX(), evt.getY())) {
-            ListaCubos c = control.getCubo(cuboSelecIndice);
+    private void PainelLadoMoverPrimitivaLado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelLadoMoverPrimitivaLado
+        if (cuboIsSelected && PainelLado.clickDentroPrimitivaLado(control.getPrimitiva(cuboSelecIndice), evt.getX(), evt.getY())) {
+            ListaPrimitivas c = control.getPrimitiva(cuboSelecIndice);
             PainelLado.pintarSelecaoLado(c, Color.WHITE);
-            PainelFrente.apagarCubo(c);
-            PainelTopo.apagarCubo(c);
-            PainelLado.apagarCubo(c);
+            PainelFrente.apagarPrimitiva(c);
+            PainelTopo.apagarPrimitiva(c);
+            PainelLado.apagarPrimitiva(c);
             if (SelecProjecaoPerspectiva.isSelected()) {
-                PainelProjecao.apagarCuboProjecao(c, 1);
+                PainelProjecao.apagarPrimitivaProjecao(c, 1);
             } else {
                 if (SelecProjecaoIsometrica.isSelected()) {
-                    PainelProjecao.apagarCuboProjecao(c, 2);
+                    PainelProjecao.apagarPrimitivaProjecao(c, 2);
                 }
             }
-            control.getCubo(cuboSelecIndice).transladarCubosZY(evt.getX() - localClicadoZ, evt.getY() - localClicadoY,
+            control.getPrimitiva(cuboSelecIndice).transladarPrimitivasZY(evt.getX() - localClicadoZ, evt.getY() - localClicadoY,
                 PainelLado.getSize().height - 1, PainelLado.getSize().width - 1);
 
-            //PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
-            PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), corSelecao);
+            //PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), corSelecao);
             desenharVisoesPaineis();
 
             //System.out.println((evt.getX()-localClicadoX) + " " + (evt.getY()-localClicadoY));
@@ -2811,126 +2837,132 @@ public class PainelPrincipal extends javax.swing.JFrame {
             alteracoesRealizadas = true;
 
             //operaçoes agrupamento
-            cuboParaAgrupar = PainelLado.getCuboMaisProximoLado(control.getListaCubos(), cuboSelecIndice);
+            cuboParaAgrupar = PainelLado.getPrimitivaMaisProximoLado(control.getListaPrimitivas(), cuboSelecIndice);
             if (cuboParaAgrupar != cuboSelecIndice && cuboParaAgrupar != -1) {
                 last = cuboParaAgrupar;
-                PainelLado.pintarSelecaoLado(control.getCubo(cuboParaAgrupar), Color.LIGHT_GRAY);
-                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
-                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), corSelecao);
+                PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboParaAgrupar), Color.LIGHT_GRAY);
+                PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), corSelecao);
                 permiteAgrupar = true;
             } else {
-                if (last != -1 && last < control.getListaCubos().size()) {
-                    PainelLado.pintarSelecaoLado(control.getCubo(last), Color.WHITE);
-                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
-                    PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), corSelecao);
+                if (last != -1 && last < control.getListaPrimitivas().size()) {
+                    PainelLado.pintarSelecaoLado(control.getPrimitiva(last), Color.WHITE);
+                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                    PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), corSelecao);
                     permiteAgrupar = false;
                 }
             }
         }
-    }//GEN-LAST:event_PainelLadomoverCuboLado
+    }//GEN-LAST:event_PainelLadoMoverPrimitivaLado
 
-    private void PainelLadooperacoesCuboLado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelLadooperacoesCuboLado
+    private void PainelLadoOperacoesPrimitivaLado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelLadoOperacoesPrimitivaLado
         if (plotDesenho) {
             //plotDesenho = false;
+            
+            //******************IMPORTANTE --REVER METODO
+            /*if (control.criarPrimitiva(evt.getX(), evt.getY(), 3, selecionaCorBorda.getCorSelecionada(),
+                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
             if (control.criarCubo(evt.getX(), evt.getY(), 3, selecionaCorBorda.getCorSelecionada(),
                 PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+            //******************  
+            
             double sen, cos;
             int ang = 30;
             sen = angulos.getSenos()[360 - ang];
             cos = angulos.getCossenos()[360 - ang];
-            //control.getCubo(control.getListaCubos().size()-1).rotacaoZ(ang, sen, cos);
-            //control.getCubo(control.getListaCubos().size()-1).rotacaoY(ang, sen, cos);
-            //control.getCubo(control.getListaCubos().size()-1).rotacaoX(ang, sen, cos);
+            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoZ(ang, sen, cos);
+            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoY(ang, sen, cos);
+            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoX(ang, sen, cos);
             if (cuboIsSelected) {
                 cuboIsSelected = false;
                 if (selecLado) {
-                    PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
-                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                     selecLado = false;
                 }
                 if (selecFrente) {
-                    PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
-                    PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                    PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
                     selecFrente = false;
                 }
                 if (selecTopo) {
-                    PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
-                    PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                    PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                    PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                     selecTopo = false;
                 }
                 habilitarBotoes(false);
             }
             desenharVisoesPaineis();
-            //selecionaCubo = true;
+            //selecionaPrimitiva = true;
             alteracoesRealizadas = true;
         } else {
             JOptionPane.showMessageDialog(rootPane, "Não foi possível criar o cubo!", "Erro!", ERROR_MESSAGE);
         }
         } else {
-            if (selecionaCubo) {
+            if (selecionaPrimitiva) {
                 //System.out.println("X: " + evt.getX() + " Y: " + evt.getY());
-                if (!control.getListaCubos().isEmpty()) {
-                    if (PainelLado.existemCubosPossiveisLado(control.getListaCubos(), evt.getX(), evt.getY())) {
+                if (!control.getListaPrimitivas().isEmpty()) {
+                    if (PainelLado.existemPrimitivasPossiveisLado(control.getListaPrimitivas(), evt.getX(), evt.getY())) {
                         if (cuboIsSelected) {
-                            int aux = PainelLado.selecionarCuboLado(control.getListaCubos(), evt.getX(), evt.getY());
+                            int aux = PainelLado.selecionarPrimitivaLado(control.getListaPrimitivas(), evt.getX(), evt.getY());
                             if (selecFrente) {
-                                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecFrente = false;
                             }
                             if (selecTopo) {
-                                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecTopo = false;
                             }
                             if (cuboSelecIndice != aux) {
                                 if (selecLado) {
-                                    PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                                    PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                     //selecLado = false;
                                 }
                             }
                             cuboSelecIndice = aux;
                         } else {
-                            cuboSelecIndice = PainelLado.selecionarCuboLado(control.getListaCubos(), evt.getX(), evt.getY());
+                            cuboSelecIndice = PainelLado.selecionarPrimitivaLado(control.getListaPrimitivas(), evt.getX(), evt.getY());
                             cuboIsSelected = true;
                             selecFrente = selecTopo = false;
                         }
-                        PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), corSelecao);
+                        PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), corSelecao);
                         localClicadoZ = evt.getX();
                         localClicadoY = evt.getY();
                         selecLado = true;
-                        SpinnerRotacao.setValue(control.getCubo(cuboSelecIndice).getAnguloRotacaoZ());
-                        if (!control.getCubo(cuboSelecIndice).isAgrupado()) {
-                            SpinnerKA.setValue(control.getCubo(cuboSelecIndice).getCubo().getKa());
-                            SpinnerKD.setValue(control.getCubo(cuboSelecIndice).getCubo().getKd());
-                            SpinnerKS.setValue(control.getCubo(cuboSelecIndice).getCubo().getKs());
-                            SpinnerN.setValue(control.getCubo(cuboSelecIndice).getCubo().getN());
-                            SpinnerEscala.setValue(control.getCubo(cuboSelecIndice).getFatorEscalaZ());
+                        SpinnerRotacao.setValue(control.getPrimitiva(cuboSelecIndice).getAnguloRotacaoZ());
+                        if (!control.getPrimitiva(cuboSelecIndice).isAgrupado()) {
+                            SpinnerKA.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getKa());
+                            SpinnerKD.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getKd());
+                            SpinnerKS.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getKs());
+                            SpinnerN.setValue(control.getPrimitiva(cuboSelecIndice).getPrimitiva().getN());
+                            SpinnerEscala.setValue(control.getPrimitiva(cuboSelecIndice).getFatorEscalaZ());
                         }
                         habilitarBotoes(true);
-                        setarValoresBotoes(control.getCubo(cuboSelecIndice).getAnguloRotacaoX());
+                        setarValoresBotoes(control.getPrimitiva(cuboSelecIndice).getAnguloRotacaoX());
                     } else {
                         if (cuboIsSelected) {
                             cuboIsSelected = false;
                             if (selecLado) {
-                                PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecLado = false;
                             }
                             if (selecFrente) {
-                                PainelFrente.pintarSelecaoFrente(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelFrente.desenharVisaoFrente(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecFrente = false;
                             }
                             if (selecTopo) {
-                                PainelTopo.pintarSelecaoTopo(control.getCubo(cuboSelecIndice), Color.WHITE);
-                                PainelTopo.desenharVisaoTopo(control.getListaCubos(), OcultaFaces.isSelected());
+                                PainelTopo.pintarSelecaoTopo(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+                                PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
                                 selecTopo = false;
                             }
                             habilitarBotoes(false);
-                            if (last != -1 && last < control.getListaCubos().size()) {
-                                PainelLado.pintarSelecaoLado(control.getCubo(last), Color.WHITE);
+                            if (last != -1 && last < control.getListaPrimitivas().size()) {
+                                PainelLado.pintarSelecaoLado(control.getPrimitiva(last), Color.WHITE);
                             }
                         }
                     }
@@ -2938,27 +2970,32 @@ public class PainelPrincipal extends javax.swing.JFrame {
             }
         }
         repintarBotoesAlternar();
-    }//GEN-LAST:event_PainelLadooperacoesCuboLado
+    }//GEN-LAST:event_PainelLadoOperacoesPrimitivaLado
 
     private void PainelLadomouseReleasedLado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelLadomouseReleasedLado
         if (permiteAgrupar) {
-            PainelLado.pintarSelecaoLado(control.getCubo(last), Color.WHITE);
-            PainelLado.pintarSelecaoLado(control.getCubo(cuboSelecIndice), Color.WHITE);
-            PainelFrente.apagarTodosCubosFrente(control.getListaCubos());
-            PainelTopo.apagarTodosCubosTopo(control.getListaCubos());
-            PainelLado.apagarTodosCubosLado(control.getListaCubos());
+            PainelLado.pintarSelecaoLado(control.getPrimitiva(last), Color.WHITE);
+            PainelLado.pintarSelecaoLado(control.getPrimitiva(cuboSelecIndice), Color.WHITE);
+            PainelFrente.apagarTodosPrimitivasFrente(control.getListaPrimitivas());
+            PainelTopo.apagarTodosPrimitivasTopo(control.getListaPrimitivas());
+            PainelLado.apagarTodosPrimitivasLado(control.getListaPrimitivas());
             if (SelecProjecaoPerspectiva.isSelected()) {
-                PainelProjecao.apagarTodosCubosPerspectiva(control.getListaCubos());
+                PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
             } else {
                 if (SelecProjecaoIsometrica.isSelected()) {
-                    PainelProjecao.apagarTodosCubosIsometrica(control.getListaCubos());
+                    PainelProjecao.apagarTodosPrimitivasIsometrica(control.getListaPrimitivas());
                 }
             }
             //System.out.println(cuboSelecIndice);
+            
+            //******************IMPORTANTE --REVER METODO
+            //control.agruparDuasPrimitivas(cuboSelecIndice, last);
             control.agruparDoisCubos(cuboSelecIndice, last);
+            //******************
+            
             desenharVisoesPaineis();
             BotaoDesagrupar.setEnabled(false);
-            ExcluirCubo.setEnabled(false);
+            ExcluirPrimitiva.setEnabled(false);
             SpinnerEscala.setEnabled(false);
             SpinnerRotacao.setEnabled(false);
             /*BotaoFazerRotacao.setEnabled(false);
@@ -2973,8 +3010,8 @@ public class PainelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_PainelLadomouseReleasedLado
 
     private void PainelLadoresizedLado(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PainelLadoresizedLado
-        if (!control.getListaCubos().isEmpty()) {
-            PainelLado.desenharVisaoLadoEsquerdo(control.getListaCubos(), OcultaFaces.isSelected());
+        if (!control.getListaPrimitivas().isEmpty()) {
+            PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
             pintarCorSelecao();
         }
     }//GEN-LAST:event_PainelLadoresizedLado
@@ -2989,7 +3026,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
             PainelTopo.setVisible(false);
             PainelLado.setVisible(false);
             PainelFrente.setVisible(false);
-            if (!control.getListaCubos().isEmpty()) {
+            if (!control.getListaPrimitivas().isEmpty()) {
                 if (SelecProjecaoPerspectiva.isSelected()) {
                     int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
                     int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
@@ -3000,7 +3037,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
                     int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
                     Ponto p = new Ponto(px, py, pz);
                     int dp = Integer.parseInt(SpinnerDP.getValue().toString());
-                    PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected(), vrp, p, dp);
+                    PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
                 } else {
                     if (SelecProjecaoIsometrica.isSelected()) {
                         int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
@@ -3009,7 +3046,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
                         int py = Integer.parseInt(SpinnerPY.getValue().toString());
                         int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
                         Ponto p = new Ponto(px, py, pz);
-                        PainelProjecao.desenharVisaoIsometrica(control.getListaCubos(), OcultaFaces.isSelected(), vrpIso, p);
+                        PainelProjecao.desenharVisaoIsometrica(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrpIso, p);
                     }
                 }
             }
@@ -3027,7 +3064,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_AlternarVisaoProjecaoActionPerformed
 
     private void PainelProjecaoresizedProjecao(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PainelProjecaoresizedProjecao
-        if (!control.getListaCubos().isEmpty()) {
+        if (!control.getListaPrimitivas().isEmpty()) {
             if (SelecProjecaoPerspectiva.isSelected()) {
                 int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
                 int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
@@ -3038,7 +3075,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
                 Ponto p = new Ponto(px, py, pz);
                 int dp = Integer.parseInt(SpinnerDP.getValue().toString());
-                PainelProjecao.desenharVisaoPerspectiva(control.getListaCubos(), OcultaFaces.isSelected(), vrp, p, dp);
+                PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
             } else {
                 if (SelecProjecaoIsometrica.isSelected()) {
                     int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
@@ -3047,7 +3084,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
                     int py = Integer.parseInt(SpinnerPY.getValue().toString());
                     int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
                     Ponto p = new Ponto(px, py, pz);
-                    PainelProjecao.desenharVisaoIsometrica(control.getListaCubos(), OcultaFaces.isSelected(), vrpIso, p);
+                    PainelProjecao.desenharVisaoIsometrica(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrpIso, p);
                 }
             }
             pintarCorSelecao();
@@ -3081,21 +3118,23 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PainelPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PainelPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PainelPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PainelPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PainelPrincipal().setVisible(true);
+                new TelaPrincipal().setVisible(true);
             }
         });
     }
@@ -3114,9 +3153,9 @@ public class PainelPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton BotaoDesagrupar;
     private javax.swing.JMenuItem BotaoSobre;
     private javax.swing.JMenu CorSelec;
-    private javax.swing.JToggleButton DesenharCubos;
+    private javax.swing.JToggleButton DesenharPrimitivas;
     private javax.swing.JMenu Editar;
-    private javax.swing.JButton ExcluirCubo;
+    private javax.swing.JButton ExcluirPrimitiva;
     private javax.swing.JMenu MenuAjuda;
     private javax.swing.JCheckBox OcultaFaces;
     private javax.swing.JPanel PainelBaseFrente;
@@ -3125,11 +3164,11 @@ public class PainelPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel PainelBaseTopo;
     private javax.swing.JPanel PainelCor;
     private javax.swing.JPanel PainelDesenho;
-    private View.PainelExtendido PainelFrente;
-    private View.PainelExtendido PainelLado;
+    private ExtendedElements.PainelExtendido PainelFrente;
+    private ExtendedElements.PainelExtendido PainelLado;
     private javax.swing.JPanel PainelObservacao;
-    private View.PainelExtendido PainelProjecao;
-    private View.PainelExtendido PainelTopo;
+    private ExtendedElements.PainelExtendido PainelProjecao;
+    private ExtendedElements.PainelExtendido PainelTopo;
     private javax.swing.JMenuItem Sair;
     private javax.swing.JMenuItem SalvarProjeto;
     private javax.swing.JRadioButtonMenuItem SelecAmarelo;
@@ -3146,7 +3185,7 @@ public class PainelPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem SelecRosa;
     private javax.swing.JRadioButtonMenuItem SelecVerde;
     private javax.swing.JRadioButtonMenuItem SelecVermelho;
-    private javax.swing.JToggleButton SelecionarCubos;
+    private javax.swing.JToggleButton SelecionarPrimitivas;
     private javax.swing.JMenu Sombreamento;
     private javax.swing.JCheckBoxMenuItem SombreamentoFlat;
     private javax.swing.JCheckBoxMenuItem SombreamentoGouraud;

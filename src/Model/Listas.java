@@ -12,47 +12,68 @@ public class Listas implements Serializable {
     //private final ArrayList<Cubo> listaCubos;
     //private final ArrayList<Cubo> listaCubosAgrupados;
     //private final ArrayList<ArrayList> listaAgrupados;
-    private final ArrayList<ListaCubos> listaCub;
+    /*private final ArrayList<ListaCubos> listaCub;
     private final ArrayList<ListaPiramides> listaPiram;
     private final ArrayList<ListaPrismas> listaPri;
     private final ArrayList<ListaEsferas> listaEsf;
     private final ArrayList<ListaCones> listaCone;
-    private final ArrayList<ListaCilindros> listaCil;
+    private final ArrayList<ListaCilindros> listaCil;*/
+    private final ArrayList<ListaPrimitivas> listaPrimitivas;
     
     public Listas () {
         //listaCubos = new ArrayList<>();
         //listaCubosAgrupados = new ArrayList<>();
         //listaAgrupados = new ArrayList<>();
-        listaCub = new ArrayList<>();
+        /*listaCub = new ArrayList<>();
         listaCil = new ArrayList<>();
         listaCone = new ArrayList<>();
         listaEsf = new ArrayList<>();
         listaPri = new ArrayList<>();
-        listaPiram = new ArrayList<>();
+        listaPiram = new ArrayList<>();*/
+        listaPrimitivas = new ArrayList<>();
+    }
+
+    //*Focar nos seguintes métodos
+    public ArrayList<ListaPrimitivas> getPrimitivas() {
+        return listaPrimitivas;
     }
     
+    public void adicionarPrimitiva (ListaPrimitivas listaP) {
+        listaPrimitivas.add(listaP);
+    }
+    
+    public void agruparPrimitivas () {
+        
+    }
+    
+    public void desagruparPrimitivas () {
+        
+    }
+    //*Até aqui    
+    
+    /*
     public void adicionarCuboLista (ListaCubos listaC) {
         listaCub.add(listaC);
     }
     
-    public void adicionarPiramideLista (ListaCubos listaPi) {
-        listaCub.add(listaPi);
+    public void adicionarPiramideLista (ListaPiramides listaPi) {
+        listaPiram.add(listaPi);
     }
     
-    public void adicionarPrismaLista (ListaCubos listaPr) {
-        listaCub.add(listaPr);
+    public void adicionarPrismaLista (ListaPrismas listaPr) {
+        listaPri.add(listaPr);
     }
     
-    public void adicionarEsferaLista (ListaCubos listaE) {
-        listaCub.add(listaE);
+    public void adicionarEsferaLista (ListaEsferas listaE) {
+        listaEsf.add(listaE);
     }
     
-    public void adicionarConeLista (ListaCubos listaCo) {
-        listaCub.add(listaCo);
+    public void adicionarConeLista (ListaCones listaCo) {
+        listaCone.add(listaCo);
     }
     
-    public void adicionarCilindroLista (ListaCubos listaCi) {
-        listaCub.add(listaCi);
+    public void adicionarCilindroLista (ListaCilindros listaCi) {
+        listaCil.add(listaCi);
     }
     
     public ArrayList<ListaCubos> getCubos () {
@@ -78,7 +99,9 @@ public class Listas implements Serializable {
     public ArrayList<ListaPiramides> getPiramides () {
         return listaPiram;
     }
+    */
     
+    /*
     public void agruparDoisCubos (int index1, int index2) {
         //fazer algo para "grudar" os cubos ao agrupar
         Cubo c;
@@ -172,6 +195,11 @@ public class Listas implements Serializable {
         listaCub.get(index2).setarAgrupamentoCubos();
         a = listaCub.remove(index1);
     }
+    */
+    
+    public void agruparDoisCubos (int index1, int index2) {
+        
+    }
     
     public void agruparDoisCilindros () {
         
@@ -193,6 +221,7 @@ public class Listas implements Serializable {
         
     }
     
+    /*
     public void desagruparCubos (int index) {
         Cubo c;
         ListaCubos l;
@@ -253,71 +282,85 @@ public class Listas implements Serializable {
             listaCub.remove(index);
         } 
     }
+    */
     
-    public void desagruparDoisCilindros () {
+    public void desagruparCubos (int index) {
         
     }
     
-    public void desagruparDoisCones () {
+    public void desagruparCilindros () {
         
     }
     
-    public void desagruparDuasEsferas () {
+    public void desagruparCones () {
         
     }
     
-    public void desagruparDuasPiramides () {
+    public void desagruparEsferas () {
         
     }
     
-    public void desagruparDoisPrismas () {
+    public void desagruparPiramides () {
+        
+    }
+    
+    public void desagruparPrismas () {
         
     }
     
     public void limparListas () {
         int i;
+        //Primitivas
+        i = listaPrimitivas.size()-1;
+        while (!listaPrimitivas.isEmpty()) {
+            //listaPrimitivas.get(i).removerTodasPrimitivas();
+            listaPrimitivas.remove(i);
+            i--;
+        }
+        /*
+        //Cubos
         i = listaCub.size()-1;
         while (!listaCub.isEmpty()) {
             listaCub.get(i).removerTodosCubos();
             listaCub.remove(i);
             i--;
         }
-        
+        //Piramides
         i = listaPiram.size()-1;
         while (!listaPiram.isEmpty()) {
             listaPiram.get(i).removerTodasPiramides();
             listaPiram.remove(i);
             i--;
         }
-        
+        //Prismas
         i = listaPri.size()-1;
         while (!listaPri.isEmpty()) {
             listaPri.get(i).removerTodosPrismas();
             listaPri.remove(i);
             i--;
         }
-        
+        //Esferas
         i = listaEsf.size()-1;
         while (!listaEsf.isEmpty()) {
             listaEsf.get(i).removerTodasEsferas();
             listaEsf.remove(i);
             i--;
         }
-        
+        //Cones
         i = listaCone.size()-1;
         while (!listaCone.isEmpty()) {
             listaCone.get(i).removerTodosCones();
             listaCone.remove(i);
             i--;
         }
-        
+        //Cilindros
         i = listaCil.size()-1;
         while (!listaCil.isEmpty()) {
             listaCil.get(i).removerTodosCilindros();
             listaCil.remove(i);
             i--;
         }
-        
+        */
         /*int i = listaAgrupados.size()-1;
         while (!listaAgrupados.isEmpty()) {
             listaAgrupados.remove(i);
@@ -334,7 +377,8 @@ public class Listas implements Serializable {
         while (!listaCubos.isEmpty()) {
             listaCubos.remove(i);
             i--;
-        }*/
+        }
+        */
     }
 
     /*public ArrayList<Cubo> getListaCubosAgrupados() {

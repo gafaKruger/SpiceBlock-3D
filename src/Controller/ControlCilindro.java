@@ -6,10 +6,25 @@
 
 package Controller;
 
+import Model.Cilindro;
+import Model.ConfigCilindro;
+
 /**
  *
  * @author Rafael Fiori Kruger
  */
 public class ControlCilindro {
+    
+    private ConfigCilindro Ccil;
+    
+    public ControlCilindro () {
+        Ccil = new ConfigCilindro();
+    }
+    
+    public Cilindro criarCilindro () {
+        Cilindro c = null;
+        
+        return c;
+    }
 
 }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Rafael Fiori Kruger
  */
-public class ListaCones {
+public class ListaCones extends ListaPrimitivas {
     
     private ArrayList<Cone> listaCones;
     private boolean isAgrupado;

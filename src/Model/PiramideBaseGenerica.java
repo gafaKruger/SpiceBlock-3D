@@ -10,6 +10,9 @@ package Model;
  *
  * @author Rafael Fiori Kruger
  */
-public class PiramideBaseGenerica {
+public class PiramideBaseGenerica extends Primitiva {
 
+    public PiramideBaseGenerica() {
+        super();
+    }
 }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Rafael Fiori Kruger
  */
-public class ListaPiramides {
+public class ListaPiramides extends ListaPrimitivas {
 
     private ArrayList<Piramide> listaPiramides;
     private boolean isAgrupado;

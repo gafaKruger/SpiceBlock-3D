@@ -6,10 +6,23 @@
 
 package Controller;
 
+import Model.ConfigPrisma;
+import Model.Prisma;
+
 /**
  *
  * @author Rafael Fiori Kruger
  */
 public class ControlPrisma {
-
+    private ConfigPrisma Cpri;
+    
+    public ControlPrisma () {
+        Cpri = new ConfigPrisma();
+    }
+    
+    public Prisma criarPrisma () {
+        Prisma p = null;
+        
+        return p;
+    }
 }

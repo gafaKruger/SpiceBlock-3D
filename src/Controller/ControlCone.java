@@ -6,10 +6,23 @@
 
 package Controller;
 
+import Model.Cone;
+import Model.ConfigCone;
+
 /**
  *
  * @author Rafael Fiori Kruger
  */
 public class ControlCone {
-
+    private ConfigCone Ccone;
+    
+    public ControlCone () {
+        Ccone = new ConfigCone();
+    }
+    
+    public Cone criarCone () {
+        Cone c = null;
+        
+        return c;
+    }
 }

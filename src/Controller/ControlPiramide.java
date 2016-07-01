@@ -6,10 +6,23 @@
 
 package Controller;
 
+import Model.ConfigPiramide;
+import Model.Piramide;
+
 /**
  *
  * @author Rafael Fiori Kruger
  */
 public class ControlPiramide {
-
+    private ConfigPiramide Cpir;
+    
+    public ControlPiramide () {
+        Cpir = new ConfigPiramide();
+    }
+    
+    public Piramide criarPiramide () {
+        Piramide p = null;
+        
+        return p;
+    }
 }

@@ -10,6 +10,10 @@ package Model;
  *
  * @author Rafael Fiori Kruger
  */
-public class PrismaBaseGenerica {
+public class PrismaBaseGenerica extends Primitiva {
+    
+    public PrismaBaseGenerica () {
+        super();
+    }
 
 }
