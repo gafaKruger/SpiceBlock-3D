@@ -180,9 +180,9 @@ public class ListaPrimitivas implements Serializable {
                     controleTelaFrente = false;
                 }
             } else {
-                travaFrente = listaPrimitivas.get(0).getMatriz().travaTranslacaoXY(a, b, altura, largura);
-                travaTopo = listaPrimitivas.get(0).getMatriz().travaTranslacaoXZ(a, b, altura, largura);
-                travaLado = listaPrimitivas.get(0).getMatriz().travaTranslacaoZY(a, b, altura, largura);
+                //travaFrente = listaPrimitivas.get(0).getMatriz().travaTranslacaoXY(a, b, altura, largura);
+                //travaTopo = listaPrimitivas.get(0).getMatriz().travaTranslacaoXZ(a, b, altura, largura);
+                //travaLado = listaPrimitivas.get(0).getMatriz().travaTranslacaoZY(a, b, altura, largura);
                 if (!travaFrente) {
                     listaPrimitivas.get(0).getMatriz().translacaoXY(a, b);
                 }
@@ -473,7 +473,7 @@ public class ListaPrimitivas implements Serializable {
         return d;
     }
     
-    void removerTodasPrimitivas() {
+    public void removerTodasPrimitivas() {
         int i = listaPrimitivas.size() - 1;
         while (!listaPrimitivas.isEmpty()) {
             listaPrimitivas.remove(i);

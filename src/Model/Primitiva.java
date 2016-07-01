@@ -8,12 +8,18 @@ package Model;
 
 import java.awt.Color;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
  * @author Rafael Fiori Kruger
  */
 public class Primitiva implements Serializable {
+    //Quando agrupado, a lista abaixo armazena as faces do objeto que estão conectadas a outros objetos
+    protected ArrayList<Face> faceAgrupado; 
+    //Quando agrupado, a lista abaixo armazena os ID's dos objetos aos quais o objeto
+    //está conectado, em relação às faces armazenadas na lista acima.
+    protected ArrayList<Integer> IDAgrupado;
     protected boolean agrupado;
     protected long ID;
     protected Matriz M, Mperspectiva, Misometrica;
@@ -41,6 +47,24 @@ public class Primitiva implements Serializable {
         tipo = -1;
         faces = null;
         qtdFaces = 0;
+        faceAgrupado = new ArrayList<>();
+        IDAgrupado = new ArrayList<>();
+    }
+    
+    public ArrayList<Face> getFaceAgrupado() {
+        return faceAgrupado;
+    }
+    
+    public void setFaceAgrupado(ArrayList<Face> fA) {
+        faceAgrupado = fA;
+    }
+    
+    public ArrayList<Integer> getIDAgrupado () {
+        return IDAgrupado;
+    }
+    
+    public void setIDAgrupado (ArrayList<Integer> IDA) {
+        IDAgrupado = IDA;
     }
     
     public Face[] getFaces () {

@@ -20,6 +20,8 @@ public class PainelExtendido extends JPanel {
     private ArrayList<ListaPrimitivas> primitivasPossiveis = new ArrayList<>();
 
     public PainelExtendido() {
+        setBackground(Color.white);
+        //setBorder(TitledBorder.);
     }
 
     public void desenharVisaoTopo(ArrayList<ListaPrimitivas> listaPrimitivas, boolean ocultarFaces) {
@@ -171,6 +173,7 @@ public class PainelExtendido extends JPanel {
     }
 
     public double[][] SRUSRC(Ponto VRP, Ponto P) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
         //Adotando Y = (0, 1, 0)
         Ponto N = new Ponto();
         Ponto V;
@@ -245,6 +248,7 @@ public class PainelExtendido extends JPanel {
     }
 
     public double[][] multiplicaMatrizes(double[][] m1, double[][] m2, int linhas, int colunas) {
+        //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
         double[][] mAux = new double[linhas][colunas];
         for (int i = 0; i < linhas; i++) {
             for (int j = 0; j < colunas; j++) {
@@ -1826,6 +1830,7 @@ public class PainelExtendido extends JPanel {
 
     public void pintarSelecaoFrente(ListaPrimitivas c, Color cor) {
         //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
+        //****************MODIFICAR A PINTURA DA SELECAO PARA CONTORNAR AS BORDAS DO OBJETO
         g = getGraphics();
         g.setColor(cor);
         boolean trocar = true;
@@ -1874,6 +1879,7 @@ public class PainelExtendido extends JPanel {
 
     public void pintarSelecaoTopo(ListaPrimitivas c, Color cor) {
         //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
+        //****************MODIFICAR A PINTURA DA SELECAO PARA CONTORNAR AS BORDAS DO OBJETO
         g = getGraphics();
         g.setColor(cor);
         boolean trocar = true;
@@ -1922,6 +1928,7 @@ public class PainelExtendido extends JPanel {
 
     public void pintarSelecaoLado(ListaPrimitivas c, Color cor) {
         //****************MODIFICAR METODO PARA USAR COM QUALQUER TIPO DE PRIMITIVA
+        //****************MODIFICAR A PINTURA DA SELECAO PARA CONTORNAR AS BORDAS DO OBJETO
         //Invertido por conta da ordenada y invertida no painel do java
         g = getGraphics();
         g.setColor(cor);
