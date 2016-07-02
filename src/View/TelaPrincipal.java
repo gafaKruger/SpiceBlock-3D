@@ -737,6 +737,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 ScrollPainelFrente(evt);
             }
         });
+        ScrollPainelFrente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BarraPainelFrente2(evt);
+            }
+        });
         ScrollPainelFrente.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
             public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
                 BarraPainelFrente(evt);
@@ -745,7 +750,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         PainelFrente.setBackground(new java.awt.Color(255, 255, 255));
         PainelFrente.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 11))); // NOI18N
-        PainelFrente.setPreferredSize(new java.awt.Dimension(900, 600));
+        PainelFrente.setPreferredSize(new java.awt.Dimension(750, 500));
         PainelFrente.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 PainelFrentemoverPrimitivaFrente(evt);
@@ -777,11 +782,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelFrente.setLayout(PainelFrenteLayout);
         PainelFrenteLayout.setHorizontalGroup(
             PainelFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
         );
         PainelFrenteLayout.setVerticalGroup(
             PainelFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         ScrollPainelFrente.setViewportView(PainelFrente);
@@ -815,9 +820,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         DiminuirTamanhoVerticalFrente.setText("-");
         DiminuirTamanhoVerticalFrente.setToolTipText("Diminuir Tamanho Vertical");
+        DiminuirTamanhoVerticalFrente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DiminuirTamanhoVerticalFrenteActionPerformed(evt);
+            }
+        });
 
         AumentarTamanhoVerticalFrente.setText("+");
         AumentarTamanhoVerticalFrente.setToolTipText("Aumentar Tamanho Vertical");
+        AumentarTamanhoVerticalFrente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AumentarTamanhoVerticalFrenteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PainelBaseFrenteLayout = new javax.swing.GroupLayout(PainelBaseFrente);
         PainelBaseFrente.setLayout(PainelBaseFrenteLayout);
@@ -3335,7 +3350,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_DesenharPiramidesActionPerformed
 
     private void DiminuirTamanhoHorizontalFrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiminuirTamanhoHorizontalFrenteActionPerformed
-        //System.out.println(PainelFrente.getSize().width);
+        //System.out.println(PainelFrente.getPreferredSize().width);
         if (PainelFrente.getPreferredSize().width > 700) {
             Dimension d = new Dimension(PainelFrente.getPreferredSize().width - 5, PainelFrente.getPreferredSize().height);
             PainelFrente.setPreferredSize(d);
@@ -3346,23 +3361,49 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_DiminuirTamanhoHorizontalFrenteActionPerformed
 
     private void AumentarTamanhoHorizontalFrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AumentarTamanhoHorizontalFrenteActionPerformed
-        //System.out.println(PainelFrente.getSize().width);
+        //System.out.println(PainelFrente.getPreferredSize().width);
         Dimension d = new Dimension(PainelFrente.getPreferredSize().width + 5, PainelFrente.getPreferredSize().height);
         PainelFrente.setPreferredSize(d);
-        //*****************VER COMO FAZ PARA MUDAR O TAMANHO DA BARRO NA HORA QUE DECREMENTA/INCREMENTA
+        //*****************VER COMO FAZ PARA MUDAR O TAMANHO DA BARRA NA HORA QUE DECREMENTA/INCREMENTA
         
-        //System.out.println(PainelFrente.getSize().width);
+        //System.out.println(PainelFrente.getPreferredSize().width);
     }//GEN-LAST:event_AumentarTamanhoHorizontalFrenteActionPerformed
 
     private void ScrollPainelFrente(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_ScrollPainelFrente
         desenharVisoesPaineis();
         pintarCorSelecao();
+        //*******************ADICIONAR REPAINT DAS PRIMITIVAS E SELEÇÃO QUANDO MEXE DIRETO NA BARRA
     }//GEN-LAST:event_ScrollPainelFrente
 
     private void BarraPainelFrente(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_BarraPainelFrente
         desenharVisoesPaineis();
         pintarCorSelecao();
     }//GEN-LAST:event_BarraPainelFrente
+
+    private void BarraPainelFrente2(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraPainelFrente2
+        desenharVisoesPaineis();
+        pintarCorSelecao();
+    }//GEN-LAST:event_BarraPainelFrente2
+
+    private void DiminuirTamanhoVerticalFrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiminuirTamanhoVerticalFrenteActionPerformed
+        //System.out.println(PainelFrente.getPreferredSize().height);
+        if (PainelFrente.getPreferredSize().height > 245) {
+            Dimension d = new Dimension(PainelFrente.getPreferredSize().width, PainelFrente.getPreferredSize().height - 5);
+            PainelFrente.setPreferredSize(d);
+            //*****************VER COMO FAZ PARA MUDAR O TAMANHO DA BARRA NA HORA QUE DECREMENTA/INCREMENTA
+            
+        }
+        //System.out.println(PainelFrente.getPreferredSize().height);
+    }//GEN-LAST:event_DiminuirTamanhoVerticalFrenteActionPerformed
+
+    private void AumentarTamanhoVerticalFrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AumentarTamanhoVerticalFrenteActionPerformed
+        //System.out.println(PainelFrente.getPreferredSize().height);
+        Dimension d = new Dimension(PainelFrente.getPreferredSize().width, PainelFrente.getPreferredSize().height + 5);
+        PainelFrente.setPreferredSize(d);
+        //*****************VER COMO FAZ PARA MUDAR O TAMANHO DA BARRA NA HORA QUE DECREMENTA/INCREMENTA
+        
+        //System.out.println(PainelFrente.getPreferredSize().height);
+    }//GEN-LAST:event_AumentarTamanhoVerticalFrenteActionPerformed
 
     private void repintarBotoesAlternar() {
         AlternarVisaoFrente.repaint();

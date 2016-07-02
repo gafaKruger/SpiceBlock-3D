@@ -978,6 +978,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseWheelMoved" listener="java.awt.event.MouseWheelListener" parameters="java.awt.event.MouseWheelEvent" handler="ScrollPainelFrente"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BarraPainelFrente2"/>
             <EventHandler event="vetoableChange" listener="java.beans.VetoableChangeListener" parameters="java.beans.PropertyChangeEvent" handler="BarraPainelFrente"/>
           </Events>
 
@@ -999,7 +1000,7 @@
                   </Border>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[900, 600]"/>
+                  <Dimension value="[750, 500]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1014,12 +1015,12 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="900" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="750" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="600" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="500" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -1067,12 +1068,18 @@
             <Property name="text" type="java.lang.String" value="-"/>
             <Property name="toolTipText" type="java.lang.String" value="Diminuir Tamanho Vertical"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DiminuirTamanhoVerticalFrenteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="AumentarTamanhoVerticalFrente">
           <Properties>
             <Property name="text" type="java.lang.String" value="+"/>
             <Property name="toolTipText" type="java.lang.String" value="Aumentar Tamanho Vertical"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AumentarTamanhoVerticalFrenteActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
