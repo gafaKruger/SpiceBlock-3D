@@ -42,11 +42,11 @@ public class Listas implements Serializable {
         listaPrimitivas.add(listaP);
     }
     
-    public void agruparPrimitivas () {
+    public void agruparDuasPrimitivas (int index1, int index2) {
         
     }
     
-    public void desagruparPrimitivas () {
+    public void desagruparPrimitivas (int index) {
         
     }
     //*Até aqui    
@@ -288,23 +288,23 @@ public class Listas implements Serializable {
         
     }
     
-    public void desagruparCilindros () {
+    public void desagruparCilindros (int index) {
         
     }
     
-    public void desagruparCones () {
+    public void desagruparCones (int index) {
         
     }
     
-    public void desagruparEsferas () {
+    public void desagruparEsferas (int index) {
         
     }
     
-    public void desagruparPiramides () {
+    public void desagruparPiramides (int index) {
         
     }
     
-    public void desagruparPrismas () {
+    public void desagruparPrismas (int index) {
         
     }
     

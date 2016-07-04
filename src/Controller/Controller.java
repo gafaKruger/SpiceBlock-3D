@@ -59,6 +59,45 @@ public class Controller implements Serializable {
         listas.getPrimitivas().add(listaAux);
     }
     
+    public boolean criarPrimitiva (int tipo, int a, int b, int op, int altura, int largura) {
+        if (tipo == -1) {
+            return false;
+        } else {
+            switch (tipo) {
+                case 1:
+                    return criarCubo(a, b, op, altura, largura);
+                //fazer para os outros
+            }  
+        }
+        return false;
+    }
+    
+    public boolean criarPrimitiva (int tipo, int a, int b, int op, Color borda, int altura, int largura) {
+        if (tipo == -1) {
+            return false;
+        } else {
+            switch (tipo) {
+                case 1:
+                    return criarCubo(a, b, op, borda, altura, largura);
+                //fazer para os outros
+            }  
+        }
+        return false;
+    }
+    
+    public boolean criarPrimitiva (int tipo, int a, int b, int op, Color borda, Color preenc, int altura, int largura) {
+        if (tipo == -1) {
+            return false;
+        } else {
+            switch (tipo) {
+                case 1:
+                    return criarCubo(a, b, op, borda, preenc, altura, largura);
+                //fazer para os outros
+            }  
+        }
+        return false;
+    }
+    
     public boolean criarCubo (int a, int b, int op, int altura, int largura) {
         Cubo c;
         c = cCubo.criarCubo(a, b, op, altura, largura);
@@ -273,11 +312,13 @@ public class Controller implements Serializable {
     //*Verificar os seguintes metodos para fazer combinações entre as primitivas
     //agrupar duasPiramides, agruparPiramideCubo
     public void desagrupar (int i) {
-        listas.desagruparCubos(i);
+        listas.desagruparPrimitivas(i);
+        //listas.desagruparCubos(i);
     }
     
-    public void agruparDoisCubos (int i, int j) {
-        listas.agruparDoisCubos(i, j);
+    public void agruparDuasPrimitivas (int i, int j) {
+        listas.agruparDuasPrimitivas(i, j);
+        //listas.agruparDoisCubos(i, j);
     }
     //*Mudar até este método
     

@@ -2949,18 +2949,51 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_PainelFrentemoverPrimitivaFrente
 
     private int selecPrimitiva() {
-        return 1;
+        //Define o codigo da primitiva que sera desenhada
+        /*
+         TIPOS
+         1 = CUBO
+         2 = CILINDRO
+         3 = CONE
+         4 = ESFERA
+         5 = PIRAMIDE
+         6 = PRISMA
+         7 = TOROIDE
+         -1 = NAO DEFINIDO AINDA
+         */
+        if (DesenharCubos.isSelected()) {
+            return 1;
+        }
+        if (DesenharCilindros.isSelected()) {
+            return 2;
+        }
+        if (DesenharCones.isSelected()) {
+            return 3;
+        }
+        if (DesenharEsferas.isSelected()) {
+            return 4;
+        }
+        if (DesenharPiramides.isSelected()) {
+            return 5;
+        }
+        if (DesenharPrismas.isSelected()) {
+            return 6;
+        }
+        if (DesenharToroides.isSelected()) {
+            return 7;
+        }
+        return -1;
     }
 
     private void PainelFrenteOperacoesPrimitivaFrente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelFrenteOperacoesPrimitivaFrente
         if (plotDesenho) {
             //plotDesenho = false;
-
+            int tipoPrimitiva = selecPrimitiva();
             //******************IMPORTANTE --REVER METODO PARA TER AS OUTRAS PRIMITIVAS
-            /*if (control.criarPrimitiva(evt.getX(), evt.getY(), 1, selecionaCorBorda.getCorSelecionada(),
-             PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
-            if (control.criarCubo(evt.getX(), evt.getY(), 1, selecionaCorBorda.getCorSelecionada(),
-                    PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+            if (control.criarPrimitiva(tipoPrimitiva, evt.getX(), evt.getY(), 1, selecionaCorBorda.getCorSelecionada(),
+             PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+            /*if (control.criarCubo(evt.getX(), evt.getY(), 1, selecionaCorBorda.getCorSelecionada(),
+                    PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
             //******************
 
                 //double sen, cos;
@@ -3090,8 +3123,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 //System.out.println(primitivaSelecIndice);
 
             //******************IMPORTANTE --REVER METODO PARA TER AS OUTRAS PRIMITIVAS
-            //control.agruparDuasPrimitivas(primitivaSelecIndice, last);
-            control.agruparDoisCubos(primitivaSelecIndice, last);
+            control.agruparDuasPrimitivas(primitivaSelecIndice, last);
+            //control.agruparDoisCubos(primitivaSelecIndice, last);
             //******************
 
             desenharVisoesPaineis();
@@ -3210,18 +3243,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void PainelTopoOperacoesPrimitivaTopo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelTopoOperacoesPrimitivaTopo
         if (plotDesenho) {
             //plotDesenho = false;
-
+            int tipoPrimitiva = selecPrimitiva();
             //******************IMPORTANTE --REVER METODO PARA TER AS OUTRAS PRIMITIVAS
-            /*if (control.criarPrimitiva(evt.getX(), evt.getY(), 2, selecionaCorBorda.getCorSelecionada(),
-             PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
-            if (control.criarCubo(evt.getX(), evt.getY(), 2, selecionaCorBorda.getCorSelecionada(),
-                    PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+            if (control.criarPrimitiva(tipoPrimitiva, evt.getX(), evt.getY(), 2, selecionaCorBorda.getCorSelecionada(),
+             PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+            /*if (control.criarCubo(evt.getX(), evt.getY(), 2, selecionaCorBorda.getCorSelecionada(),
+                    PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
                 //******************
 
-                double sen, cos;
-                int ang = 30;
-                sen = angulos.getSenos()[360 - ang];
-                cos = angulos.getCossenos()[360 - ang];
+                //double sen, cos;
+                //int ang = 30;
+                //sen = angulos.getSenos()[360 - ang];
+                //cos = angulos.getCossenos()[360 - ang];
                 //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoZ(ang, sen, cos);
                 //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoY(ang, sen, cos);
                 //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoX(ang, sen, cos);
@@ -3341,8 +3374,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             //System.out.println(primitivaSelecIndice);
 
             //******************IMPORTANTE --REVER METODO PARA TER AS OUTRAS PRIMITIVAS
-            //control.agrupaDuasPrimitivas(primitivaSelecIndice, last);
-            control.agruparDoisCubos(primitivaSelecIndice, last);
+            control.agruparDuasPrimitivas(primitivaSelecIndice, last);
+            //control.agruparDoisCubos(primitivaSelecIndice, last);
             //******************
 
             desenharVisoesPaineis();
@@ -3443,18 +3476,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void PainelLadoOperacoesPrimitivaLado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelLadoOperacoesPrimitivaLado
         if (plotDesenho) {
             //plotDesenho = false;
-
+            int tipoPrimitiva = selecPrimitiva();
             //******************IMPORTANTE --REVER METODO PARA TER AS OUTRAS PRIMITIVAS
-            /*if (control.criarPrimitiva(evt.getX(), evt.getY(), 3, selecionaCorBorda.getCorSelecionada(),
-             PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
-            if (control.criarCubo(evt.getX(), evt.getY(), 3, selecionaCorBorda.getCorSelecionada(),
-                    PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+            if (control.criarPrimitiva(tipoPrimitiva, evt.getX(), evt.getY(), 3, selecionaCorBorda.getCorSelecionada(),
+             PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+            /*if (control.criarCubo(evt.getX(), evt.getY(), 3, selecionaCorBorda.getCorSelecionada(),
+                    PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
                 //******************  
 
-                double sen, cos;
-                int ang = 30;
-                sen = angulos.getSenos()[360 - ang];
-                cos = angulos.getCossenos()[360 - ang];
+                //double sen, cos;
+                //int ang = 30;
+                //sen = angulos.getSenos()[360 - ang];
+                //cos = angulos.getCossenos()[360 - ang];
                 //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoZ(ang, sen, cos);
                 //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoY(ang, sen, cos);
                 //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoX(ang, sen, cos);
@@ -3574,8 +3607,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             //System.out.println(primitivaSelecIndice);
 
             //******************IMPORTANTE --REVER METODO PARA TER AS OUTRAS PRIMITIVAS
-            //control.agruparDuasPrimitivas(primitivaSelecIndice, last);
-            control.agruparDoisCubos(primitivaSelecIndice, last);
+            control.agruparDuasPrimitivas(primitivaSelecIndice, last);
+            //control.agruparDoisCubos(primitivaSelecIndice, last);
             //******************
 
             desenharVisoesPaineis();
