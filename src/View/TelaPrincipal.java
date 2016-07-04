@@ -386,14 +386,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
         AlternarVisaoLado = new javax.swing.JButton();
         ScrollPainelLado = new javax.swing.JScrollPane();
         PainelLado = new ExtendedElements.PainelExtendido();
+        jLabel30 = new javax.swing.JLabel();
+        DiminuirTamanhoHorizontalLado = new javax.swing.JButton();
+        AumentarTamanhoHorizontalLado = new javax.swing.JButton();
+        jLabel31 = new javax.swing.JLabel();
+        DiminuirTamanhoVerticalLado = new javax.swing.JButton();
+        AumentarTamanhoVerticalLado = new javax.swing.JButton();
         PainelBaseTopo = new javax.swing.JPanel();
         AlternarVisaoTopo = new javax.swing.JButton();
         ScrollPainelTopo = new javax.swing.JScrollPane();
         PainelTopo = new ExtendedElements.PainelExtendido();
+        jLabel28 = new javax.swing.JLabel();
+        DiminuirTamanhoHorizontalTopo = new javax.swing.JButton();
+        AumentarTamanhoHorizontalTopo = new javax.swing.JButton();
+        jLabel29 = new javax.swing.JLabel();
+        DiminuirTamanhoVerticalTopo = new javax.swing.JButton();
+        AumentarTamanhoVerticalTopo = new javax.swing.JButton();
         PainelBaseProjecao = new javax.swing.JPanel();
         AlternarVisaoProjecao = new javax.swing.JButton();
         ScrollPainelProjecao = new javax.swing.JScrollPane();
         PainelProjecao = new ExtendedElements.PainelExtendido();
+        jLabel32 = new javax.swing.JLabel();
+        DiminuirTamanhoHorizontalProjecao = new javax.swing.JButton();
+        AumentarTamanhoHorizontalProjecao = new javax.swing.JButton();
+        jLabel33 = new javax.swing.JLabel();
+        DiminuirTamanhoVerticalProjecao = new javax.swing.JButton();
+        AumentarTamanhoVerticalProjecao = new javax.swing.JButton();
         PainelObservacao = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -660,11 +678,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(SelecionarPrimitivas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(ScrollSelecPrimitivas, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addComponent(ExcluirPrimitiva, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addComponent(BotaoDesagrupar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(PainelDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -680,8 +698,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addGroup(PainelDesenhoLayout.createSequentialGroup()
                         .addGroup(PainelDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, 0)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
                         .addGroup(PainelDesenhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SpinnerEscala, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(SpinnerRotacao, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -830,7 +848,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(SpinnerKS)
                             .addComponent(SpinnerN, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         PainelCorLayout.setVerticalGroup(
             PainelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -942,6 +960,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         DiminuirTamanhoHorizontalFrente.setText("-");
         DiminuirTamanhoHorizontalFrente.setToolTipText("Diminuir Tamanho Horizontal");
+        DiminuirTamanhoHorizontalFrente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         DiminuirTamanhoHorizontalFrente.setMargin(new java.awt.Insets(1, 2, 1, 2));
         DiminuirTamanhoHorizontalFrente.setMinimumSize(new java.awt.Dimension(23, 21));
         DiminuirTamanhoHorizontalFrente.addActionListener(new java.awt.event.ActionListener() {
@@ -952,6 +971,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         AumentarTamanhoHorizontalFrente.setText("+");
         AumentarTamanhoHorizontalFrente.setToolTipText("Aumentar Tamanho Horizontal");
+        AumentarTamanhoHorizontalFrente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         AumentarTamanhoHorizontalFrente.setMargin(new java.awt.Insets(1, 2, 1, 2));
         AumentarTamanhoHorizontalFrente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -963,6 +983,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         DiminuirTamanhoVerticalFrente.setText("-");
         DiminuirTamanhoVerticalFrente.setToolTipText("Diminuir Tamanho Vertical");
+        DiminuirTamanhoVerticalFrente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         DiminuirTamanhoVerticalFrente.setMargin(new java.awt.Insets(1, 2, 1, 2));
         DiminuirTamanhoVerticalFrente.setMinimumSize(new java.awt.Dimension(23, 21));
         DiminuirTamanhoVerticalFrente.addActionListener(new java.awt.event.ActionListener() {
@@ -973,6 +994,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         AumentarTamanhoVerticalFrente.setText("+");
         AumentarTamanhoVerticalFrente.setToolTipText("Aumentar Tamanho Vertical");
+        AumentarTamanhoVerticalFrente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AumentarTamanhoVerticalFrente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         AumentarTamanhoVerticalFrente.setMargin(new java.awt.Insets(1, 2, 1, 2));
         AumentarTamanhoVerticalFrente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -984,8 +1007,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelBaseFrente.setLayout(PainelBaseFrenteLayout);
         PainelBaseFrenteLayout.setHorizontalGroup(
             PainelBaseFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelBaseFrenteLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
+            .addGroup(PainelBaseFrenteLayout.createSequentialGroup()
                 .addComponent(jLabel26)
                 .addGap(3, 3, 3)
                 .addComponent(DiminuirTamanhoHorizontalFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -997,7 +1019,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(DiminuirTamanhoVerticalFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(AumentarTamanhoVerticalFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AlternarVisaoFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(ScrollPainelFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
@@ -1074,21 +1096,88 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         ScrollPainelLado.setViewportView(PainelLado);
 
+        jLabel30.setText("Tamanho Horizontal:");
+
+        DiminuirTamanhoHorizontalLado.setText("-");
+        DiminuirTamanhoHorizontalLado.setToolTipText("Diminuir Tamanho Horizontal");
+        DiminuirTamanhoHorizontalLado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        DiminuirTamanhoHorizontalLado.setMargin(new java.awt.Insets(1, 2, 1, 2));
+        DiminuirTamanhoHorizontalLado.setMinimumSize(new java.awt.Dimension(23, 21));
+        DiminuirTamanhoHorizontalLado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DiminuirTamanhoHorizontalLadoActionPerformed(evt);
+            }
+        });
+
+        AumentarTamanhoHorizontalLado.setText("+");
+        AumentarTamanhoHorizontalLado.setToolTipText("Aumentar Tamanho Horizontal");
+        AumentarTamanhoHorizontalLado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        AumentarTamanhoHorizontalLado.setMargin(new java.awt.Insets(1, 2, 1, 2));
+        AumentarTamanhoHorizontalLado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AumentarTamanhoHorizontalLadoActionPerformed(evt);
+            }
+        });
+
+        jLabel31.setText("Tamanho Vertical:");
+
+        DiminuirTamanhoVerticalLado.setText("-");
+        DiminuirTamanhoVerticalLado.setToolTipText("Diminuir Tamanho Vertical");
+        DiminuirTamanhoVerticalLado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        DiminuirTamanhoVerticalLado.setMargin(new java.awt.Insets(1, 2, 1, 2));
+        DiminuirTamanhoVerticalLado.setMinimumSize(new java.awt.Dimension(23, 21));
+        DiminuirTamanhoVerticalLado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DiminuirTamanhoVerticalLadoActionPerformed(evt);
+            }
+        });
+
+        AumentarTamanhoVerticalLado.setText("+");
+        AumentarTamanhoVerticalLado.setToolTipText("Aumentar Tamanho Vertical");
+        AumentarTamanhoVerticalLado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AumentarTamanhoVerticalLado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        AumentarTamanhoVerticalLado.setMargin(new java.awt.Insets(1, 2, 1, 2));
+        AumentarTamanhoVerticalLado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AumentarTamanhoVerticalLadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PainelBaseLadoLayout = new javax.swing.GroupLayout(PainelBaseLado);
         PainelBaseLado.setLayout(PainelBaseLadoLayout);
         PainelBaseLadoLayout.setHorizontalGroup(
             PainelBaseLadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelBaseLadoLayout.createSequentialGroup()
-                .addContainerGap(684, Short.MAX_VALUE)
+                .addComponent(jLabel30)
+                .addGap(3, 3, 3)
+                .addComponent(DiminuirTamanhoHorizontalLado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(AumentarTamanhoHorizontalLado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel31)
+                .addGap(3, 3, 3)
+                .addComponent(DiminuirTamanhoVerticalLado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(AumentarTamanhoVerticalLado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AlternarVisaoLado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(ScrollPainelLado, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         PainelBaseLadoLayout.setVerticalGroup(
             PainelBaseLadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelBaseLadoLayout.createSequentialGroup()
-                .addComponent(AlternarVisaoLado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PainelBaseLadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(AlternarVisaoLado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PainelBaseLadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel30)
+                        .addComponent(DiminuirTamanhoHorizontalLado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PainelBaseLadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel31)
+                        .addComponent(DiminuirTamanhoVerticalLado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AumentarTamanhoVerticalLado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AumentarTamanhoHorizontalLado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(3, 3, 3)
-                .addComponent(ScrollPainelLado, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+                .addComponent(ScrollPainelLado, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
         );
 
         PainelBaseTopo.setBackground(new java.awt.Color(255, 255, 255));
@@ -1148,21 +1237,88 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         ScrollPainelTopo.setViewportView(PainelTopo);
 
+        jLabel28.setText("Tamanho Horizontal:");
+
+        DiminuirTamanhoHorizontalTopo.setText("-");
+        DiminuirTamanhoHorizontalTopo.setToolTipText("Diminuir Tamanho Horizontal");
+        DiminuirTamanhoHorizontalTopo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        DiminuirTamanhoHorizontalTopo.setMargin(new java.awt.Insets(1, 2, 1, 2));
+        DiminuirTamanhoHorizontalTopo.setMinimumSize(new java.awt.Dimension(23, 21));
+        DiminuirTamanhoHorizontalTopo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DiminuirTamanhoHorizontalTopoActionPerformed(evt);
+            }
+        });
+
+        AumentarTamanhoHorizontalTopo.setText("+");
+        AumentarTamanhoHorizontalTopo.setToolTipText("Aumentar Tamanho Horizontal");
+        AumentarTamanhoHorizontalTopo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        AumentarTamanhoHorizontalTopo.setMargin(new java.awt.Insets(1, 2, 1, 2));
+        AumentarTamanhoHorizontalTopo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AumentarTamanhoHorizontalTopoActionPerformed(evt);
+            }
+        });
+
+        jLabel29.setText("Tamanho Vertical:");
+
+        DiminuirTamanhoVerticalTopo.setText("-");
+        DiminuirTamanhoVerticalTopo.setToolTipText("Diminuir Tamanho Vertical");
+        DiminuirTamanhoVerticalTopo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        DiminuirTamanhoVerticalTopo.setMargin(new java.awt.Insets(1, 2, 1, 2));
+        DiminuirTamanhoVerticalTopo.setMinimumSize(new java.awt.Dimension(23, 21));
+        DiminuirTamanhoVerticalTopo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DiminuirTamanhoVerticalTopoActionPerformed(evt);
+            }
+        });
+
+        AumentarTamanhoVerticalTopo.setText("+");
+        AumentarTamanhoVerticalTopo.setToolTipText("Aumentar Tamanho Vertical");
+        AumentarTamanhoVerticalTopo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AumentarTamanhoVerticalTopo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        AumentarTamanhoVerticalTopo.setMargin(new java.awt.Insets(1, 2, 1, 2));
+        AumentarTamanhoVerticalTopo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AumentarTamanhoVerticalTopoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PainelBaseTopoLayout = new javax.swing.GroupLayout(PainelBaseTopo);
         PainelBaseTopo.setLayout(PainelBaseTopoLayout);
         PainelBaseTopoLayout.setHorizontalGroup(
             PainelBaseTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelBaseTopoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel28)
+                .addGap(3, 3, 3)
+                .addComponent(DiminuirTamanhoHorizontalTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(AumentarTamanhoHorizontalTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel29)
+                .addGap(3, 3, 3)
+                .addComponent(DiminuirTamanhoVerticalTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(AumentarTamanhoVerticalTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AlternarVisaoTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(ScrollPainelTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         PainelBaseTopoLayout.setVerticalGroup(
             PainelBaseTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelBaseTopoLayout.createSequentialGroup()
-                .addComponent(AlternarVisaoTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PainelBaseTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(AlternarVisaoTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PainelBaseTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel28)
+                        .addComponent(DiminuirTamanhoHorizontalTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PainelBaseTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel29)
+                        .addComponent(DiminuirTamanhoVerticalTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AumentarTamanhoVerticalTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AumentarTamanhoHorizontalTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(3, 3, 3)
-                .addComponent(ScrollPainelTopo, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+                .addComponent(ScrollPainelTopo, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
         );
 
         PainelBaseProjecao.setBackground(new java.awt.Color(255, 255, 255));
@@ -1182,16 +1338,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 ScrollPainelProjecao(evt);
             }
         });
-        ScrollPainelProjecao.addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
-            public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
-            }
-            public void ancestorResized(java.awt.event.HierarchyEvent evt) {
+        ScrollPainelProjecao.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
                 ScrollProjecaoResized(evt);
             }
         });
 
         PainelProjecao.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 11))); // NOI18N
         PainelProjecao.setAutoscrolls(true);
+        PainelProjecao.setPreferredSize(new java.awt.Dimension(750, 500));
         PainelProjecao.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 PainelProjecaoresizedProjecao(evt);
@@ -1211,21 +1366,92 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         ScrollPainelProjecao.setViewportView(PainelProjecao);
 
+        jLabel32.setText("Tamanho Horizontal:");
+
+        DiminuirTamanhoHorizontalProjecao.setText("-");
+        DiminuirTamanhoHorizontalProjecao.setToolTipText("Diminuir Tamanho Horizontal");
+        DiminuirTamanhoHorizontalProjecao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        DiminuirTamanhoHorizontalProjecao.setMargin(new java.awt.Insets(1, 2, 1, 2));
+        DiminuirTamanhoHorizontalProjecao.setMinimumSize(new java.awt.Dimension(23, 21));
+        DiminuirTamanhoHorizontalProjecao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DiminuirTamanhoHorizontalProjecaoActionPerformed(evt);
+            }
+        });
+
+        AumentarTamanhoHorizontalProjecao.setText("+");
+        AumentarTamanhoHorizontalProjecao.setToolTipText("Aumentar Tamanho Horizontal");
+        AumentarTamanhoHorizontalProjecao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        AumentarTamanhoHorizontalProjecao.setMargin(new java.awt.Insets(1, 2, 1, 2));
+        AumentarTamanhoHorizontalProjecao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AumentarTamanhoHorizontalProjecaoActionPerformed(evt);
+            }
+        });
+
+        jLabel33.setText("Tamanho Vertical:");
+
+        DiminuirTamanhoVerticalProjecao.setText("-");
+        DiminuirTamanhoVerticalProjecao.setToolTipText("Diminuir Tamanho Vertical");
+        DiminuirTamanhoVerticalProjecao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        DiminuirTamanhoVerticalProjecao.setMargin(new java.awt.Insets(1, 2, 1, 2));
+        DiminuirTamanhoVerticalProjecao.setMinimumSize(new java.awt.Dimension(23, 21));
+        DiminuirTamanhoVerticalProjecao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DiminuirTamanhoVerticalProjecaoActionPerformed(evt);
+            }
+        });
+
+        AumentarTamanhoVerticalProjecao.setText("+");
+        AumentarTamanhoVerticalProjecao.setToolTipText("Aumentar Tamanho Vertical");
+        AumentarTamanhoVerticalProjecao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AumentarTamanhoVerticalProjecao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        AumentarTamanhoVerticalProjecao.setMargin(new java.awt.Insets(1, 2, 1, 2));
+        AumentarTamanhoVerticalProjecao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AumentarTamanhoVerticalProjecaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PainelBaseProjecaoLayout = new javax.swing.GroupLayout(PainelBaseProjecao);
         PainelBaseProjecao.setLayout(PainelBaseProjecaoLayout);
         PainelBaseProjecaoLayout.setHorizontalGroup(
             PainelBaseProjecaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelBaseProjecaoLayout.createSequentialGroup()
-                .addContainerGap(684, Short.MAX_VALUE)
+                .addComponent(jLabel32)
+                .addGap(3, 3, 3)
+                .addComponent(DiminuirTamanhoHorizontalProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(AumentarTamanhoHorizontalProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel33)
+                .addGap(3, 3, 3)
+                .addComponent(DiminuirTamanhoVerticalProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(AumentarTamanhoVerticalProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AlternarVisaoProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(ScrollPainelProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         PainelBaseProjecaoLayout.setVerticalGroup(
             PainelBaseProjecaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelBaseProjecaoLayout.createSequentialGroup()
-                .addComponent(AlternarVisaoProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(ScrollPainelProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+                .addGroup(PainelBaseProjecaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelBaseProjecaoLayout.createSequentialGroup()
+                        .addComponent(AlternarVisaoProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelBaseProjecaoLayout.createSequentialGroup()
+                        .addGroup(PainelBaseProjecaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PainelBaseProjecaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel32)
+                                .addComponent(DiminuirTamanhoHorizontalProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PainelBaseProjecaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel33)
+                                .addComponent(DiminuirTamanhoVerticalProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(AumentarTamanhoVerticalProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(AumentarTamanhoHorizontalProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(3, 3, 3)))
+                .addComponent(ScrollPainelProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
         );
 
         PainelObservacao.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Observação"));
@@ -1639,18 +1865,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PainelBaseFrente, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
-                    .addComponent(PainelBaseLado, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE))
+                    .addComponent(PainelBaseFrente, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
+                    .addComponent(PainelBaseLado, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PainelBaseTopo, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
-                    .addComponent(PainelBaseProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)))
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addComponent(PainelBaseTopo, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
+                    .addComponent(PainelBaseProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(PainelDesenho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(PainelObservacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PainelObservacao, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(PainelCor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -3536,7 +3762,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if (PainelFrente.getSize().width > 700) {
             Dimension d = new Dimension(PainelFrente.getSize().width - 5, PainelFrente.getSize().height);
             PainelFrente.setPreferredSize(d);
+            d = new Dimension(PainelTopo.getSize().width - 5, PainelTopo.getSize().height);
+            PainelTopo.setPreferredSize(d);
+            d = new Dimension(PainelProjecao.getSize().width - 5, PainelProjecao.getSize().height);
+            PainelProjecao.setPreferredSize(d);
             PainelFrente.updateUI();
+            PainelTopo.updateUI();
+            PainelProjecao.updateUI();
         }
         //System.out.println(PainelFrente.getSize().width);
     }//GEN-LAST:event_DiminuirTamanhoHorizontalFrenteActionPerformed
@@ -3545,7 +3777,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //System.out.println(PainelFrente.getSize().width);
         Dimension d = new Dimension(PainelFrente.getSize().width + 5, PainelFrente.getSize().height);
         PainelFrente.setPreferredSize(d);
+        d = new Dimension(PainelTopo.getSize().width + 5, PainelTopo.getSize().height);
+        PainelTopo.setPreferredSize(d);
+        d = new Dimension(PainelProjecao.getSize().width + 5, PainelProjecao.getSize().height);
+        PainelProjecao.setPreferredSize(d);
         PainelFrente.updateUI();
+        PainelTopo.updateUI();
+        PainelProjecao.updateUI();
         //System.out.println(PainelFrente.getSize().width);
     }//GEN-LAST:event_AumentarTamanhoHorizontalFrenteActionPerformed
 
@@ -3562,7 +3800,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if (PainelFrente.getSize().height > 245) {
             Dimension d = new Dimension(PainelFrente.getSize().width, PainelFrente.getSize().height - 5);
             PainelFrente.setPreferredSize(d);
+            d = new Dimension(PainelLado.getSize().width, PainelLado.getSize().height - 5);
+            PainelLado.setPreferredSize(d);
+            d = new Dimension(PainelProjecao.getSize().width, PainelProjecao.getSize().height - 5);
+            PainelProjecao.setPreferredSize(d);
             PainelFrente.updateUI();
+            PainelLado.updateUI();
+            PainelProjecao.updateUI();
         }
         //System.out.println(PainelFrente.getPreferredSize().height);
     }//GEN-LAST:event_DiminuirTamanhoVerticalFrenteActionPerformed
@@ -3571,7 +3815,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //System.out.println(PainelFrente.getPreferredSize().height);
         Dimension d = new Dimension(PainelFrente.getSize().width, PainelFrente.getSize().height + 5);
         PainelFrente.setPreferredSize(d);
+        d = new Dimension(PainelLado.getSize().width, PainelLado.getSize().height + 5);
+        PainelLado.setPreferredSize(d);
+        d = new Dimension(PainelProjecao.getSize().width, PainelProjecao.getSize().height + 5);
+        PainelProjecao.setPreferredSize(d);
         PainelFrente.updateUI();
+        PainelLado.updateUI();
+        PainelProjecao.updateUI();
         //System.out.println(PainelFrente.getPreferredSize().height);
     }//GEN-LAST:event_AumentarTamanhoVerticalFrenteActionPerformed
 
@@ -3643,7 +3893,151 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ScrollTopoResized
 
-    private void ScrollProjecaoResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_ScrollProjecaoResized
+    private void DiminuirTamanhoHorizontalTopoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiminuirTamanhoHorizontalTopoActionPerformed
+        if (PainelTopo.getSize().width > 700) {
+            Dimension d = new Dimension(PainelFrente.getSize().width - 5, PainelFrente.getSize().height);
+            PainelFrente.setPreferredSize(d);
+            d = new Dimension(PainelTopo.getSize().width - 5, PainelTopo.getSize().height);
+            PainelTopo.setPreferredSize(d);
+            d = new Dimension(PainelProjecao.getSize().width - 5, PainelProjecao.getSize().height);
+            PainelProjecao.setPreferredSize(d);
+            PainelFrente.updateUI();
+            PainelTopo.updateUI();
+            PainelProjecao.updateUI();
+        }
+    }//GEN-LAST:event_DiminuirTamanhoHorizontalTopoActionPerformed
+
+    private void AumentarTamanhoHorizontalTopoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AumentarTamanhoHorizontalTopoActionPerformed
+        Dimension d = new Dimension(PainelFrente.getSize().width + 5, PainelFrente.getSize().height);
+        PainelFrente.setPreferredSize(d);
+        d = new Dimension(PainelTopo.getSize().width + 5, PainelTopo.getSize().height);
+        PainelTopo.setPreferredSize(d);
+        d = new Dimension(PainelProjecao.getSize().width + 5, PainelProjecao.getSize().height);
+        PainelProjecao.setPreferredSize(d);
+        PainelFrente.updateUI();
+        PainelTopo.updateUI();
+        PainelProjecao.updateUI();
+    }//GEN-LAST:event_AumentarTamanhoHorizontalTopoActionPerformed
+
+    private void DiminuirTamanhoVerticalTopoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiminuirTamanhoVerticalTopoActionPerformed
+        if (PainelTopo.getSize().height > 245) {
+            Dimension d = new Dimension(PainelTopo.getSize().width, PainelTopo.getSize().height - 5);
+            PainelTopo.setPreferredSize(d);
+            d = new Dimension(PainelLado.getSize().width - 5, PainelLado.getSize().height);
+            PainelLado.setPreferredSize(d);
+            PainelTopo.updateUI();
+            PainelLado.updateUI();
+        }
+    }//GEN-LAST:event_DiminuirTamanhoVerticalTopoActionPerformed
+
+    private void AumentarTamanhoVerticalTopoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AumentarTamanhoVerticalTopoActionPerformed
+        Dimension d = new Dimension(PainelTopo.getSize().width, PainelTopo.getSize().height + 5);
+        PainelTopo.setPreferredSize(d);
+        d = new Dimension(PainelLado.getSize().width + 5, PainelLado.getSize().height);
+        PainelLado.setPreferredSize(d);
+        PainelTopo.updateUI();
+        PainelLado.updateUI();
+    }//GEN-LAST:event_AumentarTamanhoVerticalTopoActionPerformed
+
+    private void DiminuirTamanhoHorizontalLadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiminuirTamanhoHorizontalLadoActionPerformed
+        if (PainelLado.getSize().width > 700) {
+            Dimension d = new Dimension(PainelLado.getSize().width - 5, PainelLado.getSize().height);
+            PainelLado.setPreferredSize(d);
+            d = new Dimension(PainelTopo.getSize().width, PainelTopo.getSize().height - 5);
+            PainelTopo.setPreferredSize(d);
+            PainelLado.updateUI();
+            PainelTopo.updateUI();
+        }
+    }//GEN-LAST:event_DiminuirTamanhoHorizontalLadoActionPerformed
+
+    private void AumentarTamanhoHorizontalLadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AumentarTamanhoHorizontalLadoActionPerformed
+        Dimension d = new Dimension(PainelLado.getSize().width + 5, PainelLado.getSize().height);
+        PainelLado.setPreferredSize(d);
+        d = new Dimension(PainelTopo.getSize().width, PainelTopo.getSize().height + 5);
+        PainelTopo.setPreferredSize(d);
+        PainelLado.updateUI();
+        PainelTopo.updateUI();
+    }//GEN-LAST:event_AumentarTamanhoHorizontalLadoActionPerformed
+
+    private void DiminuirTamanhoVerticalLadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiminuirTamanhoVerticalLadoActionPerformed
+        if (PainelLado.getSize().height > 245) {
+            Dimension d = new Dimension(PainelFrente.getSize().width, PainelFrente.getSize().height - 5);
+            PainelFrente.setPreferredSize(d);
+            d = new Dimension(PainelLado.getSize().width, PainelLado.getSize().height - 5);
+            PainelLado.setPreferredSize(d);
+            d = new Dimension(PainelProjecao.getSize().width, PainelProjecao.getSize().height - 5);
+            PainelProjecao.setPreferredSize(d);
+            PainelFrente.updateUI();
+            PainelLado.updateUI();
+            PainelProjecao.updateUI();
+        }
+    }//GEN-LAST:event_DiminuirTamanhoVerticalLadoActionPerformed
+
+    private void AumentarTamanhoVerticalLadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AumentarTamanhoVerticalLadoActionPerformed
+        Dimension d = new Dimension(PainelFrente.getSize().width, PainelFrente.getSize().height + 5);
+        PainelFrente.setPreferredSize(d);
+        d = new Dimension(PainelLado.getSize().width, PainelLado.getSize().height + 5);
+        PainelLado.setPreferredSize(d);
+        d = new Dimension(PainelProjecao.getSize().width, PainelProjecao.getSize().height + 5);
+        PainelProjecao.setPreferredSize(d);
+        PainelFrente.updateUI();
+        PainelLado.updateUI();
+        PainelProjecao.updateUI();
+    }//GEN-LAST:event_AumentarTamanhoVerticalLadoActionPerformed
+
+    private void DiminuirTamanhoHorizontalProjecaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiminuirTamanhoHorizontalProjecaoActionPerformed
+        if (PainelProjecao.getSize().width > 700) {
+            Dimension d = new Dimension(PainelFrente.getSize().width - 5, PainelFrente.getSize().height);
+            PainelFrente.setPreferredSize(d);
+            d = new Dimension(PainelTopo.getSize().width - 5, PainelTopo.getSize().height);
+            PainelTopo.setPreferredSize(d);
+            d = new Dimension(PainelProjecao.getSize().width - 5, PainelProjecao.getSize().height);
+            PainelProjecao.setPreferredSize(d);
+            PainelFrente.updateUI();
+            PainelTopo.updateUI();
+            PainelProjecao.updateUI();
+        }
+    }//GEN-LAST:event_DiminuirTamanhoHorizontalProjecaoActionPerformed
+
+    private void AumentarTamanhoHorizontalProjecaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AumentarTamanhoHorizontalProjecaoActionPerformed
+        Dimension d = new Dimension(PainelFrente.getSize().width + 5, PainelFrente.getSize().height);
+        PainelFrente.setPreferredSize(d);
+        d = new Dimension(PainelTopo.getSize().width + 5, PainelTopo.getSize().height);
+        PainelTopo.setPreferredSize(d);
+        d = new Dimension(PainelProjecao.getSize().width + 5, PainelProjecao.getSize().height);
+        PainelProjecao.setPreferredSize(d);
+        PainelFrente.updateUI();
+        PainelTopo.updateUI();
+        PainelProjecao.updateUI();
+    }//GEN-LAST:event_AumentarTamanhoHorizontalProjecaoActionPerformed
+
+    private void DiminuirTamanhoVerticalProjecaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiminuirTamanhoVerticalProjecaoActionPerformed
+        if (PainelProjecao.getSize().height > 245) {
+            Dimension d = new Dimension(PainelFrente.getSize().width, PainelFrente.getSize().height - 5);
+            PainelFrente.setPreferredSize(d);
+            d = new Dimension(PainelLado.getSize().width, PainelLado.getSize().height - 5);
+            PainelLado.setPreferredSize(d);
+            d = new Dimension(PainelProjecao.getSize().width, PainelProjecao.getSize().height - 5);
+            PainelProjecao.setPreferredSize(d);
+            PainelFrente.updateUI();
+            PainelLado.updateUI();
+            PainelProjecao.updateUI();
+        }
+    }//GEN-LAST:event_DiminuirTamanhoVerticalProjecaoActionPerformed
+
+    private void AumentarTamanhoVerticalProjecaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AumentarTamanhoVerticalProjecaoActionPerformed
+        Dimension d = new Dimension(PainelFrente.getSize().width, PainelFrente.getSize().height + 5);
+        PainelFrente.setPreferredSize(d);
+        d = new Dimension(PainelLado.getSize().width, PainelLado.getSize().height + 5);
+        PainelLado.setPreferredSize(d);
+        d = new Dimension(PainelProjecao.getSize().width, PainelProjecao.getSize().height + 5);
+        PainelProjecao.setPreferredSize(d);
+        PainelFrente.updateUI();
+        PainelLado.updateUI();
+        PainelProjecao.updateUI();
+    }//GEN-LAST:event_AumentarTamanhoVerticalProjecaoActionPerformed
+
+    private void ScrollProjecaoResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_ScrollProjecaoResized
         //Repinta as primitas e seleção ao mudar o tamanho do scroll/painel
         if (!control.getListaPrimitivas().isEmpty()) {
             if (SelecProjecaoIsometrica.isSelected()) {
@@ -3727,7 +4121,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton AlternarVisaoTopo;
     private javax.swing.JMenu Arquivo;
     private javax.swing.JButton AumentarTamanhoHorizontalFrente;
+    private javax.swing.JButton AumentarTamanhoHorizontalLado;
+    private javax.swing.JButton AumentarTamanhoHorizontalProjecao;
+    private javax.swing.JButton AumentarTamanhoHorizontalTopo;
     private javax.swing.JButton AumentarTamanhoVerticalFrente;
+    private javax.swing.JButton AumentarTamanhoVerticalLado;
+    private javax.swing.JButton AumentarTamanhoVerticalProjecao;
+    private javax.swing.JButton AumentarTamanhoVerticalTopo;
     private javax.swing.JMenuBar BarraDeMenu;
     private javax.swing.JMenuItem BotaoAjuda;
     private javax.swing.JButton BotaoCorBordas;
@@ -3743,7 +4143,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private ExtendedElements.BotaoPrisma DesenharPrismas;
     private ExtendedElements.BotaoToroide DesenharToroides;
     private javax.swing.JButton DiminuirTamanhoHorizontalFrente;
+    private javax.swing.JButton DiminuirTamanhoHorizontalLado;
+    private javax.swing.JButton DiminuirTamanhoHorizontalProjecao;
+    private javax.swing.JButton DiminuirTamanhoHorizontalTopo;
     private javax.swing.JButton DiminuirTamanhoVerticalFrente;
+    private javax.swing.JButton DiminuirTamanhoVerticalLado;
+    private javax.swing.JButton DiminuirTamanhoVerticalProjecao;
+    private javax.swing.JButton DiminuirTamanhoVerticalTopo;
     private javax.swing.JMenu Editar;
     private javax.swing.JButton ExcluirPrimitiva;
     private javax.swing.JMenu MenuAjuda;
@@ -3831,7 +4237,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
