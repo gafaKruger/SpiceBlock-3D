@@ -145,98 +145,154 @@ public class TelaPrincipal extends javax.swing.JFrame {
         last = -1;
         permiteAgrupar = false;
         menuAjuda = new Ajuda();
-        
+
         ScrollSelecPrimitivas.getVerticalScrollBar().setBlockIncrement(10);
         ScrollSelecPrimitivas.getVerticalScrollBar().setUnitIncrement(10);
-        
+
         ScrollPainelFrente.getHorizontalScrollBar().setBlockIncrement(10);
         ScrollPainelFrente.getHorizontalScrollBar().setUnitIncrement(10);
         ScrollPainelFrente.getHorizontalScrollBar().addAdjustmentListener(new AdjustmentListener() {
             @Override
             public void adjustmentValueChanged(AdjustmentEvent e) {
                 //Repinta as primitas e seleção ao dar scroll na barra de rolagem
-                PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                pintarCorSelecao();
+                if (!control.getListaPrimitivas().isEmpty()) {
+                    PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                    pintarCorSelecao();
+                }
             }
         });
-        
+
         ScrollPainelFrente.getVerticalScrollBar().setBlockIncrement(10);
         ScrollPainelFrente.getVerticalScrollBar().setUnitIncrement(10);
         ScrollPainelFrente.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
             @Override
             public void adjustmentValueChanged(AdjustmentEvent e) {
                 //Repinta as primitas e seleção ao dar scroll na barra de rolagem
-                PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                pintarCorSelecao();
+                if (!control.getListaPrimitivas().isEmpty()) {
+                    PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                    pintarCorSelecao();
+                }
             }
         });
-        /*
+
         ScrollPainelTopo.getHorizontalScrollBar().setBlockIncrement(10);
         ScrollPainelTopo.getHorizontalScrollBar().setUnitIncrement(10);
         ScrollPainelTopo.getHorizontalScrollBar().addAdjustmentListener(new AdjustmentListener() {
             @Override
             public void adjustmentValueChanged(AdjustmentEvent e) {
                 //Repinta as primitas e seleção ao dar scroll na barra de rolagem
-                PainelTopo.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                pintarCorSelecao();
+                if (!control.getListaPrimitivas().isEmpty()) {
+                    PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                    pintarCorSelecao();
+                }
             }
         });
-        
+
         ScrollPainelTopo.getVerticalScrollBar().setBlockIncrement(10);
         ScrollPainelTopo.getVerticalScrollBar().setUnitIncrement(10);
         ScrollPainelTopo.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
             @Override
             public void adjustmentValueChanged(AdjustmentEvent e) {
                 //Repinta as primitas e seleção ao dar scroll na barra de rolagem
-                PainelTopo.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                pintarCorSelecao();
+                if (!control.getListaPrimitivas().isEmpty()) {
+                    PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                    pintarCorSelecao();
+                }
             }
         });
-        
+
         ScrollPainelLado.getHorizontalScrollBar().setBlockIncrement(10);
         ScrollPainelLado.getHorizontalScrollBar().setUnitIncrement(10);
         ScrollPainelLado.getHorizontalScrollBar().addAdjustmentListener(new AdjustmentListener() {
             @Override
             public void adjustmentValueChanged(AdjustmentEvent e) {
                 //Repinta as primitas e seleção ao dar scroll na barra de rolagem
-                PainelLado.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                pintarCorSelecao();
+                if (!control.getListaPrimitivas().isEmpty()) {
+                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                    pintarCorSelecao();
+                }
             }
         });
-        
+
         ScrollPainelLado.getVerticalScrollBar().setBlockIncrement(10);
         ScrollPainelLado.getVerticalScrollBar().setUnitIncrement(10);
         ScrollPainelLado.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
             @Override
             public void adjustmentValueChanged(AdjustmentEvent e) {
                 //Repinta as primitas e seleção ao dar scroll na barra de rolagem
-                PainelLado.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                pintarCorSelecao();
+                if (!control.getListaPrimitivas().isEmpty()) {
+                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                    pintarCorSelecao();
+                }
             }
         });
-        
+
         ScrollPainelProjecao.getHorizontalScrollBar().setBlockIncrement(10);
         ScrollPainelProjecao.getHorizontalScrollBar().setUnitIncrement(10);
         ScrollPainelProjecao.getHorizontalScrollBar().addAdjustmentListener(new AdjustmentListener() {
             @Override
             public void adjustmentValueChanged(AdjustmentEvent e) {
-                //Repinta as primitas e seleção ao dar scroll na barra de rolagem
-                PainelProjecao.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                pintarCorSelecao();
+                //Repinta as primitas ao dar scroll na barra de rolagem
+                if (!control.getListaPrimitivas().isEmpty()) {
+                    if (SelecProjecaoIsometrica.isSelected()) {
+                        int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
+                        Ponto vrpIso = new Ponto(vrp, vrp, vrp);
+                        int px = Integer.parseInt(SpinnerPX.getValue().toString());
+                        int py = Integer.parseInt(SpinnerPY.getValue().toString());
+                        int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
+                        Ponto p = new Ponto(px, py, pz);
+                        PainelProjecao.desenharVisaoIsometrica(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrpIso, p);
+                    } else {
+                        if (SelecProjecaoPerspectiva.isSelected()) {
+                            int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
+                            int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
+                            int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
+                            Ponto vrp = new Ponto(vrpx, vrpy, vrpz);
+                            int px = Integer.parseInt(SpinnerPX.getValue().toString());
+                            int py = Integer.parseInt(SpinnerPY.getValue().toString());
+                            int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
+                            Ponto p = new Ponto(px, py, pz);
+                            int dp = Integer.parseInt(SpinnerDP.getValue().toString());
+                            PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
+                        }
+                    }
+                }
             }
         });
-        
+
         ScrollPainelProjecao.getVerticalScrollBar().setBlockIncrement(10);
         ScrollPainelProjecao.getVerticalScrollBar().setUnitIncrement(10);
         ScrollPainelProjecao.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
             @Override
             public void adjustmentValueChanged(AdjustmentEvent e) {
-                //Repinta as primitas e seleção ao dar scroll na barra de rolagem
-                PainelProjecao.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                pintarCorSelecao();
+                //Repinta as primitas ao dar scroll na barra de rolagem
+                if (!control.getListaPrimitivas().isEmpty()) {
+                    if (SelecProjecaoIsometrica.isSelected()) {
+                        int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
+                        Ponto vrpIso = new Ponto(vrp, vrp, vrp);
+                        int px = Integer.parseInt(SpinnerPX.getValue().toString());
+                        int py = Integer.parseInt(SpinnerPY.getValue().toString());
+                        int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
+                        Ponto p = new Ponto(px, py, pz);
+                        PainelProjecao.desenharVisaoIsometrica(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrpIso, p);
+                    } else {
+                        if (SelecProjecaoPerspectiva.isSelected()) {
+                            int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
+                            int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
+                            int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
+                            Ponto vrp = new Ponto(vrpx, vrpy, vrpz);
+                            int px = Integer.parseInt(SpinnerPX.getValue().toString());
+                            int py = Integer.parseInt(SpinnerPY.getValue().toString());
+                            int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
+                            Ponto p = new Ponto(px, py, pz);
+                            int dp = Integer.parseInt(SpinnerDP.getValue().toString());
+                            PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
+                        }
+                    }
+                }
             }
         });
-        */
+
         buttonGroupPrimitivas.add(DesenharCubos);
         buttonGroupPrimitivas.add(DesenharEsferas);
         buttonGroupPrimitivas.add(DesenharPrismas);
@@ -244,7 +300,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         buttonGroupPrimitivas.add(DesenharCones);
         buttonGroupPrimitivas.add(DesenharCilindros);
         buttonGroupPrimitivas.add(DesenharToroides);
-        
+
         /*BotaoFazerRotacao.setEnabled(false);
          BotaoFazerEscala.setEnabled(false);*/
 
@@ -327,14 +383,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         DiminuirTamanhoVerticalFrente = new javax.swing.JButton();
         AumentarTamanhoVerticalFrente = new javax.swing.JButton();
         PainelBaseLado = new javax.swing.JPanel();
-        PainelLado = new ExtendedElements.PainelExtendido();
         AlternarVisaoLado = new javax.swing.JButton();
+        ScrollPainelLado = new javax.swing.JScrollPane();
+        PainelLado = new ExtendedElements.PainelExtendido();
         PainelBaseTopo = new javax.swing.JPanel();
-        PainelTopo = new ExtendedElements.PainelExtendido();
         AlternarVisaoTopo = new javax.swing.JButton();
+        ScrollPainelTopo = new javax.swing.JScrollPane();
+        PainelTopo = new ExtendedElements.PainelExtendido();
         PainelBaseProjecao = new javax.swing.JPanel();
-        PainelProjecao = new ExtendedElements.PainelExtendido();
         AlternarVisaoProjecao = new javax.swing.JButton();
+        ScrollPainelProjecao = new javax.swing.JScrollPane();
+        PainelProjecao = new ExtendedElements.PainelExtendido();
         PainelObservacao = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -771,7 +830,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(SpinnerKS)
                             .addComponent(SpinnerN, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         PainelCorLayout.setVerticalGroup(
             PainelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -815,6 +874,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         PainelBaseFrente.setBackground(new java.awt.Color(255, 255, 255));
         PainelBaseFrente.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(), "Frente - XY"));
+        PainelBaseFrente.setPreferredSize(new java.awt.Dimension(687, 250));
 
         ScrollPainelFrente.setAutoscrolls(true);
         ScrollPainelFrente.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
@@ -822,8 +882,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 ScrollPainelFrente(evt);
             }
         });
+        ScrollPainelFrente.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                ScrollFrenteResized(evt);
+            }
+        });
 
         PainelFrente.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 11))); // NOI18N
+        PainelFrente.setAutoscrolls(true);
         PainelFrente.setPreferredSize(new java.awt.Dimension(750, 500));
         PainelFrente.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -876,6 +942,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         DiminuirTamanhoHorizontalFrente.setText("-");
         DiminuirTamanhoHorizontalFrente.setToolTipText("Diminuir Tamanho Horizontal");
+        DiminuirTamanhoHorizontalFrente.setMargin(new java.awt.Insets(1, 2, 1, 2));
+        DiminuirTamanhoHorizontalFrente.setMinimumSize(new java.awt.Dimension(23, 21));
         DiminuirTamanhoHorizontalFrente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DiminuirTamanhoHorizontalFrenteActionPerformed(evt);
@@ -884,6 +952,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         AumentarTamanhoHorizontalFrente.setText("+");
         AumentarTamanhoHorizontalFrente.setToolTipText("Aumentar Tamanho Horizontal");
+        AumentarTamanhoHorizontalFrente.setMargin(new java.awt.Insets(1, 2, 1, 2));
         AumentarTamanhoHorizontalFrente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AumentarTamanhoHorizontalFrenteActionPerformed(evt);
@@ -894,6 +963,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         DiminuirTamanhoVerticalFrente.setText("-");
         DiminuirTamanhoVerticalFrente.setToolTipText("Diminuir Tamanho Vertical");
+        DiminuirTamanhoVerticalFrente.setMargin(new java.awt.Insets(1, 2, 1, 2));
+        DiminuirTamanhoVerticalFrente.setMinimumSize(new java.awt.Dimension(23, 21));
         DiminuirTamanhoVerticalFrente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DiminuirTamanhoVerticalFrenteActionPerformed(evt);
@@ -902,6 +973,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         AumentarTamanhoVerticalFrente.setText("+");
         AumentarTamanhoVerticalFrente.setToolTipText("Aumentar Tamanho Vertical");
+        AumentarTamanhoVerticalFrente.setMargin(new java.awt.Insets(1, 2, 1, 2));
         AumentarTamanhoVerticalFrente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AumentarTamanhoVerticalFrenteActionPerformed(evt);
@@ -913,19 +985,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelBaseFrenteLayout.setHorizontalGroup(
             PainelBaseFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelBaseFrenteLayout.createSequentialGroup()
-                .addGap(150, 150, 150)
+                .addGap(60, 60, 60)
                 .addComponent(jLabel26)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DiminuirTamanhoHorizontalFrente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AumentarTamanhoHorizontalFrente)
+                .addGap(3, 3, 3)
+                .addComponent(DiminuirTamanhoHorizontalFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(AumentarTamanhoHorizontalFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(jLabel27)
                 .addGap(3, 3, 3)
-                .addComponent(DiminuirTamanhoVerticalFrente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AumentarTamanhoVerticalFrente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(DiminuirTamanhoVerticalFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(AumentarTamanhoVerticalFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
                 .addComponent(AlternarVisaoFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(ScrollPainelFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
@@ -933,25 +1005,43 @@ public class TelaPrincipal extends javax.swing.JFrame {
             PainelBaseFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelBaseFrenteLayout.createSequentialGroup()
                 .addGroup(PainelBaseFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PainelBaseFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(AlternarVisaoFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelBaseFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DiminuirTamanhoHorizontalFrente)
-                            .addComponent(AumentarTamanhoHorizontalFrente))
-                        .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(PainelBaseFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelBaseFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DiminuirTamanhoVerticalFrente)
-                            .addComponent(AumentarTamanhoVerticalFrente))
-                        .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addComponent(ScrollPainelFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(AlternarVisaoFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PainelBaseFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel26)
+                        .addComponent(DiminuirTamanhoHorizontalFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PainelBaseFrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel27)
+                        .addComponent(DiminuirTamanhoVerticalFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AumentarTamanhoVerticalFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AumentarTamanhoHorizontalFrente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(3, 3, 3)
+                .addComponent(ScrollPainelFrente, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
         );
 
         PainelBaseLado.setBackground(new java.awt.Color(255, 255, 255));
         PainelBaseLado.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(), "Lado (Esquerda) - ZY"));
+        PainelBaseLado.setPreferredSize(new java.awt.Dimension(687, 250));
+
+        AlternarVisaoLado.setToolTipText("Alterna a Visão");
+        AlternarVisaoLado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AlternarVisaoLadoActionPerformed(evt);
+            }
+        });
+
+        ScrollPainelLado.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                ScrollPainelLado(evt);
+            }
+        });
+        ScrollPainelLado.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                ScrollLadoResized(evt);
+            }
+        });
 
         PainelLado.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 11))); // NOI18N
-        PainelLado.setPreferredSize(new java.awt.Dimension(200, 200));
+        PainelLado.setAutoscrolls(true);
         PainelLado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 PainelLadoMoverPrimitivaLado(evt);
@@ -975,40 +1065,57 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelLado.setLayout(PainelLadoLayout);
         PainelLadoLayout.setHorizontalGroup(
             PainelLadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 744, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
         );
         PainelLadoLayout.setVerticalGroup(
             PainelLadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 172, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        AlternarVisaoLado.setToolTipText("Alterna a Visão");
-        AlternarVisaoLado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AlternarVisaoLadoActionPerformed(evt);
-            }
-        });
+        ScrollPainelLado.setViewportView(PainelLado);
 
         javax.swing.GroupLayout PainelBaseLadoLayout = new javax.swing.GroupLayout(PainelBaseLado);
         PainelBaseLado.setLayout(PainelBaseLadoLayout);
         PainelBaseLadoLayout.setHorizontalGroup(
             PainelBaseLadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelLado, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE)
-            .addComponent(AlternarVisaoLado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(PainelBaseLadoLayout.createSequentialGroup()
+                .addContainerGap(684, Short.MAX_VALUE)
+                .addComponent(AlternarVisaoLado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(ScrollPainelLado, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         PainelBaseLadoLayout.setVerticalGroup(
             PainelBaseLadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelBaseLadoLayout.createSequentialGroup()
                 .addComponent(AlternarVisaoLado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(PainelLado, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                .addGap(3, 3, 3)
+                .addComponent(ScrollPainelLado, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
         );
 
         PainelBaseTopo.setBackground(new java.awt.Color(255, 255, 255));
         PainelBaseTopo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(), "Topo - XZ"));
+        PainelBaseTopo.setPreferredSize(new java.awt.Dimension(687, 250));
+
+        AlternarVisaoTopo.setToolTipText("Alterna a Visão");
+        AlternarVisaoTopo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AlternarVisaoTopoActionPerformed(evt);
+            }
+        });
+
+        ScrollPainelTopo.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                ScrollPainelTopo(evt);
+            }
+        });
+        ScrollPainelTopo.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                ScrollTopoResized(evt);
+            }
+        });
 
         PainelTopo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 11))); // NOI18N
-        PainelTopo.setPreferredSize(new java.awt.Dimension(200, 200));
+        PainelTopo.setAutoscrolls(true);
+        PainelTopo.setPreferredSize(new java.awt.Dimension(750, 500));
         PainelTopo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 PainelTopoMoverPrimitivaTopo(evt);
@@ -1032,43 +1139,59 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelTopo.setLayout(PainelTopoLayout);
         PainelTopoLayout.setHorizontalGroup(
             PainelTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 664, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
         );
         PainelTopoLayout.setVerticalGroup(
             PainelTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 241, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        AlternarVisaoTopo.setToolTipText("Alterna a Visão");
-        AlternarVisaoTopo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AlternarVisaoTopoActionPerformed(evt);
-            }
-        });
+        ScrollPainelTopo.setViewportView(PainelTopo);
 
         javax.swing.GroupLayout PainelBaseTopoLayout = new javax.swing.GroupLayout(PainelBaseTopo);
         PainelBaseTopo.setLayout(PainelBaseTopoLayout);
         PainelBaseTopoLayout.setHorizontalGroup(
             PainelBaseTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelTopo, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
             .addGroup(PainelBaseTopoLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(AlternarVisaoTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(ScrollPainelTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         PainelBaseTopoLayout.setVerticalGroup(
             PainelBaseTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelBaseTopoLayout.createSequentialGroup()
                 .addComponent(AlternarVisaoTopo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PainelTopo, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
+                .addGap(3, 3, 3)
+                .addComponent(ScrollPainelTopo, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
         );
 
         PainelBaseProjecao.setBackground(new java.awt.Color(255, 255, 255));
         PainelBaseProjecao.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(), "Projeção"));
         PainelBaseProjecao.setName(""); // NOI18N
+        PainelBaseProjecao.setPreferredSize(new java.awt.Dimension(687, 250));
+
+        AlternarVisaoProjecao.setToolTipText("Alterna a Visão");
+        AlternarVisaoProjecao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AlternarVisaoProjecaoActionPerformed(evt);
+            }
+        });
+
+        ScrollPainelProjecao.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                ScrollPainelProjecao(evt);
+            }
+        });
+        ScrollPainelProjecao.addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
+            public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
+            }
+            public void ancestorResized(java.awt.event.HierarchyEvent evt) {
+                ScrollProjecaoResized(evt);
+            }
+        });
 
         PainelProjecao.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 11))); // NOI18N
-        PainelProjecao.setPreferredSize(new java.awt.Dimension(200, 200));
+        PainelProjecao.setAutoscrolls(true);
         PainelProjecao.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 PainelProjecaoresizedProjecao(evt);
@@ -1079,35 +1202,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelProjecao.setLayout(PainelProjecaoLayout);
         PainelProjecaoLayout.setHorizontalGroup(
             PainelProjecaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 664, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
         );
         PainelProjecaoLayout.setVerticalGroup(
             PainelProjecaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        AlternarVisaoProjecao.setToolTipText("Alterna a Visão");
-        AlternarVisaoProjecao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AlternarVisaoProjecaoActionPerformed(evt);
-            }
-        });
+        ScrollPainelProjecao.setViewportView(PainelProjecao);
 
         javax.swing.GroupLayout PainelBaseProjecaoLayout = new javax.swing.GroupLayout(PainelBaseProjecao);
         PainelBaseProjecao.setLayout(PainelBaseProjecaoLayout);
         PainelBaseProjecaoLayout.setHorizontalGroup(
             PainelBaseProjecaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
             .addGroup(PainelBaseProjecaoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(684, Short.MAX_VALUE)
                 .addComponent(AlternarVisaoProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(ScrollPainelProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         PainelBaseProjecaoLayout.setVerticalGroup(
             PainelBaseProjecaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelBaseProjecaoLayout.createSequentialGroup()
                 .addComponent(AlternarVisaoProjecao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(PainelProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                .addGap(3, 3, 3)
+                .addComponent(ScrollPainelProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
         );
 
         PainelObservacao.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Observação"));
@@ -1523,12 +1641,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PainelBaseFrente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PainelBaseLado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(PainelBaseFrente, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
+                    .addComponent(PainelBaseLado, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PainelBaseTopo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PainelBaseProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(PainelBaseTopo, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
+                    .addComponent(PainelBaseProjecao, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)))
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                 .addComponent(PainelDesenho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
@@ -1637,7 +1755,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
      public Color getCorPreenchimento() {
      return corPreenchimento;
      }*/
-    
     private void desenharVisoesPaineis() {
         if (!control.getListaPrimitivas().isEmpty()) {
             PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
@@ -1962,7 +2079,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_windowClosing
 
     private void keyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyPressed
-        //Delete
+        //atalho para Delete
         System.out.println("epa");
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             if (primitivaIsSelected) {
@@ -2073,7 +2190,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         }
     }
-    
+
     /*private void setRotacionar() {
      if (primitivaIsSelected) {
      ListaPrimitivas c = control.getPrimitiva(primitivaSelecIndice);
@@ -2121,7 +2238,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
      alteracoesRealizadas = true;
      }
      }*/
-	 
     private void escala() {
         if (primitivaIsSelected) {
             boolean flag = true;
@@ -2313,7 +2429,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         escala();
     }//GEN-LAST:event_changeSpinnerEscala
 
-    public void botoesPrimitivasSet (boolean set) {
+    public void botoesPrimitivasSet(boolean set) {
         DesenharCubos.setSelected(set);
         DesenharEsferas.setSelected(set);
         DesenharPrismas.setSelected(set);
@@ -2322,7 +2438,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         DesenharCones.setSelected(set);
         DesenharCilindros.setSelected(set);
     }
-    
+
     private void SelecionarPrimitivasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelecionarPrimitivasActionPerformed
         if (SelecionarPrimitivas.isSelected()) {
             selecionaPrimitiva = true;
@@ -2552,7 +2668,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
 
             control.getPrimitiva(primitivaSelecIndice).transladarPrimitivasXY(evt.getX() - localClicadoX, evt.getY() - localClicadoY,
-                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1);
+                    PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1);
 
             //PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
             PainelFrente.pintarSelecaoFrente(control.getPrimitiva(primitivaSelecIndice), corSelecao);
@@ -2582,77 +2698,77 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
 
             /*PainelFrente.pintarSelecaoFrente(control.getPrimitiva(primitivaParaAgrupar), Color.WHITE);
-            PainelFrente.pintarSelecaoFrente(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
-            PainelFrente.apagarTodosPrimitivasFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
-            PainelTopo.apagarTodosPrimitivasTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
-            PainelLado.apagarTodosPrimitivasLado(control.getListaPrimitivas(), OcultaFaces.isSelected());
-            PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected());
-            control.agruparDoisPrimitivas(primitivaSelecIndice, primitivaParaAgrupar);
-            PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
-            PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
-            PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
-            PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected());
-            BotaoDesagrupar.setEnabled(false);
-            ExcluirPrimitiva.setEnabled(false);
-            SpinnerEscala.setEnabled(false);
-            SpinnerRotacao.setEnabled(false);
-            BotaoFazerRotacao.setEnabled(false);
-            BotaoFazerEscala.setEnabled(false);
-            primitivaIsSelected = false;
-            selecFrente = false;
-            selecLado = false;
-            selecTopo = false;
-            repintarBotoesAlternar();*/
+             PainelFrente.pintarSelecaoFrente(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
+             PainelFrente.apagarTodosPrimitivasFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+             PainelTopo.apagarTodosPrimitivasTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+             PainelLado.apagarTodosPrimitivasLado(control.getListaPrimitivas(), OcultaFaces.isSelected());
+             PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected());
+             control.agruparDoisPrimitivas(primitivaSelecIndice, primitivaParaAgrupar);
+             PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+             PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+             PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+             PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected());
+             BotaoDesagrupar.setEnabled(false);
+             ExcluirPrimitiva.setEnabled(false);
+             SpinnerEscala.setEnabled(false);
+             SpinnerRotacao.setEnabled(false);
+             BotaoFazerRotacao.setEnabled(false);
+             BotaoFazerEscala.setEnabled(false);
+             primitivaIsSelected = false;
+             selecFrente = false;
+             selecLado = false;
+             selecTopo = false;
+             repintarBotoesAlternar();*/
         }
     }//GEN-LAST:event_PainelFrentemoverPrimitivaFrente
 
-    private int selecPrimitiva () {
+    private int selecPrimitiva() {
         return 1;
     }
-    
+
     private void PainelFrenteOperacoesPrimitivaFrente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelFrenteOperacoesPrimitivaFrente
         if (plotDesenho) {
             //plotDesenho = false;
-            
+
             //******************IMPORTANTE --REVER METODO PARA TER AS OUTRAS PRIMITIVAS
             /*if (control.criarPrimitiva(evt.getX(), evt.getY(), 1, selecionaCorBorda.getCorSelecionada(),
-                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
+             PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
             if (control.criarCubo(evt.getX(), evt.getY(), 1, selecionaCorBorda.getCorSelecionada(),
-                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+                    PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
             //******************
-                
-            //double sen, cos;
-            //int ang = 30;
-            //sen = angulos.getSenos()[360 - ang];
-            //cos = angulos.getCossenos()[360 - ang];
-            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoZ(ang, sen, cos);
-            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoY(ang, sen, cos);
-            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoX(ang, sen, cos);
-            if (primitivaIsSelected) {
-                primitivaIsSelected = false;
-                if (selecLado) {
-                    PainelLado.pintarSelecaoLado(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
-                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                    selecLado = false;
+
+                //double sen, cos;
+                //int ang = 30;
+                //sen = angulos.getSenos()[360 - ang];
+                //cos = angulos.getCossenos()[360 - ang];
+                //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoZ(ang, sen, cos);
+                //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoY(ang, sen, cos);
+                //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoX(ang, sen, cos);
+                if (primitivaIsSelected) {
+                    primitivaIsSelected = false;
+                    if (selecLado) {
+                        PainelLado.pintarSelecaoLado(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
+                        PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                        selecLado = false;
+                    }
+                    if (selecFrente) {
+                        PainelFrente.pintarSelecaoFrente(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
+                        PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                        selecFrente = false;
+                    }
+                    if (selecTopo) {
+                        PainelTopo.pintarSelecaoTopo(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
+                        PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                        selecTopo = false;
+                    }
+                    habilitarBotoes(false);
                 }
-                if (selecFrente) {
-                    PainelFrente.pintarSelecaoFrente(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
-                    PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                    selecFrente = false;
-                }
-                if (selecTopo) {
-                    PainelTopo.pintarSelecaoTopo(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
-                    PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                    selecTopo = false;
-                }
-                habilitarBotoes(false);
+                desenharVisoesPaineis();
+                //selecionaPrimitiva = true;
+                alteracoesRealizadas = true;
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Não foi possível criar a primitiva!", "Erro!", ERROR_MESSAGE);
             }
-            desenharVisoesPaineis();
-            //selecionaPrimitiva = true;
-            alteracoesRealizadas = true;
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Não foi possível criar a primitiva!", "Erro!", ERROR_MESSAGE);
-        }
         } else {
             if (selecionaPrimitiva) {
                 //System.out.println("X: " + evt.getX() + " Y: " + evt.getY());
@@ -2732,40 +2848,40 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //long tempoPressionamento = System.nanoTime() - nanoSegundosPressao;
         //System.out.println(tempoPressionamento);
         //if (tempoPressionamento >= 2000000000) {
-            if (permiteAgrupar) {
-                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(last), Color.WHITE);
-                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
-                PainelFrente.apagarTodosPrimitivasFrente(control.getListaPrimitivas());
-                PainelTopo.apagarTodosPrimitivasTopo(control.getListaPrimitivas());
-                PainelLado.apagarTodosPrimitivasLado(control.getListaPrimitivas());
-                if (SelecProjecaoPerspectiva.isSelected()) {
-                    PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
-                } else {
-                    if (SelecProjecaoIsometrica.isSelected()) {
-                        PainelProjecao.apagarTodosPrimitivasIsometrica(control.getListaPrimitivas());
-                    }
+        if (permiteAgrupar) {
+            PainelFrente.pintarSelecaoFrente(control.getPrimitiva(last), Color.WHITE);
+            PainelFrente.pintarSelecaoFrente(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
+            PainelFrente.apagarTodosPrimitivasFrente(control.getListaPrimitivas());
+            PainelTopo.apagarTodosPrimitivasTopo(control.getListaPrimitivas());
+            PainelLado.apagarTodosPrimitivasLado(control.getListaPrimitivas());
+            if (SelecProjecaoPerspectiva.isSelected()) {
+                PainelProjecao.apagarTodosPrimitivasPerspectiva(control.getListaPrimitivas());
+            } else {
+                if (SelecProjecaoIsometrica.isSelected()) {
+                    PainelProjecao.apagarTodosPrimitivasIsometrica(control.getListaPrimitivas());
                 }
-                //System.out.println(primitivaSelecIndice);
-                
-                //******************IMPORTANTE --REVER METODO PARA TER AS OUTRAS PRIMITIVAS
-                //control.agruparDuasPrimitivas(primitivaSelecIndice, last);
-                control.agruparDoisCubos(primitivaSelecIndice, last);
-                //******************
-                
-                desenharVisoesPaineis();
-                BotaoDesagrupar.setEnabled(false);
-                ExcluirPrimitiva.setEnabled(false);
-                SpinnerEscala.setEnabled(false);
-                SpinnerRotacao.setEnabled(false);
-                /*BotaoFazerRotacao.setEnabled(false);
-                BotaoFazerEscala.setEnabled(false);*/
-                primitivaIsSelected = false;
-                selecFrente = false;
-                selecLado = false;
-                selecTopo = false;
-                permiteAgrupar = false;
-                repintarBotoesAlternar();
             }
+                //System.out.println(primitivaSelecIndice);
+
+            //******************IMPORTANTE --REVER METODO PARA TER AS OUTRAS PRIMITIVAS
+            //control.agruparDuasPrimitivas(primitivaSelecIndice, last);
+            control.agruparDoisCubos(primitivaSelecIndice, last);
+            //******************
+
+            desenharVisoesPaineis();
+            BotaoDesagrupar.setEnabled(false);
+            ExcluirPrimitiva.setEnabled(false);
+            SpinnerEscala.setEnabled(false);
+            SpinnerRotacao.setEnabled(false);
+            /*BotaoFazerRotacao.setEnabled(false);
+             BotaoFazerEscala.setEnabled(false);*/
+            primitivaIsSelected = false;
+            selecFrente = false;
+            selecLado = false;
+            selecTopo = false;
+            permiteAgrupar = false;
+            repintarBotoesAlternar();
+        }
     }//GEN-LAST:event_PainelFrentemouseReleasedFrente
 
     private void PainelFrenteresizedFrente(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PainelFrenteresizedFrente
@@ -2776,7 +2892,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_PainelFrenteresizedFrente
 
     private void PainelFrentekeyPressedFrente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PainelFrentekeyPressedFrente
-        //Delete
+        //atalho para Delete
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             if (primitivaIsSelected) {
                 excluirPrimitiva();
@@ -2785,7 +2901,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_PainelFrentekeyPressedFrente
 
     private void PainelFrentekeyTypedFrente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PainelFrentekeyTypedFrente
-        //Delete
+        //atalho para Delete
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             if (primitivaIsSelected) {
                 excluirPrimitiva();
@@ -2834,7 +2950,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
             control.getPrimitiva(primitivaSelecIndice).transladarPrimitivasXZ(evt.getX() - localClicadoX, evt.getY() - localClicadoZ,
-                PainelTopo.getSize().height - 1, PainelTopo.getSize().width - 1);
+                    PainelTopo.getSize().height - 1, PainelTopo.getSize().width - 1);
 
             //PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
             PainelTopo.pintarSelecaoTopo(control.getPrimitiva(primitivaSelecIndice), corSelecao);
@@ -2868,46 +2984,46 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void PainelTopoOperacoesPrimitivaTopo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelTopoOperacoesPrimitivaTopo
         if (plotDesenho) {
             //plotDesenho = false;
-            
+
             //******************IMPORTANTE --REVER METODO PARA TER AS OUTRAS PRIMITIVAS
             /*if (control.criarPrimitiva(evt.getX(), evt.getY(), 2, selecionaCorBorda.getCorSelecionada(),
-                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
+             PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
             if (control.criarCubo(evt.getX(), evt.getY(), 2, selecionaCorBorda.getCorSelecionada(),
-                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {                
-            //******************
-                
-            double sen, cos;
-            int ang = 30;
-            sen = angulos.getSenos()[360 - ang];
-            cos = angulos.getCossenos()[360 - ang];
-            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoZ(ang, sen, cos);
-            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoY(ang, sen, cos);
-            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoX(ang, sen, cos);
-            if (primitivaIsSelected) {
-                primitivaIsSelected = false;
-                if (selecLado) {
-                    PainelLado.pintarSelecaoLado(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
-                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                    selecLado = false;
+                    PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+                //******************
+
+                double sen, cos;
+                int ang = 30;
+                sen = angulos.getSenos()[360 - ang];
+                cos = angulos.getCossenos()[360 - ang];
+                //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoZ(ang, sen, cos);
+                //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoY(ang, sen, cos);
+                //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoX(ang, sen, cos);
+                if (primitivaIsSelected) {
+                    primitivaIsSelected = false;
+                    if (selecLado) {
+                        PainelLado.pintarSelecaoLado(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
+                        PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                        selecLado = false;
+                    }
+                    if (selecFrente) {
+                        PainelFrente.pintarSelecaoFrente(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
+                        PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                        selecFrente = false;
+                    }
+                    if (selecTopo) {
+                        PainelTopo.pintarSelecaoTopo(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
+                        PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                        selecTopo = false;
+                    }
+                    habilitarBotoes(false);
                 }
-                if (selecFrente) {
-                    PainelFrente.pintarSelecaoFrente(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
-                    PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                    selecFrente = false;
-                }
-                if (selecTopo) {
-                    PainelTopo.pintarSelecaoTopo(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
-                    PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                    selecTopo = false;
-                }
-                habilitarBotoes(false);
+                desenharVisoesPaineis();
+                //selecionaPrimitiva = true;
+                alteracoesRealizadas = true;
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Não foi possível criar a primitiva!", "Erro!", ERROR_MESSAGE);
             }
-            desenharVisoesPaineis();
-            //selecionaPrimitiva = true;
-            alteracoesRealizadas = true;
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Não foi possível criar a primitiva!", "Erro!", ERROR_MESSAGE);
-        }
         } else {
             if (selecionaPrimitiva) {
                 //System.out.println("X: " + evt.getX() + " Y: " + evt.getY());
@@ -2997,19 +3113,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
             //System.out.println(primitivaSelecIndice);
-            
+
             //******************IMPORTANTE --REVER METODO PARA TER AS OUTRAS PRIMITIVAS
             //control.agrupaDuasPrimitivas(primitivaSelecIndice, last);
             control.agruparDoisCubos(primitivaSelecIndice, last);
             //******************
-            
+
             desenharVisoesPaineis();
             BotaoDesagrupar.setEnabled(false);
             ExcluirPrimitiva.setEnabled(false);
             SpinnerEscala.setEnabled(false);
             SpinnerRotacao.setEnabled(false);
             /*BotaoFazerRotacao.setEnabled(false);
-            BotaoFazerEscala.setEnabled(false);*/
+             BotaoFazerEscala.setEnabled(false);*/
             primitivaIsSelected = false;
             selecFrente = false;
             selecLado = false;
@@ -3067,7 +3183,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
             control.getPrimitiva(primitivaSelecIndice).transladarPrimitivasZY(evt.getX() - localClicadoZ, evt.getY() - localClicadoY,
-                PainelLado.getSize().height - 1, PainelLado.getSize().width - 1);
+                    PainelLado.getSize().height - 1, PainelLado.getSize().width - 1);
 
             //PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
             PainelLado.pintarSelecaoLado(control.getPrimitiva(primitivaSelecIndice), corSelecao);
@@ -3101,46 +3217,46 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void PainelLadoOperacoesPrimitivaLado(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelLadoOperacoesPrimitivaLado
         if (plotDesenho) {
             //plotDesenho = false;
-            
+
             //******************IMPORTANTE --REVER METODO PARA TER AS OUTRAS PRIMITIVAS
             /*if (control.criarPrimitiva(evt.getX(), evt.getY(), 3, selecionaCorBorda.getCorSelecionada(),
-                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
+             PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {*/
             if (control.criarCubo(evt.getX(), evt.getY(), 3, selecionaCorBorda.getCorSelecionada(),
-                PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
-            //******************  
-            
-            double sen, cos;
-            int ang = 30;
-            sen = angulos.getSenos()[360 - ang];
-            cos = angulos.getCossenos()[360 - ang];
-            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoZ(ang, sen, cos);
-            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoY(ang, sen, cos);
-            //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoX(ang, sen, cos);
-            if (primitivaIsSelected) {
-                primitivaIsSelected = false;
-                if (selecLado) {
-                    PainelLado.pintarSelecaoLado(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
-                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                    selecLado = false;
+                    PainelFrente.getSize().height - 1, PainelFrente.getSize().width - 1)) {
+                //******************  
+
+                double sen, cos;
+                int ang = 30;
+                sen = angulos.getSenos()[360 - ang];
+                cos = angulos.getCossenos()[360 - ang];
+                //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoZ(ang, sen, cos);
+                //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoY(ang, sen, cos);
+                //control.getPrimitiva(control.getListaPrimitivas().size()-1).rotacaoX(ang, sen, cos);
+                if (primitivaIsSelected) {
+                    primitivaIsSelected = false;
+                    if (selecLado) {
+                        PainelLado.pintarSelecaoLado(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
+                        PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                        selecLado = false;
+                    }
+                    if (selecFrente) {
+                        PainelFrente.pintarSelecaoFrente(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
+                        PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                        selecFrente = false;
+                    }
+                    if (selecTopo) {
+                        PainelTopo.pintarSelecaoTopo(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
+                        PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                        selecTopo = false;
+                    }
+                    habilitarBotoes(false);
                 }
-                if (selecFrente) {
-                    PainelFrente.pintarSelecaoFrente(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
-                    PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                    selecFrente = false;
-                }
-                if (selecTopo) {
-                    PainelTopo.pintarSelecaoTopo(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
-                    PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                    selecTopo = false;
-                }
-                habilitarBotoes(false);
+                desenharVisoesPaineis();
+                //selecionaPrimitiva = true;
+                alteracoesRealizadas = true;
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Não foi possível criar a primitiva!", "Erro!", ERROR_MESSAGE);
             }
-            desenharVisoesPaineis();
-            //selecionaPrimitiva = true;
-            alteracoesRealizadas = true;
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Não foi possível criar a primitiva!", "Erro!", ERROR_MESSAGE);
-        }
         } else {
             if (selecionaPrimitiva) {
                 //System.out.println("X: " + evt.getX() + " Y: " + evt.getY());
@@ -3230,19 +3346,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
             //System.out.println(primitivaSelecIndice);
-            
+
             //******************IMPORTANTE --REVER METODO PARA TER AS OUTRAS PRIMITIVAS
             //control.agruparDuasPrimitivas(primitivaSelecIndice, last);
             control.agruparDoisCubos(primitivaSelecIndice, last);
             //******************
-            
+
             desenharVisoesPaineis();
             BotaoDesagrupar.setEnabled(false);
             ExcluirPrimitiva.setEnabled(false);
             SpinnerEscala.setEnabled(false);
             SpinnerRotacao.setEnabled(false);
             /*BotaoFazerRotacao.setEnabled(false);
-            BotaoFazerEscala.setEnabled(false);*/
+             BotaoFazerEscala.setEnabled(false);*/
             primitivaIsSelected = false;
             selecFrente = false;
             selecLado = false;
@@ -3334,31 +3450,31 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_PainelProjecaoresizedProjecao
 
-    private void desenhoPrimitivasAction () {
+    private void desenhoPrimitivasAction() {
         habilitarBotoes(false);
-            if (primitivaIsSelected) {
-                primitivaIsSelected = false;
-                if (selecLado) {
-                    PainelLado.pintarSelecaoLado(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
-                    PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                    selecLado = false;
-                }
-                if (selecFrente) {
-                    PainelFrente.pintarSelecaoFrente(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
-                    PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                    selecFrente = false;
-                }
-                if (selecTopo) {
-                    PainelTopo.pintarSelecaoTopo(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
-                    PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
-                    selecTopo = false;
-                }
+        if (primitivaIsSelected) {
+            primitivaIsSelected = false;
+            if (selecLado) {
+                PainelLado.pintarSelecaoLado(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
+                PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                selecLado = false;
             }
-            selecionaPrimitiva = false;
-            plotDesenho = true;
-            SelecionarPrimitivas.setSelected(false);
+            if (selecFrente) {
+                PainelFrente.pintarSelecaoFrente(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
+                PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                selecFrente = false;
+            }
+            if (selecTopo) {
+                PainelTopo.pintarSelecaoTopo(control.getPrimitiva(primitivaSelecIndice), Color.WHITE);
+                PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+                selecTopo = false;
+            }
+        }
+        selecionaPrimitiva = false;
+        plotDesenho = true;
+        SelecionarPrimitivas.setSelected(false);
     }
-    
+
     private void DesenharCubosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DesenharCubosActionPerformed
         if (DesenharCubos.isSelected()) {
             desenhoPrimitivasAction();
@@ -3416,33 +3532,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_DesenharPiramidesActionPerformed
 
     private void DiminuirTamanhoHorizontalFrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiminuirTamanhoHorizontalFrenteActionPerformed
-        //System.out.println(PainelFrente.getPreferredSize().width);
-        if (PainelFrente.getPreferredSize().width > 700) {
-            Dimension d = new Dimension(PainelFrente.getPreferredSize().width - 5, PainelFrente.getPreferredSize().height);
+        //System.out.println(PainelFrente.getSize().width);
+        if (PainelFrente.getSize().width > 700) {
+            Dimension d = new Dimension(PainelFrente.getSize().width - 5, PainelFrente.getSize().height);
             PainelFrente.setPreferredSize(d);
             PainelFrente.updateUI();
         }
-        //System.out.println(PainelFrente.getPreferredSize().width);
+        //System.out.println(PainelFrente.getSize().width);
     }//GEN-LAST:event_DiminuirTamanhoHorizontalFrenteActionPerformed
 
     private void AumentarTamanhoHorizontalFrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AumentarTamanhoHorizontalFrenteActionPerformed
-        //System.out.println(PainelFrente.getPreferredSize().width);
-        Dimension d = new Dimension(PainelFrente.getPreferredSize().width + 5, PainelFrente.getPreferredSize().height);
+        //System.out.println(PainelFrente.getSize().width);
+        Dimension d = new Dimension(PainelFrente.getSize().width + 5, PainelFrente.getSize().height);
         PainelFrente.setPreferredSize(d);
         PainelFrente.updateUI();
-        //System.out.println(PainelFrente.getPreferredSize().width);
+        //System.out.println(PainelFrente.getSize().width);
     }//GEN-LAST:event_AumentarTamanhoHorizontalFrenteActionPerformed
 
     private void ScrollPainelFrente(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_ScrollPainelFrente
         //Repinta as primitas e seleção ao dar scroll com o mouse
-        desenharVisoesPaineis();
-        pintarCorSelecao();
+        if (!control.getListaPrimitivas().isEmpty()) {
+            PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            pintarCorSelecao();
+        }
     }//GEN-LAST:event_ScrollPainelFrente
 
     private void DiminuirTamanhoVerticalFrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiminuirTamanhoVerticalFrenteActionPerformed
         //System.out.println(PainelFrente.getPreferredSize().height);
-        if (PainelFrente.getPreferredSize().height > 245) {
-            Dimension d = new Dimension(PainelFrente.getPreferredSize().width, PainelFrente.getPreferredSize().height - 5);
+        if (PainelFrente.getSize().height > 245) {
+            Dimension d = new Dimension(PainelFrente.getSize().width, PainelFrente.getSize().height - 5);
             PainelFrente.setPreferredSize(d);
             PainelFrente.updateUI();
         }
@@ -3451,11 +3569,107 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void AumentarTamanhoVerticalFrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AumentarTamanhoVerticalFrenteActionPerformed
         //System.out.println(PainelFrente.getPreferredSize().height);
-        Dimension d = new Dimension(PainelFrente.getPreferredSize().width, PainelFrente.getPreferredSize().height + 5);
+        Dimension d = new Dimension(PainelFrente.getSize().width, PainelFrente.getSize().height + 5);
         PainelFrente.setPreferredSize(d);
         PainelFrente.updateUI();
         //System.out.println(PainelFrente.getPreferredSize().height);
     }//GEN-LAST:event_AumentarTamanhoVerticalFrenteActionPerformed
+
+    private void ScrollFrenteResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_ScrollFrenteResized
+        //Repinta as primitas e seleção ao mudar o tamanho do scroll/painel
+        if (!control.getListaPrimitivas().isEmpty()) {
+            PainelFrente.desenharVisaoFrente(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            pintarCorSelecao();
+        }
+    }//GEN-LAST:event_ScrollFrenteResized
+
+    private void ScrollPainelLado(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_ScrollPainelLado
+        //Repinta as primitas e seleção ao dar scroll com o mouse
+        if (!control.getListaPrimitivas().isEmpty()) {
+            PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            pintarCorSelecao();
+        }
+    }//GEN-LAST:event_ScrollPainelLado
+
+    private void ScrollPainelTopo(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_ScrollPainelTopo
+        //Repinta as primitas e seleção ao dar scroll com o mouse
+        if (!control.getListaPrimitivas().isEmpty()) {
+            PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            pintarCorSelecao();
+        }
+    }//GEN-LAST:event_ScrollPainelTopo
+
+    private void ScrollPainelProjecao(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_ScrollPainelProjecao
+        //Repinta as primitas e seleção ao dar scroll com o mouse
+        if (!control.getListaPrimitivas().isEmpty()) {
+            if (SelecProjecaoIsometrica.isSelected()) {
+                int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
+                Ponto vrpIso = new Ponto(vrp, vrp, vrp);
+                int px = Integer.parseInt(SpinnerPX.getValue().toString());
+                int py = Integer.parseInt(SpinnerPY.getValue().toString());
+                int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
+                Ponto p = new Ponto(px, py, pz);
+                PainelProjecao.desenharVisaoIsometrica(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrpIso, p);
+            } else {
+                if (SelecProjecaoPerspectiva.isSelected()) {
+                    int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
+                    int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
+                    int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
+                    Ponto vrp = new Ponto(vrpx, vrpy, vrpz);
+                    int px = Integer.parseInt(SpinnerPX.getValue().toString());
+                    int py = Integer.parseInt(SpinnerPY.getValue().toString());
+                    int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
+                    Ponto p = new Ponto(px, py, pz);
+                    int dp = Integer.parseInt(SpinnerDP.getValue().toString());
+                    PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
+                }
+            }
+        }
+    }//GEN-LAST:event_ScrollPainelProjecao
+
+    private void ScrollLadoResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_ScrollLadoResized
+        //Repinta as primitas e seleção ao mudar o tamanho do scroll/painel
+        if (!control.getListaPrimitivas().isEmpty()) {
+            PainelLado.desenharVisaoLadoEsquerdo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            pintarCorSelecao();
+        }
+    }//GEN-LAST:event_ScrollLadoResized
+
+    private void ScrollTopoResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_ScrollTopoResized
+        //Repinta as primitas e seleção ao mudar o tamanho do scroll/painel
+        if (!control.getListaPrimitivas().isEmpty()) {
+            PainelTopo.desenharVisaoTopo(control.getListaPrimitivas(), OcultaFaces.isSelected());
+            pintarCorSelecao();
+        }
+    }//GEN-LAST:event_ScrollTopoResized
+
+    private void ScrollProjecaoResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_ScrollProjecaoResized
+        //Repinta as primitas e seleção ao mudar o tamanho do scroll/painel
+        if (!control.getListaPrimitivas().isEmpty()) {
+            if (SelecProjecaoIsometrica.isSelected()) {
+                int vrp = Integer.parseInt(SpinnerVRPIsometrica.getValue().toString());
+                Ponto vrpIso = new Ponto(vrp, vrp, vrp);
+                int px = Integer.parseInt(SpinnerPX.getValue().toString());
+                int py = Integer.parseInt(SpinnerPY.getValue().toString());
+                int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
+                Ponto p = new Ponto(px, py, pz);
+                PainelProjecao.desenharVisaoIsometrica(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrpIso, p);
+            } else {
+                if (SelecProjecaoPerspectiva.isSelected()) {
+                    int vrpx = Integer.parseInt(SpinnerVRPX.getValue().toString());
+                    int vrpy = Integer.parseInt(SpinnerVRPY.getValue().toString());
+                    int vrpz = Integer.parseInt(SpinnerVRPZ.getValue().toString());
+                    Ponto vrp = new Ponto(vrpx, vrpy, vrpz);
+                    int px = Integer.parseInt(SpinnerPX.getValue().toString());
+                    int py = Integer.parseInt(SpinnerPY.getValue().toString());
+                    int pz = Integer.parseInt(SpinnerPZ.getValue().toString());
+                    Ponto p = new Ponto(px, py, pz);
+                    int dp = Integer.parseInt(SpinnerDP.getValue().toString());
+                    PainelProjecao.desenharVisaoPerspectiva(control.getListaPrimitivas(), OcultaFaces.isSelected(), vrp, p, dp);
+                }
+            }
+        }
+    }//GEN-LAST:event_ScrollProjecaoResized
 
     private void repintarBotoesAlternar() {
         AlternarVisaoFrente.repaint();
@@ -3548,6 +3762,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Sair;
     private javax.swing.JMenuItem SalvarProjeto;
     private javax.swing.JScrollPane ScrollPainelFrente;
+    private javax.swing.JScrollPane ScrollPainelLado;
+    private javax.swing.JScrollPane ScrollPainelProjecao;
+    private javax.swing.JScrollPane ScrollPainelTopo;
     private javax.swing.JScrollPane ScrollSelecPrimitivas;
     private javax.swing.JRadioButtonMenuItem SelecAmarelo;
     private javax.swing.JRadioButtonMenuItem SelecAzul;
