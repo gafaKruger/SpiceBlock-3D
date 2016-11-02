@@ -1,5 +1,4 @@
 # SpiceBlock-3D
------ This app is under development ------
 
 Basically, this is desktop a Java app for manipulating 3D block cubes.
 
